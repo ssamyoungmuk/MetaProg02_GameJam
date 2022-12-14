@@ -9,15 +9,12 @@ public class GameFrame : MonoBehaviour
     [SerializeField] Image imgGame;
 	[SerializeField] TextMeshProUGUI txtGameName;
 
-	// Start is called before the first frame update
-	void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public void ShowInfo(string gameName, Sprite gameImage)
+	{
+		if(gameImage != null)
+		{
+			imgGame.sprite = gameImage;
+			txtGameName.text = gameName;
+		}
+	}
 }
