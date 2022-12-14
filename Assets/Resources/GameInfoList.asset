@@ -15,27 +15,40 @@ MonoBehaviour:
   gameInfos:
   - GameName: 
     GameImage: {fileID: 0}
+    GameSceneName: 
+  - GameName: test
+    GameImage: {fileID: 21300000, guid: ec03f79379868c642b48ae5ddc821b6d, type: 3}
+    GameSceneName: test
   - GameName: 
     GameImage: {fileID: 0}
+    GameSceneName: 
   - GameName: 
     GameImage: {fileID: 0}
+    GameSceneName: 
   - GameName: 
     GameImage: {fileID: 0}
+    GameSceneName: 
   - GameName: 
     GameImage: {fileID: 0}
+    GameSceneName: 
   - GameName: 
     GameImage: {fileID: 0}
+    GameSceneName: 
   - GameName: 
     GameImage: {fileID: 0}
+    GameSceneName: 
   - GameName: 
     GameImage: {fileID: 0}
+    GameSceneName: 
   - GameName: 
     GameImage: {fileID: 0}
+    GameSceneName: 
   - GameName: 
     GameImage: {fileID: 0}
+    GameSceneName: 
   - GameName: 
     GameImage: {fileID: 0}
+    GameSceneName: 
   - GameName: 
     GameImage: {fileID: 0}
-  - GameName: 
-    GameImage: {fileID: 0}
+    GameSceneName: 

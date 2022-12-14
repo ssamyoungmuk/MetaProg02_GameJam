@@ -9,6 +9,7 @@ public class GameInfo
 {
 	public string GameName;
 	public Sprite GameImage;
+	public string GameSceneName;
 }
 
 [CreateAssetMenu(fileName = "New GameInfoList", menuName = "ScriptableObjects/GameInfoList", order = 1)]
