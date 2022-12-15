@@ -41,9 +41,11 @@ MonoBehaviour:
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
+  - ImageOn
   - ButtonColor
   - ReadyCounT
   - ZeroCounT
+  - PlayerAttack
   - GameStartUI
   - Player_JobSeting
   - PlayerNum

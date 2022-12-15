@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Rock_06 : MonoBehaviour
 {
+    public float MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
     [SerializeField] private float moveSpeed = 0f;
     [SerializeField] Transform target = null;
     [SerializeField] Transform startPos = null;

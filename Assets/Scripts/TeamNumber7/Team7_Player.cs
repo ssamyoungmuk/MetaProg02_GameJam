@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Team7_Player : MonoBehaviour
+public class Team7_Player : MonoBehaviourPun
 {
     [SerializeField]
     GameObject CandyAttack;
@@ -27,12 +28,16 @@ public class Team7_Player : MonoBehaviour
 
     void Update()
     {
-        PlayerMove();
-
-        if (Input.GetMouseButtonDown(0))
+        if (photonView.IsMine)
         {
-            StartCoroutine(PlayerAttack());
+            PlayerMove();
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                StartCoroutine(PlayerAttack());
+            }
         }
+
     }
 
     public void PlayerMove()
@@ -42,6 +47,7 @@ public class Team7_Player : MonoBehaviour
         rb.MovePosition(transform.position + move * moveSpeed * Time.deltaTime);
     }
 
+    [PunRPC]
     IEnumerator PlayerAttack()
     {
         attackRotate = 0f;

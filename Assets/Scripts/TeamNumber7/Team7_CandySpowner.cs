@@ -3,21 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Team7_CandySpowner : MonoBehaviourPunCallbacks, IPunPrefabPool
+public class Team7_CandySpowner : MonoBehaviourPun
 {
     [SerializeField]
     GameObject[] candyPrefab;
 
-    public void Destroy(GameObject gameObject)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    // Inst Candy
-    public GameObject Instantiate(string prefabId, Vector3 position, Quaternion rotation)
-    {
-        throw new System.NotImplementedException();
-    }
 
     void Awake()
     {
@@ -27,7 +17,7 @@ public class Team7_CandySpowner : MonoBehaviourPunCallbacks, IPunPrefabPool
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
