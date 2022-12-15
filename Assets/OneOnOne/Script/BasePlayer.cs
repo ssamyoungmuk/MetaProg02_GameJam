@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
 namespace OOO
 {
     [RequireComponent(typeof(PlayerData),typeof(Rigidbody),typeof(CapsuleCollider))]
-    public abstract class BasePlayer : MonoBehaviourPun
+    public abstract class BasePlayer : MonoBehaviour
     {
         [SerializeField] private FollowCamera cam = null;
-        private PlayerData myData = null;
+        [HideInInspector] public PlayerData myData = null;
+
+        private Rigidbody rb = null;
 
         float getAxisX = 0;
         float getAxisZ = 0;
@@ -20,33 +21,37 @@ namespace OOO
         Quaternion leftArmOriginPos;
         bool leftAttackCheck = false;
 
+        bool dead = false;
 
         private void Awake()
         {
             myData = GetComponent<PlayerData>();
-            rightArmOriginPos = myData.info.rightArm.transform.rotation;
+            rb = GetComponent<Rigidbody>();
+            myData.info.curHp = myData.info.maxHp;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
+            if (dead) return;
+
             PlayerMoveAndRotation();
 
             InputKey();
         }
 
 
-        protected virtual void PlayerMoveAndRotation()
+        protected void PlayerMoveAndRotation()
         {
             getAxisX = Input.GetAxis("Horizontal");
             getAxisZ = Input.GetAxis("Vertical");
 
-            transform.Translate(myData.info.speed*getAxisX*Time.deltaTime,0, myData.info.speed * getAxisZ * Time.deltaTime);
+            transform.Translate(myData.info.speed*getAxisX*Time.fixedDeltaTime,0, myData.info.speed * getAxisZ * Time.fixedDeltaTime);
 
             transform.rotation = Quaternion.Euler(0, cam.mousAxisX * myData.info.rotationSensetive, 0);
         }
 
 
-        protected virtual void InputKey()
+        protected void InputKey()
         {
             if(Input.GetMouseButtonDown(0)&& leftAttackCheck==false)
             {
@@ -73,7 +78,7 @@ namespace OOO
 
             while (true)
             {
-                arm.Rotate(10f, 0, 0);
+                arm.Rotate(10f, 0, 0, Space.Self);
 
                 yield return new WaitForSeconds(Time.deltaTime);
                
@@ -92,9 +97,9 @@ namespace OOO
         {
             while (true)
             {
-                arm.Rotate(-10f, 0, 0);
+                arm.Rotate(-10f, 0, 0,Space.Self);
                 yield return new WaitForSeconds(Time.deltaTime);
-
+                Debug.Log("GD");
                 if (arm.localRotation.x >= 0.3f)
                 {
                     arm.rotation = originPos;
@@ -103,7 +108,7 @@ namespace OOO
                     {
                         leftAttackCheck = false;
                     }
-                    else
+                    else if(arm.name == "RightArm")
                     {
                         rightAttackCheck = false;
                     }
@@ -116,5 +121,29 @@ namespace OOO
 
         #endregion
 
+        public void TransferDamage(float damage)
+        {
+            myData.info.curHp -= damage;
+
+            this.gameObject.transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
+
+            if(myData.info.curHp<=0)
+            {
+                dead = true;
+
+                rb.AddForce(Vector3.up*10f, ForceMode.Impulse);
+
+                Invoke("Active", 3f);
+            }
+        }
+
+        void Active()
+        {
+            this.gameObject.SetActive(false);
+        }
+
     }
+
+
+    
 }
