@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 namespace OOO
 {
     [RequireComponent(typeof(PlayerData),typeof(Rigidbody),typeof(CapsuleCollider))]
-    public abstract class BasePlayer : MonoBehaviour
+    public abstract class BasePlayer : MonoBehaviourPun
     {
         [SerializeField] private FollowCamera cam = null;
         [HideInInspector] public PlayerData myData = null;
@@ -42,6 +43,7 @@ namespace OOO
 
         protected void PlayerMoveAndRotation()
         {
+            if (!photonView.IsMine) return;
             getAxisX = Input.GetAxis("Horizontal");
             getAxisZ = Input.GetAxis("Vertical");
 
@@ -53,7 +55,9 @@ namespace OOO
 
         protected void InputKey()
         {
-            if(Input.GetMouseButtonDown(0)&& leftAttackCheck==false)
+            if (!photonView.IsMine) return;
+
+            if (Input.GetMouseButtonDown(0)&& leftAttackCheck==false)
             {
                 leftAttackCheck = true;
 

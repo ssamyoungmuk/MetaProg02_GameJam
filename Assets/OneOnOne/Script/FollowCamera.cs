@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 namespace OOO
 {
-    public class FollowCamera : MonoBehaviour
+    public class FollowCamera : MonoBehaviourPun
     {
         [SerializeField] private float rotationSensetive;
 
         [HideInInspector] public float mousAxisX = 0;
         [HideInInspector] public float mousAxisY = 0;
 
-      
+        private void Awake()
+        {
+            if (!photonView.IsMine) Destroy(this.gameObject);
+        }
+
         void Update()
         {
             GetMouseAxis();
