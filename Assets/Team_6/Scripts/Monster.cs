@@ -7,11 +7,8 @@ public class Monster : MonoBehaviour
     [SerializeField] GameObject[] monsterPrefab;
     public List<GameObject> monsterList = new List<GameObject>();
     public int index = 0;
-    public int index2 = 0;
 
     float spawnTime = 0f;
-    float spawnTime2 = 0f;
-
 
     private void Awake()
     {
@@ -33,7 +30,6 @@ public class Monster : MonoBehaviour
     void Update()
     {
         spawnTime += Time.deltaTime;
-        spawnTime2 += Time.deltaTime;
        
         if (spawnTime >= 2)
         {

@@ -7,12 +7,14 @@ using UnityEngine.UI;
 public class Monster_Move : MonoBehaviour
 {
     [SerializeField] float monsterHP;
+    [SerializeField] Player player = null;
     float monsterMaxHP = 0;
     float speed = 10f;
     public Image hpBar;
 
     private void Awake()
     {
+        player = FindObjectOfType<Player>();
         monsterHP = monsterMaxHP;
     }
 
@@ -21,18 +23,15 @@ public class Monster_Move : MonoBehaviour
     {
         transform.Translate(Vector3.left * speed * Time.deltaTime);
 
-        StartCoroutine(MonsterDie());  // 삭제할것
-    }
+        if (Vector3.Distance(transform.position, player.transform.position) <= 3f)
+        {
+            player.Hit();
+            transform.position = new Vector3(15, 0.5f, 0);
+            transform.rotation = Quaternion.identity;
+            transform.localScale = Vector3.one;
 
-    IEnumerator MonsterDie()  // 트리거 만들고나면 삭제
-    {
-        yield return new WaitForSeconds(4f);
-
-        transform.position = new Vector3(15, 0.5f, 0);
-        transform.rotation = Quaternion.identity;
-        transform.localScale = Vector3.one;
-
-        gameObject.SetActive(false);
+            gameObject.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

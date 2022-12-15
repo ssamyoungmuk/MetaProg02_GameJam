@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
     [SerializeField] private int invert = 1;
     [SerializeField] GameObject rock = null;
 
+    [SerializeField] List<GameObject> hp = null;
+    [SerializeField] List<GameObject> UI = null;
+
     // Update is called once per frame
     void Update()
     {
@@ -39,6 +42,19 @@ public class Player : MonoBehaviour
             }
             playerArm.localEulerAngles += angle * invert * Time.fixedDeltaTime * throwSpeed;
             yield return new WaitForFixedUpdate();           
+        }
+    }
+
+    public void Hit()
+    {
+        Debug.Log("플레이어 아야했쪙");
+        hp[0].SetActive(false);
+        hp.RemoveAt(0);
+
+        if (hp.Count == 0)
+        {
+            UI[0].SetActive(true);
+            Time.timeScale = 0;
         }
     }
 }
