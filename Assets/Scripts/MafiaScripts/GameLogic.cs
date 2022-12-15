@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Photon.Pun;
 
 namespace MafiaGame
 { 
@@ -12,12 +13,15 @@ namespace MafiaGame
         [SerializeField] TextMeshProUGUI DayText;
         [SerializeField] TextMeshProUGUI debate_Text;
         [SerializeField] TextMeshProUGUI debateTime_Text;
+        public GameObject[] voteButton;
 
         int day = 0;
         float time = 0;
 
         public void GameStart()
         {
+            for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+                voteButton[i].SetActive(true);
             GameStartUI.SetActive(true);
             StartCoroutine(GameStart_Delay());
         }

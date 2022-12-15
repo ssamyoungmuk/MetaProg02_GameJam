@@ -30,7 +30,6 @@ namespace MafiaGame
         [Header("playerUI")]
         public TextMeshProUGUI[] playerName;
         public GameObject[] readyButton;
-        public GameObject[] voteButton;
 
 
         private int readyCount = 0;
@@ -202,8 +201,6 @@ namespace MafiaGame
             {
                 readyButton[i].SetActive(false);
             }
-            for(int i=0;i<PhotonNetwork.PlayerList.Length;i++)
-                voteButton[i].SetActive(true);
             gameObject.AddComponent<CharacterJob>();
                 GameLogic.Instance.GameStart();
         }
