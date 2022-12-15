@@ -87,7 +87,7 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
 
     private Vector3 SetRandomPos() // 게임 매니저 내부 함수 중에 랜덤 위치값을 반환하는 경우 사용
     {
-        return new Vector3(Random.Range(-50, 50), 1, Random.Range(-50, 50));
+        return new Vector3(Random.Range(-45, 45), 1, Random.Range(-45, 45));
     }
 
     private void InstCandy(int Num)
