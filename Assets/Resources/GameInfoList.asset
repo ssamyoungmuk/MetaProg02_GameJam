@@ -16,6 +16,7 @@ MonoBehaviour:
   - GameName: 
     GameImage: {fileID: 0}
     GameSceneName: 
+<<<<<<< HEAD
   - GameName: MafiaGame
     GameImage: {fileID: 21300000, guid: 1253fbc190bdf0744848efa6bab684e5, type: 3}
     GameSceneName: MafiaGame_LobbyScene
@@ -25,6 +26,23 @@ MonoBehaviour:
   - GameName: Halli Galli
     GameImage: {fileID: 21300000, guid: 8a5e966481026504baded3027f594b21, type: 3}
     GameSceneName: HalliGalli
+=======
+  - GameName: test
+    GameImage: {fileID: 21300000, guid: ec03f79379868c642b48ae5ddc821b6d, type: 3}
+    GameSceneName: test
+  - GameName: 
+    GameImage: {fileID: 0}
+    GameSceneName: 
+  - GameName: 
+    GameImage: {fileID: 0}
+    GameSceneName: 
+  - GameName: 
+    GameImage: {fileID: 0}
+    GameSceneName: 
+  - GameName: Elevator Simulator
+    GameImage: {fileID: 21300000, guid: 3f3659388eea40f4e8116066bd499fa7, type: 3}
+    GameSceneName: DemoScene
+>>>>>>> remotes/origin/TeamNumber5
   - GameName: 
     GameImage: {fileID: 0}
     GameSceneName: 
