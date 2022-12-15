@@ -49,6 +49,7 @@ namespace MafiaGame
         // Start is called before the first frame update
         void Start()
         {
+            PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime = "1adfdb50-72b8-47e6-af98-608eb7519a4d\n";
             GameLogic.Instance.Fade(blackUI, fade.Out);
             PhotonNetwork.ConnectUsingSettings(); //Photon.Pun 내부 클래스
             Debug.Log(PhotonNetwork.NetworkClientState + "*********************");
