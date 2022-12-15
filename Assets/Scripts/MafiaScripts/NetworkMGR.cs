@@ -54,11 +54,6 @@ namespace MafiaGame
 
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
         public override void OnConnected()
         {
             base.OnConnected();
@@ -125,6 +120,24 @@ namespace MafiaGame
 
             myReadyState = ReadyState.UnReady;
             SortedPlayer();
+        }
+        //타인이 들어올때
+        public override void OnPlayerEnteredRoom(Player newPlayer)
+        {
+            Debug.Log("새로운 플레이어가 참가하셨습니다");
+            SortedPlayer();
+        }
+
+        //플레이어가 나갈때
+        public override void OnPlayerLeftRoom(Player otherPlayer)
+        {
+            ClearLobby();
+            SortedPlayer();
+        }
+
+        public override void OnMasterClientSwitched(Player newMasterClient)
+        {
+            Debug.Log("마스터 클라이언트 변경:" + newMasterClient.ToString());
         }
         #region 플레이어 정렬
         public void SortedPlayer()
