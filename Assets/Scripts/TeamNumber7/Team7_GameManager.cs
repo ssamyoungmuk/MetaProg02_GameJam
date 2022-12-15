@@ -61,7 +61,6 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
         /*Debug.Log("생성한 방에 입장");
         PhotonNetwork.JoinRoom("CandyKongRoom"); // 방 들어오면 입장부터 시도하라*/
 
-        PhotonNetwork.CreateRoom("CandyKongRoom", new RoomOptions { MaxPlayers = 20 });
     }
     #endregion
     //=========================================================================

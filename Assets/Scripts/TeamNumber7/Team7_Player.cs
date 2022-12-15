@@ -8,7 +8,7 @@ public class Team7_Player : MonoBehaviourPun
     [SerializeField]
     GameObject CandyAttack;
 
-    float moveSpeed = 20f;
+    float moveSpeed = 8f;
     float attackRotate = 0f;
 
     Rigidbody rb = null;
@@ -28,11 +28,8 @@ public class Team7_Player : MonoBehaviourPun
 
     void Update()
     {
-<<<<<<< HEAD
-        if(photonView.IsMine)
-=======
+
         if (photonView.IsMine)
->>>>>>> Team_7_
         {
             PlayerMove();
 
@@ -41,18 +38,15 @@ public class Team7_Player : MonoBehaviourPun
                 StartCoroutine(PlayerAttack());
             }
         }
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> Team_7_
     }
 
     public void PlayerMove()
     {
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-        rb.MovePosition(transform.position + move * moveSpeed * Time.deltaTime);
+        transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0));
+        //rb.MovePosition(transform.position + move * moveSpeed * Time.deltaTime);
+        rb.transform.Translate(move * moveSpeed * Time.deltaTime);
     }
 
     [PunRPC]
@@ -63,7 +57,7 @@ public class Team7_Player : MonoBehaviourPun
         {
             attackRotate -= 10f;
             Debug.Log(attackRotate);
-            CandyAttack.transform.rotation = Quaternion.Euler(new Vector3(attackRotate, 180, 0));
+            CandyAttack.transform.localRotation = Quaternion.Euler(new Vector3(attackRotate, 180, 0));
             weapon.enabled = true;
             yield return new WaitForFixedUpdate();
         }
