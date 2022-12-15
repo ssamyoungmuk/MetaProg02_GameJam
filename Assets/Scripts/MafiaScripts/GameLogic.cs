@@ -5,6 +5,7 @@ using TMPro;
 using Photon.Pun;
 using System;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 namespace MafiaGame
 { 
@@ -17,10 +18,18 @@ namespace MafiaGame
         [SerializeField] TextMeshProUGUI debateTime_Text;
         [SerializeField] TextMeshProUGUI Vote_Text;
         [SerializeField] GameObject voteVote;
-        public GameObject[] voteButton;
-        public CharacterJob characterJob;
+        [SerializeField] GameObject chat;
+        [SerializeField] GameObject mafiaWin;
+        [SerializeField] GameObject peopleWin;
+        [SerializeField] GameObject jobUI;
+        [SerializeField] GameObject jobUI2;
+        [SerializeField] TextMeshProUGUI myJobText;
+        [SerializeField] TextMeshProUGUI myTeam;
 
-        PlayerInfo myInfo;
+        public GameObject[] voteButton;
+        [Header("scripts")]
+        public CharacterJob characterJob;
+        public PlayerInfo myInfo;
         [PunRPC]
         void MyInfo(int viewID)
         {
@@ -56,31 +65,35 @@ namespace MafiaGame
                 voteButton[i].SetActive(true);
             GameStartUI.SetActive(true);
             StartCoroutine(GameStart_Delay());
+            myJobText.text = myInfo.jobName.ToString();
+            jobUI2.SetActive(true);
+            voteCount = new int[PhotonNetwork.PlayerList.Length];
         }
 
         IEnumerator GameStart_Delay()
         {
             Fade(GameStartUI, fade.All);
             yield return new WaitForSeconds(2f);
-            StartCoroutine(Day_Morning());
+            morning=StartCoroutine(Day_Morning());
         }
-
+        Coroutine morning;
+        Coroutine debate;
         IEnumerator Day_Morning()
         {
-            if(characterJob.mafiaNum>=characterJob.peopleNum) //¸¶ÇÇ¾Æ½Â
+            GameEnd();
             day++;
             Monning = true;
             Night = false;
             DayText.text = day + "Day Morning";
             Fade(DayText.gameObject, fade.All);
             yield return new WaitForSeconds(2f);
-            StartCoroutine(StartDebate());
+            debate= StartCoroutine(StartDebate());
         }
 
         IEnumerator StartDebate()
         {
-            
-                voteCount = new int[PhotonNetwork.PlayerList.Length];
+                chat.SetActive(true);
+            Fade(chat.gameObject, fade.In);
                 time = 5f;
                 maxVote = 0;
                 maxVotePlayer = -1;
@@ -133,13 +146,14 @@ namespace MafiaGame
                 if (PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("VoteVoteEnd", RpcTarget.All);
                 voteVote.SetActive(false);
                 }
-                //»ç¸ÁÈÄ ¹ã
+            //»ç¸ÁÈÄ ¹ãchat.SetActive(true);
+            Fade(chat.gameObject, fade.Out);
 
-                yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(2f);
 
                 Vote_Text.gameObject.SetActive(false);
 
-            if (characterJob.mafiaNum >= characterJob.peopleNum) //¸¶ÇÇ¾Æ½Â
+            GameEnd();
                 Monning = false;
                 Night = true;
             DayText.text = day + "Day Night";
@@ -152,7 +166,7 @@ namespace MafiaGame
                     debateTime_Text.text = time.ToString();
                 }
             debateTime_Text.gameObject.SetActive(false);
-            StartCoroutine(Day_Morning());
+            morning=StartCoroutine(Day_Morning());
 
 
         }
@@ -173,6 +187,26 @@ namespace MafiaGame
         {
             job.Add(a);
         }
+        bool isGameEnd;
+        void GameEnd()
+        {
+            if (characterJob.mafiaNum == characterJob.peopleNum)
+            {
+                isGameEnd = true;
+                mafiaWin.SetActive(true);
+                if(morning!=null) StopCoroutine(morning);
+                if (debate != null) StopCoroutine(debate);
+                chat.SetActive(true);
+            }
+            else if(characterJob.mafiaNum==0)
+            {
+                isGameEnd = true;
+                peopleWin.SetActive(true);
+                if (morning != null) StopCoroutine(morning);
+                if (debate != null) StopCoroutine(debate);
+                chat.SetActive(true);
+            }
+        }
         [PunRPC]
         void VoteCount(int count)
         {
@@ -187,8 +221,21 @@ namespace MafiaGame
         }
         public void VoteButton0()
         {
+            if (myInfo.isDie) return;
             if (voteChack) return;
             if (isVoteOn) gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 0);
+            else if (Night && myInfo.jobName == jobList.Mafia)
+            {
+
+            }
+            else if (Night && myInfo.jobName == jobList.Doctor)
+            {
+
+            }
+            else if (Night && myInfo.jobName == jobList.Police)
+            {
+
+            }
 
             voteChack = true;
         }
@@ -217,12 +264,14 @@ namespace MafiaGame
         }
         public void LiveButton()
         {
+            if (myInfo.isDie) return;
             if (isVoteVoteChack == true) return;
             isVoteVoteChack = true;
             gameObject.GetPhotonView().RPC("LiveCount", RpcTarget.All);
         }
         public void DieButton()
         {
+            if (myInfo.isDie) return;
             if (isVoteVoteChack == true) return;
             isVoteVoteChack = true;
             gameObject.GetPhotonView().RPC("DieCount", RpcTarget.All);
@@ -257,6 +306,12 @@ namespace MafiaGame
                 gameObject.GetPhotonView().RPC("YouDie", RpcTarget.All, maxVotePlayer);
                 Fade(Vote_Text.gameObject, fade.Out);
             }
+        }
+        
+        public void MyJobClick()
+        {
+            if(jobUI.activeSelf) jobUI.SetActive(false);
+            else jobUI.SetActive(true);
         }
 
         ////////////////////////////////////////////////////////////////////

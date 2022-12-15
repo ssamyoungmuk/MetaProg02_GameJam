@@ -8,6 +8,7 @@ using TMPro;
 using Photon.Pun;
 using Photon.Chat;
 using ExitGames.Client.Photon;
+using MafiaGame;
 
 // 채팅옵션을 가져오기 위한 확장클래스
 public static class AppSettingsExtensions
@@ -81,6 +82,7 @@ public class UIChatManager : MonoBehaviour, IChatClientListener
 	// 채팅창 입력
 	public void OnEndEdit(string inStr)
 	{
+		if (GameLogic.Instance.myInfo.isDie) return;
 		// 채팅 입력이 아무것도 없으면 리턴
 		if (inStr.Length <= 0)
 			return;

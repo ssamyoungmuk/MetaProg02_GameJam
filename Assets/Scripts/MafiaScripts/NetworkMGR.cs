@@ -70,7 +70,7 @@ namespace MafiaGame
         {
             Debug.Log("조인 실패");
             //맥스 인원과 방 상태 표현 (시작인지 아닌지)
-            PhotonNetwork.CreateRoom("MafiaGame", new RoomOptions { MaxPlayers = 8, IsOpen = true });
+            PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 8, IsOpen = true });
         }
 
         public void OnEndEdit(string instr)
