@@ -4,12 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-<<<<<<< HEAD
-  m_Scenes: []
-=======
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/LobbyScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
->>>>>>> remotes/origin/team_6
+    path: Assets/Scenes/MafiaGame/MafiaGame_LobbyScene.unity
+    guid: f2d0480d0ab9b004f8bbbc07fa3c0003
   m_configObjects: {}
