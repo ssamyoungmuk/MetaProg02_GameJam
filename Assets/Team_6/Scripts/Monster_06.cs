@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +15,6 @@ public class Monster_06 : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             randNum = Random.Range(0, 2);
-            Debug.Log(randNum);
             GameObject monster = Instantiate(monsterPrefab[randNum]);
             monster.transform.position = new Vector3(15, 0.5f, 0);
             monster.transform.rotation = Quaternion.identity;

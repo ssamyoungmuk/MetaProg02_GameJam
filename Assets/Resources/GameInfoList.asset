@@ -33,7 +33,7 @@ MonoBehaviour:
     GameSceneName: 
   - GameName: Australopithecus
     GameImage: {fileID: 21300000, guid: 0f8154c0cd13e3743b79c752ce1d8aa2, type: 3}
-    GameSceneName: 
+    GameSceneName: Team6_Title
   - GameName: 
     GameImage: {fileID: 0}
     GameSceneName: 

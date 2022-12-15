@@ -47,7 +47,6 @@ public class Player_06 : MonoBehaviour
 
     public void Hit()
     {
-        Debug.Log("플레이어 아야했쪙");
         hp[0].SetActive(false);
         hp.RemoveAt(0);
 
