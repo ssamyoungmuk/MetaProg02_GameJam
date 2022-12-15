@@ -13,8 +13,10 @@ public class LobbyStartLogic : MonoBehaviour
 	[SerializeField] TextMeshProUGUI textGameName = null; // 로딩 중 표시하기 위한 게임이름
     [Header("[게임프레임들..]")]
 	[SerializeField] Transform listFrames = null;
+    [Header("[MsgUI..]")]
+    [SerializeField] UIAlertMsg uiAlertMsg = null;
 
-    GameFrame[] gameFrames = null;
+	GameFrame[] gameFrames = null;
 	GameInfoList resGameInfoList = null;
 	// Start is called before the first frame update
 	void Start()
@@ -35,14 +37,38 @@ public class LobbyStartLogic : MonoBehaviour
             gi = resGameInfoList.GetGameInfoAt(i + 1);
             gameFrames[i].ShowInfo(gi.GameName, gi.GameImage);
             gameFrames[i].GameIndex = i + 1;
-            if(gi.GameName.Length > 0) // 게임이름이 있다면 게임실행가능하므로..
+            if (gi.GameName.Length > 0) // 게임이름이 있다면 게임실행가능하므로..
+            {
                 gameFrames[i].callbackExecGame = startGameAt;
+				gameFrames[i].callbackNormalMsg = onNormalMsg;
+				gameFrames[i].callbackErrorMsg = onErrorMsg;
+            }
 		}
-
 	}
 
-    // 게임 실행
-    void startGameAt(int gameIndex)
+    // 좋아요 선택 혹은 해제
+    void onNormalMsg(int gameIndex, bool on)
+    {
+        if (uiAlertMsg != null)
+        {
+			GameInfo gi = resGameInfoList.GetGameInfoAt(gameIndex);
+			uiAlertMsg.ShowMessage($"[{gi.GameName}] 게임을 " + (on ? "선택" : "해제") + "하였습니다.");
+        }
+	}
+
+
+	// 이미 다른 게임을 선택해서 에러 메세지를 출력하자
+    void onErrorMsg(int gameIndex)
+    {
+		if (uiAlertMsg != null)
+		{
+			GameInfo gi = resGameInfoList.GetGameInfoAt(gameIndex);
+			uiAlertMsg.ShowMessage($"이미 [{gi.GameName}] 게임을 선택 하였습니다.");
+		}
+	}
+
+	// 게임 실행
+	void startGameAt(int gameIndex)
     {
 		GameInfo gi = resGameInfoList.GetGameInfoAt(gameIndex);
         StartCoroutine(processGameStart(gi.GameName, gi.GameSceneName));
