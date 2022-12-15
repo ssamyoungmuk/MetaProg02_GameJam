@@ -55,11 +55,13 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
 
     private void GameStart()
     {
-        UIManager.transform.GetChild(1).gameObject.SetActive(true); // UI Score 띄우기
-        UIManager.transform.GetChild(0).gameObject.SetActive(false); // 연결중 배너 비활성화
+        //UIManager.transform.GetChild(1).gameObject.SetActive(true); // UI Score 띄우기
+        //UIManager.transform.GetChild(0).gameObject.SetActive(false); // 연결중 배너 비활성화
 
         // 플레이어 랜덤 위치에 생성
-        GameObject player = PhotonNetwork.Instantiate("Team7_Player", SetRandomPos(), Quaternion.identity);
+         GameObject player = PhotonNetwork.Instantiate("Team7_Player", SetRandomPos(), Quaternion.identity);
+        Camera.main.GetComponent<Team7_FollowCam>().SetCam();
+        // GameObject player = 
 
     }
 
