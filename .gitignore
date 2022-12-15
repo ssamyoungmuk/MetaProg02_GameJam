@@ -1,0 +1,9 @@
+/.git
+/.vs
+/Library
+/Logs
+/obj
+/Temp
+/UserSettings
+*.csproj
+*.sln
