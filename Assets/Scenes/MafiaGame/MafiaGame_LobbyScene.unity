@@ -343,10 +343,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f7e117b9e8b4764f9bca89ee1a68ec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameStartUI: {fileID: 0}
-  DayText: {fileID: 0}
-  debate_Text: {fileID: 0}
-  debateTime_Text: {fileID: 0}
+  GameStartUI: {fileID: 1318794725}
+  DayText: {fileID: 1462938712}
+  debate_Text: {fileID: 1576592112}
+  debateTime_Text: {fileID: 1559446302}
 --- !u!1 &1318794725
 GameObject:
   m_ObjectHideFlags: 0
