@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18229985, g: 0.22486821, b: 0.28911614, a: 1}
+  m_IndirectSpecularColor: {r: 0.18229961, g: 0.2248677, b: 0.2891154, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -576,6 +576,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5525297823427879407, guid: 7436bd1d0f5e1584caf24711ece69dd8, type: 3}
+      propertyPath: myMoney
+      value: 
+      objectReference: {fileID: 1720164916}
+    - target: {fileID: 5525297823427879407, guid: 7436bd1d0f5e1584caf24711ece69dd8, type: 3}
+      propertyPath: myStage
+      value: 
+      objectReference: {fileID: 449345165}
+    - target: {fileID: 5525297823427879407, guid: 7436bd1d0f5e1584caf24711ece69dd8, type: 3}
+      propertyPath: myTimer
+      value: 
+      objectReference: {fileID: 20435294}
+    - target: {fileID: 5525297823427879407, guid: 7436bd1d0f5e1584caf24711ece69dd8, type: 3}
+      propertyPath: text_Stage
+      value: 
+      objectReference: {fileID: 449345165}
     - target: {fileID: 5525297823427879407, guid: 7436bd1d0f5e1584caf24711ece69dd8, type: 3}
       propertyPath: text_Timer
       value: 
