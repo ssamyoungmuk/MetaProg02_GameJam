@@ -37,9 +37,9 @@ MonoBehaviour:
   - GameName: 
     GameImage: {fileID: 0}
     GameSceneName: 
-  - GameName: 
+  - GameName: PicoPark
     GameImage: {fileID: 0}
-    GameSceneName: 
+    GameSceneName: PicoPark
   - GameName: 
     GameImage: {fileID: 0}
     GameSceneName: 

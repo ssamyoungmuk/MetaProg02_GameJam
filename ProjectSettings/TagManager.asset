@@ -10,7 +10,10 @@ TagManager:
   - Button
   - Stone
   - Weapon
+  - Ground
   - DeadZone
+  - Door
+  - BackDoor
   layers:
   - Default
   - TransparentFX

@@ -39,6 +39,7 @@ MonoBehaviour:
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
+  - ImageOn
   - ButtonColor
   - ReadyCounT
   - ZeroCounT
