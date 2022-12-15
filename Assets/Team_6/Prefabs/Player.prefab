@@ -699,6 +699,13 @@ MonoBehaviour:
   isThrowing: 0
   invert: 1
   rock: {fileID: 0}
+  hp:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  UI:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &329875714060248129
 GameObject:
   m_ObjectHideFlags: 0
