@@ -20,7 +20,7 @@ namespace MafiaGame
             {
                 if (PhotonNetwork.PlayerList[i].NickName == PhotonNetwork.NickName)
                 {
-                    GameObject _player = PhotonNetwork.Instantiate("Player", new Vector3(0, 0, 0), Quaternion.identity);
+                    GameObject _player = PhotonNetwork.Instantiate("MafiaInfo", new Vector3(0, 0, 0), Quaternion.identity);
                     _player.GetPhotonView().RPC("PlayerNum", RpcTarget.All, i);
                 }
             }
