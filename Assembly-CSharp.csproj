@@ -59,6 +59,7 @@
     <Compile Include="Assets\Scripts\GameFrame.cs" />
     <Compile Include="Assets\Scripts\LobbyStartLogic.cs" />
     <Compile Include="Assets\Scripts\GameInfoList.cs" />
+    <Compile Include="Assets\Scripts\TeamNumber5\PlayerMove.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
