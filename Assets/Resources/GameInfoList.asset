@@ -22,9 +22,9 @@ MonoBehaviour:
   - GameName: 
     GameImage: {fileID: 0}
     GameSceneName: 
-  - GameName: 
-    GameImage: {fileID: 0}
-    GameSceneName: 
+  - GameName: Halli Galli
+    GameImage: {fileID: 21300000, guid: 8a5e966481026504baded3027f594b21, type: 3}
+    GameSceneName: HalliGalli
   - GameName: 
     GameImage: {fileID: 0}
     GameSceneName: 
