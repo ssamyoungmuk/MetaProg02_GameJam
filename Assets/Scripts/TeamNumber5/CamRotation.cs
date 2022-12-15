@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CamRotation : MonoBehaviour
 {
-    private float xRotate, yRotate, xRotateMove, yRotateMove;
+    /*private float xRotate, yRotate, xRotateMove, yRotateMove;
     public float rotateSpeed = 500.0f;
 
     // Update is called once per frame
@@ -19,5 +19,5 @@ public class CamRotation : MonoBehaviour
         xRotate = Mathf.Clamp(xRotate, -90, 90);
 
         transform.eulerAngles = new Vector3(xRotate, yRotate, 0);
-    }
+    }*/
 }

@@ -76,6 +76,9 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
     <Compile Include="Assets\Scripts\TeamNumber5\CamRotation.cs" />
     <Compile Include="Assets\Scripts\TeamNumber5\ButtonClick.cs" />
+    <Compile Include="Assets\Scripts\TeamNumber5\Elevator.cs" />
+    <Compile Include="Assets\Scripts\TeamNumber5\OutsideSystem.cs" />
+    <Compile Include="Assets\Scripts\TeamNumber5\ElevatorSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
