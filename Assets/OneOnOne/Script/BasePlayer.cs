@@ -33,13 +33,16 @@ namespace OOO
 
         private void FixedUpdate()
         {
-            if (dead) return;
 
             PlayerMoveAndRotation();
 
+        }
+        private void Update()
+        {
+            if (dead) return;
+
             InputKey();
         }
-
 
         protected void PlayerMoveAndRotation()
         {
@@ -53,77 +56,30 @@ namespace OOO
         }
 
 
-        protected void InputKey()
+        protected virtual void InputKey()
         {
             if (!photonView.IsMine) return;
 
-            if (Input.GetMouseButtonDown(0)&& leftAttackCheck==false)
+            if (Input.GetMouseButtonDown(0))
             {
-                leftAttackCheck = true;
-
-               StartCoroutine(AttackDown(myData.info.leftArm, leftArmOriginPos));
+                myData.info.leftArm.Rotate(100f, 0, -30f, Space.Self);
             }
-            else if(Input.GetMouseButtonDown(1)&& rightAttackCheck==false)
+            if(Input.GetMouseButtonUp(0))
             {
-                rightAttackCheck = true;
-
-               StartCoroutine(AttackDown(myData.info.rightArm, rightArmOriginPos));
+                myData.info.leftArm.rotation = rightArmOriginPos;
             }
+                
 
+            if(Input.GetMouseButtonDown(1))
+            {
+                myData.info.rightArm.Rotate(100f, 0, 30f, Space.Self);
+            }
+            if (Input.GetMouseButtonUp(1))
+            {
+                myData.info.rightArm.rotation = leftArmOriginPos;
+            }
 
         }
-
-
-        #region AttackCorutine
-
-        private IEnumerator AttackDown(Transform arm,Quaternion originPos)
-        {
-
-
-            while (true)
-            {
-                arm.Rotate(10f, 0, 0, Space.Self);
-
-                yield return new WaitForSeconds(Time.deltaTime);
-               
-                if (arm.localRotation.x <= -0.6f)
-                {
-
-                    StartCoroutine(AttackStart(arm,originPos));
-
-                    yield break;
-                }
-
-            }
-        }
-
-        private IEnumerator AttackStart(Transform arm, Quaternion originPos)
-        {
-            while (true)
-            {
-                arm.Rotate(-10f, 0, 0,Space.Self);
-                yield return new WaitForSeconds(Time.deltaTime);
-                Debug.Log("GD");
-                if (arm.localRotation.x >= 0.3f)
-                {
-                    arm.rotation = originPos;
-
-                    if(arm.name=="LeftArm")
-                    {
-                        leftAttackCheck = false;
-                    }
-                    else if(arm.name == "RightArm")
-                    {
-                        rightAttackCheck = false;
-                    }
-                    
-                    yield break;
-                }
-
-            }
-        }
-
-        #endregion
 
         public void TransferDamage(float damage)
         {
@@ -146,8 +102,24 @@ namespace OOO
             this.gameObject.SetActive(false);
         }
 
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            Debug.Log(collision.gameObject.tag);
+
+            if (collision.gameObject.tag=="Weapon")
+            {
+                Debug.Log("»£√‚");
+                TransferDamage(1);
+            }
+
+        }
+
+
     }
 
+
+    
 
     
 }
