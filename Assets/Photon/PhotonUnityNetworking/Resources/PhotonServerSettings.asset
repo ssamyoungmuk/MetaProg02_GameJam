@@ -42,6 +42,7 @@ MonoBehaviour:
   - ButtonColor
   - ReadyCounT
   - ZeroCounT
+  - PlayerAttack
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
