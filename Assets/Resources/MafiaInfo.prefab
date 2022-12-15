@@ -67,7 +67,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b56cadd26f0b1940bf9fafa9cd2cb6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player_Num: 0
-  player_JobNum: 0
-  player_JobName: 
-  countChack: 0
+  <jobName>k__BackingField: 0

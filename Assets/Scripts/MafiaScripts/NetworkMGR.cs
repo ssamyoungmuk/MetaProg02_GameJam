@@ -47,9 +47,13 @@ namespace MafiaGame
 
         bool isNameElseUIFadeout;
         // Start is called before the first frame update
-        void Start()
+        private void Awake()
         {
             PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime = "1adfdb50-72b8-47e6-af98-608eb7519a4d\n";
+            
+        }
+        void Start()
+        {
             GameLogic.Instance.Fade(blackUI, fade.Out);
             PhotonNetwork.ConnectUsingSettings(); //Photon.Pun ³»ºÎ Å¬·¡½º
             Debug.Log(PhotonNetwork.NetworkClientState + "*********************");
@@ -71,7 +75,7 @@ namespace MafiaGame
 
         public void OnEndEdit(string instr)
         {
-            if (Regex.IsMatch(instr, @"^(?=.*[a-z0-9°¡-ÆR])[a-z0-9°¡-ÆR]{2,16}$") !=true)
+            if (Regex.IsMatch(instr, @"^(?=.*[°¡-ÆR])[°¡-ÆR]{2,16}$") !=true)
             {
                 PhotonNetwork.NickName = instr;
                 return;
@@ -84,7 +88,7 @@ namespace MafiaGame
         public void OnClick_Connected()
         {
             if (isNameElseUIFadeout == true) return;
-            if (Regex.IsMatch(PhotonNetwork.NickName, @"^(?=.*[a-z0-9°¡-ÆR])[a-z0-9°¡-ÆR]{2,16}$") != true)
+            if (Regex.IsMatch(PhotonNetwork.NickName, @"^(?=.*[°¡-ÆR])[°¡-ÆR]{2,16}$") != true)
             {
                 Debug.Log(PhotonNetwork.NickName);
                 GameLogic.Instance.Fade(nameElseUI, fade.All);
@@ -93,7 +97,7 @@ namespace MafiaGame
              }
             else
             {
-
+                StartCoroutine(Delay());
                 Debug.Log("ÀÔÀå");
                 PhotonNetwork.JoinRandomRoom();
                 GameLogic.Instance.Fade(nickNamePanel, fade.Out);
@@ -179,7 +183,7 @@ namespace MafiaGame
             // ¸¶½ºÅÍÀÏ¶§¸¸ ÇØ´ç ÇÔ¼ö ½ÇÇà °¡´É
             if (PhotonNetwork.IsMasterClient)
             {
-                if (readyCount == PhotonNetwork.PlayerList.Length && readyCount > 3)
+                if (readyCount == PhotonNetwork.PlayerList.Length && readyCount >=1)
                 {
                     Debug.Log("½ÃÀÛ");
                     //5¸í ·¹µð ¿Ï·á½Ã 2ÃÊÈÄ °ÔÀÓ ½ÇÇà ÄÚ·çÆ¾ 
@@ -193,7 +197,7 @@ namespace MafiaGame
         IEnumerator GameStartUI_Delay()
         {
             yield return new WaitForSeconds(2f);
-            if (readyCount == PhotonNetwork.PlayerList.Length && readyCount > 3)
+            if (readyCount == PhotonNetwork.PlayerList.Length && readyCount >=1)
             {
                 gameObject.GetPhotonView().RPC("GameStartUI", RpcTarget.All);
             }
@@ -211,7 +215,7 @@ namespace MafiaGame
                 Destroy(readyButton[i]);
             }
             isPlay = true;
-            gameObject.AddComponent<CharacterJob>();
+            GameLogic.Instance.characterJob =  gameObject.AddComponent<CharacterJob>();
                 GameLogic.Instance.GameStart();
         }
         [PunRPC]

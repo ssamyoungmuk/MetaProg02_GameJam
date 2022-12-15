@@ -50,6 +50,16 @@ MonoBehaviour:
   - Player_JobSeting
   - PlayerNum
   - CreateMafiaInfo
+  - VoteCount
+  - PlayerJobList
+  - VoteEnd
+  - VoteVote
+  - LiveCount
+  - DieCount
+  - VoteVoteEnd
+  - Die
+  - MyInfo
+  - YouDie
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
