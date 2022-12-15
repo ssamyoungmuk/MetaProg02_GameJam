@@ -8,6 +8,9 @@ public class Monster : MonoBehaviour
     public List<GameObject> monsterList = new List<GameObject>();
     public int index = 0;
 
+    float posX = 15;
+    float posY = 0.5f;
+
     float spawnTime = 0f;
 
 
@@ -16,16 +19,16 @@ public class Monster : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             GameObject monster = Instantiate(monsterPrefab);
-            monster.transform.position = Vector3.zero;
+            monster.transform.position = new Vector3(15, 0.5f, 0);
             monster.transform.rotation = Quaternion.identity;
             monster.transform.localScale = Vector3.one;
-
+            
             monster.gameObject.SetActive(false);
             monsterList.Add(monster);
         }
     }
 
-
+    
 
     void Update()
     {
@@ -40,7 +43,6 @@ public class Monster : MonoBehaviour
     void MonsterComing()
     {
         if (index >= monsterList.Count) index = 0;
-
         monsterList[index].SetActive(true);
 
         index++;

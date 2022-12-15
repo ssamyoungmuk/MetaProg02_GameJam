@@ -18,10 +18,9 @@ public class Monster_Move : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
 
-        transform.position = Vector3.zero;
+        transform.position = new Vector3(15, 0.5f, 0);
         transform.rotation = Quaternion.identity;
         transform.localScale = Vector3.one;
-
 
         gameObject.SetActive(false);
     }
