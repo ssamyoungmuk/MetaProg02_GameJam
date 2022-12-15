@@ -19,9 +19,9 @@ MonoBehaviour:
   - GameName: test
     GameImage: {fileID: 21300000, guid: ec03f79379868c642b48ae5ddc821b6d, type: 3}
     GameSceneName: test
-  - GameName: 
-    GameImage: {fileID: 0}
-    GameSceneName: 
+  - GameName: OneOnOne
+    GameImage: {fileID: 21300000, guid: 644966388b554d94595e007b69dd6592, type: 3}
+    GameSceneName: OneOnOne
   - GameName: 
     GameImage: {fileID: 0}
     GameSceneName: 
