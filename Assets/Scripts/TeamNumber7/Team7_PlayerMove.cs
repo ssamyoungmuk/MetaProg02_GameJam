@@ -2,13 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Team7_PlayerMove : MonoBehaviour
+public class Team7_Player : MonoBehaviour
 {
     float moveSpeed = 5f;
-    float posX = 0f;
-    float posY = 0f;
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +21,7 @@ public class Team7_PlayerMove : MonoBehaviour
     public void PlayerMove()
     {
         
+
 
     }
 }
