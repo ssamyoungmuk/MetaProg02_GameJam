@@ -56,13 +56,14 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\CJY\Script\TestPlayer.cs" />
+    <Compile Include="Assets\CJY\Script\BasePlayer.cs" />
+    <Compile Include="Assets\CJY\Script\FollowCamera.cs" />
     <Compile Include="Assets\Scripts\GameFrame.cs" />
     <Compile Include="Assets\Scripts\LobbyStartLogic.cs" />
-    <Compile Include="Assets\Scripts\GameInfoList.cs" />
-    <Compile Include="Assets\CJY\Script\BasePlayer.cs" />
     <Compile Include="Assets\CJY\Script\PlayerData.cs" />
-    <Compile Include="Assets\CJY\Script\TestPlayer.cs" />
-    <Compile Include="Assets\CJY\Script\FollowCamera.cs" />
+    <Compile Include="Assets\Scripts\GameInfoList.cs" />
+    <Compile Include="Assets\CJY\Script\Weapon.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

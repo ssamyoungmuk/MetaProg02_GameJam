@@ -275,6 +275,7 @@ MonoBehaviour:
     speed: 10
     rightArm: {fileID: 7420997665567464213}
     leftArm: {fileID: 7420997667168573751}
+    rotationSensetive: 0
     curHp: 0
 --- !u!114 &7230718027778925897
 MonoBehaviour:
@@ -288,6 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a27f396922f732f4a8bbdb356c5884e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
 --- !u!136 &2899014119620701918
 CapsuleCollider:
   m_ObjectHideFlags: 0

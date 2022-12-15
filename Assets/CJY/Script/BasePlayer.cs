@@ -23,7 +23,7 @@ namespace OOO
         private void Awake()
         {
             myData = GetComponent<PlayerData>();
-            rightArmOriginPos = myData.info.rightArm.transform.rotation;
+            
         }
 
         private void Update()
@@ -41,7 +41,7 @@ namespace OOO
 
             transform.Translate(myData.info.speed*getAxisX*Time.deltaTime,0, myData.info.speed * getAxisZ * Time.deltaTime);
 
-            transform.rotation = Quaternion.Euler(cam.mousAxisY*-myData.info.rotationSensetive, cam.mousAxisX * myData.info.rotationSensetive, 0);
+            transform.rotation = Quaternion.Euler(0, cam.mousAxisX * myData.info.rotationSensetive, 0);
         }
 
 
@@ -72,7 +72,7 @@ namespace OOO
 
             while (true)
             {
-                arm.Rotate(10f, 0, 0);
+                arm.Rotate(10f, 0, 0, Space.Self);
 
                 yield return new WaitForSeconds(Time.deltaTime);
                
@@ -91,9 +91,9 @@ namespace OOO
         {
             while (true)
             {
-                arm.Rotate(-10f, 0, 0);
+                arm.Rotate(-10f, 0, 0,Space.Self);
                 yield return new WaitForSeconds(Time.deltaTime);
-
+                Debug.Log("GD");
                 if (arm.localRotation.x >= 0.3f)
                 {
                     arm.rotation = originPos;
@@ -102,7 +102,7 @@ namespace OOO
                     {
                         leftAttackCheck = false;
                     }
-                    else
+                    else if(arm.name == "RightArm")
                     {
                         rightAttackCheck = false;
                     }
