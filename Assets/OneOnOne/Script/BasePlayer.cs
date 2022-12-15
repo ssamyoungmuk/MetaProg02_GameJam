@@ -83,20 +83,20 @@ namespace OOO
 
         }
 
-        public void TransferDamage(float damage)
+        public void TransferDamage()
         {
-            myData.info.curHp -= damage;
+            //myData.info.curHp -= damage;
 
-            this.gameObject.transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
+            this.gameObject.transform.localScale += new Vector3(0.2f, 0.2f, 0.2f);
 
-            if(myData.info.curHp<=0)
-            {
-                dead = true;
+            //if(myData.info.curHp<=0)
+            //{
+            //    //dead = true;
 
-                rb.AddForce(Vector3.up*10f, ForceMode.Impulse);
+            //    //rb.AddForce(Vector3.up*10f, ForceMode.Impulse);
 
-                Invoke("Active", 3f);
-            }
+            //    //Invoke("Active", 3f);
+            //}
         }
 
         void Active()
@@ -107,12 +107,13 @@ namespace OOO
 
         private void OnCollisionEnter(Collision collision)
         {
-            Debug.Log(collision.gameObject.tag);
+            if (collision.gameObject.tag == "DeadZone")
+                Destroy(this.gameObject);
+
 
             if (collision.gameObject.tag=="Weapon")
             {
-                Debug.Log("ȣ��");
-                TransferDamage(1);
+                TransferDamage();
             }
 
         }
