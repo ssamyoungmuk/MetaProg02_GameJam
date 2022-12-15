@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\MafiaScripts\NetworkMGR.cs" />
     <Compile Include="Assets\Scripts\MafiaScripts\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\TeamNumber7\Team7_CandySpowner.cs" />
+    <Compile Include="Assets\Scripts\TeamNumber7\Team7_FollowCam.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
