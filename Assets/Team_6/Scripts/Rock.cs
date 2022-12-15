@@ -33,7 +33,7 @@ public class Rock : MonoBehaviour
     {
         while (true)
         {
-            if ((duration += Time.deltaTime) < 0.1f)
+            if ((duration += Time.deltaTime) < 1.0f)
             {
                 continue;
             }
