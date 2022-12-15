@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - Team7_Me
+  - Team7_Other
   layers:
   - Default
   - TransparentFX

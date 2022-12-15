@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -130,18 +130,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1686697547051950688, guid: 760684771f90e644397fd18c5a2f61a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8202a12f37b726c489167762d27ec332, type: 2}
     - target: {fileID: 1686697547051950690, guid: 760684771f90e644397fd18c5a2f61a7, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 1686697547804569426, guid: 760684771f90e644397fd18c5a2f61a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8202a12f37b726c489167762d27ec332, type: 2}
     - target: {fileID: 1686697547804569428, guid: 760684771f90e644397fd18c5a2f61a7, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 1686697547964963691, guid: 760684771f90e644397fd18c5a2f61a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8202a12f37b726c489167762d27ec332, type: 2}
     - target: {fileID: 1686697547964963693, guid: 760684771f90e644397fd18c5a2f61a7, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 1686697548820171100, guid: 760684771f90e644397fd18c5a2f61a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8202a12f37b726c489167762d27ec332, type: 2}
     - target: {fileID: 1686697548820171102, guid: 760684771f90e644397fd18c5a2f61a7, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.3
@@ -150,6 +166,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Team7_Map
       objectReference: {fileID: 0}
+    - target: {fileID: 1686697548975134162, guid: 760684771f90e644397fd18c5a2f61a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51bfe2ec13b5981489421766a9d04a7e, type: 2}
     - target: {fileID: 1686697548975134164, guid: 760684771f90e644397fd18c5a2f61a7, type: 3}
       propertyPath: m_RootOrder
       value: 1
