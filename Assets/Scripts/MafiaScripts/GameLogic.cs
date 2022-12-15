@@ -21,6 +21,7 @@ namespace MafiaGame
             GameStartUI.SetActive(true);
             StartCoroutine(GameStart_Delay());
         }
+
         IEnumerator GameStart_Delay()
         {
             Fade(GameStartUI, fade.All);
@@ -34,19 +35,27 @@ namespace MafiaGame
             DayText.text = day + DayText.text + " Morning";
             Fade(DayText.gameObject, fade.All);
             yield return new WaitForSeconds(2f);
+            StartCoroutine(StartDebate());
         }
 
         IEnumerator StartDebate()
         {
             time = 180f;
-            Fade(debate_Text.gameObject, fade.All);
-            yield return new WaitForSeconds(2f);
-            Fade(debateTime_Text.gameObject, fade.In);
-            while (time > 0)
+            debateTime_Text.gameObject.SetActive(true);
+            debateTime_Text.text = time.ToString();
+            while (time >= 0)
             {
-                time -= Time.deltaTime;
+                time--;
+                yield return new WaitForSeconds(1f);
                 debateTime_Text.text = time.ToString();
             }
+            debateTime_Text.gameObject.SetActive(false);
+
+            debate_Text.text = "투표 시작";
+
+            Fade(debate_Text.gameObject, fade.All);
+            yield return new WaitForSeconds(2f);
+            
             //StartCoroutine();
 
         }
