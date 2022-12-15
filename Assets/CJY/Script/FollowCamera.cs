@@ -6,7 +6,6 @@ namespace OOO
 {
     public class FollowCamera : MonoBehaviour
     {
-        [SerializeField] private Transform playerTr = null;
         [SerializeField] private float rotationSensetive;
 
         [HideInInspector] public float mousAxisX = 0;

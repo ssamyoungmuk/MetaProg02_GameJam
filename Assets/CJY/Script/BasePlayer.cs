@@ -8,7 +8,9 @@ namespace OOO
     public abstract class BasePlayer : MonoBehaviour
     {
         [SerializeField] private FollowCamera cam = null;
-        private PlayerData myData = null;
+        [HideInInspector] public PlayerData myData = null;
+
+        private Rigidbody rb = null;
 
         float getAxisX = 0;
         float getAxisZ = 0;
@@ -19,15 +21,19 @@ namespace OOO
         Quaternion leftArmOriginPos;
         bool leftAttackCheck = false;
 
+        bool dead = false;
 
         private void Awake()
         {
             myData = GetComponent<PlayerData>();
-            
+            rb = GetComponent<Rigidbody>();
+            myData.info.curHp = myData.info.maxHp;
         }
 
         private void Update()
         {
+            if (dead) return;
+
             PlayerMoveAndRotation();
 
             InputKey();
@@ -115,5 +121,29 @@ namespace OOO
 
         #endregion
 
+        public void TransferDamage(float damage)
+        {
+            myData.info.curHp -= damage;
+
+            this.gameObject.transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
+
+            if(myData.info.curHp<=0)
+            {
+                dead = true;
+
+                rb.AddForce(Vector3.up*10f, ForceMode.Impulse);
+
+                Invoke("Active", 3f);
+            }
+        }
+
+        void Active()
+        {
+            this.gameObject.SetActive(false);
+        }
+
     }
+
+
+    
 }
