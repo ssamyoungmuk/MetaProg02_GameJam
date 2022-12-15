@@ -16,6 +16,10 @@ namespace OOO
         Quaternion rightArmOriginPos;
         Quaternion leftArmOriginPos;
 
+        Vector3 lookForward;
+        Vector3 lookRight;
+        Vector3 moveDir;
+
         bool hitFlag = false;
         bool dead = false;
         
@@ -63,18 +67,23 @@ namespace OOO
                 myData.info.rightArm.rotation = leftArmOriginPos;
             }
         }
+
         protected void PlayerMoveAndRotation()
         {
             if (!photonView.IsMine) return;
 
             float  getAxisX = Input.GetAxis("Horizontal");
             float getAxisZ = Input.GetAxis("Vertical");
-            
-            float xMove = myData.info.speed * getAxisX * Time.fixedDeltaTime;
-            float zMove = myData.info.speed * getAxisZ * Time.fixedDeltaTime;
 
-            this.transform.position += new Vector3(xMove, 0f,zMove);
-            this.transform.forward = new Vector3(xMove, 0f, zMove);
+            lookForward = new Vector3(cam.transform.forward.x, 0f, cam.transform.forward.z).normalized;
+            lookRight = new Vector3(cam.transform.right.x, 0f, cam.transform.right.z).normalized;
+
+            moveDir = lookForward * getAxisZ + lookRight * getAxisX;
+
+            Vector3 newPos = myData.info.speed * Time.deltaTime * moveDir.normalized;
+
+            rb.position += newPos;
+            rb.transform.rotation = Quaternion.LookRotation(moveDir);
         }
 
         public void TransferDamage()
