@@ -11,12 +11,6 @@ namespace OOO
         [SerializeField] string ApplicationID = null;
         [SerializeField] List<GameObject> players = new List<GameObject>();
 
-        RoomOptions roomOptions = new RoomOptions();
-        byte maxPlayers = byte.Parse(2.ToString()); // 드롭다운에서 값 얻어오기.
-        byte maxTime = byte.Parse(60.ToString());
-
-        ExitGames.Client.Photon.Hashtable expectedCustomRoomProperties;
-
         //flag
         private static bool InServer = false;
         private static bool InLobby = false;

@@ -7,42 +7,41 @@ namespace OOO
 {
     public class FollowCamera : MonoBehaviourPun
     {
-        [SerializeField] private float rotationSensetive;
+        [SerializeField] Transform targetTr;
+        [SerializeField] private float rotSensetive;
 
-        [HideInInspector] public float mousAxisX = 0;
         [HideInInspector] public float mousAxisY = 0;
+        [HideInInspector] public float mousAxisX = 0;
 
         private void Awake()
         {
             if (!photonView.IsMine) Destroy(this.gameObject);
+            this.transform.parent = null;
         }
 
-        void Update()
+        private void Update()
         {
-            GetMouseAxis();
+            this.transform.position = targetTr.position;
+            this.transform.LookAt(targetTr);
 
-            transform.rotation = Quaternion.Euler(mousAxisY*-rotationSensetive, mousAxisX * rotationSensetive, 0);
+            GetMouseAxis();
+            this.transform.localRotation = Quaternion.Euler(-mousAxisY, mousAxisX, 0); ;
         }
 
         void GetMouseAxis()
         {
-            if (mousAxisY >= 1)
+            if (mousAxisY >= 35)
             {
-                mousAxisY = 0.95f;
-                return;
+                mousAxisY = 35f;
             }
-            if (mousAxisY <= -5)
+            if (mousAxisY <= -35)
             {
-                mousAxisY = -4.9f;
-                return;
+                mousAxisY = -35f;
             }
 
             mousAxisX += Input.GetAxis("Mouse X");
             mousAxisY += Input.GetAxis("Mouse Y");
         }
-
     }
-
-
 }
 

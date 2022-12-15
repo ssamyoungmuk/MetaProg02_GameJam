@@ -13,50 +13,33 @@ namespace OOO
 
         private Rigidbody rb = null;
 
-        float getAxisX = 0;
-        float getAxisZ = 0;
-
         Quaternion rightArmOriginPos;
-        bool rightAttackCheck = false;
-
-        Quaternion AttackQuat = Quaternion.EulerAngles(-10f,0f,0f);
-
         Quaternion leftArmOriginPos;
-        bool leftAttackCheck = false;
 
+        bool hitFlag = false;
         bool dead = false;
-
+        
         private void Awake()
         {
+            hitFlag = false;
             myData = GetComponent<PlayerData>();
             rb = GetComponent<Rigidbody>();
             myData.info.curHp = myData.info.maxHp;
+            rb.freezeRotation = true;
         }
 
-        private void FixedUpdate()
-        {
-
-            PlayerMoveAndRotation();
-
-        }
         private void Update()
         {
             if (dead) return;
+            if (hitFlag) return;
 
             InputKey();
         }
-
-        protected void PlayerMoveAndRotation()
+        private void FixedUpdate()
         {
-            if (!photonView.IsMine) return;
-            getAxisX = Input.GetAxis("Horizontal");
-            getAxisZ = Input.GetAxis("Vertical");
-
-            transform.Translate(myData.info.speed*getAxisX*Time.fixedDeltaTime,0, myData.info.speed * getAxisZ * Time.fixedDeltaTime);
-
-            transform.rotation = Quaternion.Euler(0, cam.mousAxisX * myData.info.rotationSensetive, 0);
+            if (hitFlag) return;
+            PlayerMoveAndRotation();
         }
-
 
         protected virtual void InputKey()
         {
@@ -66,13 +49,12 @@ namespace OOO
             {
                 myData.info.leftArm.Rotate(100f, 0, -30f, Space.Self);
             }
-            if(Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(0))
             {
                 myData.info.leftArm.rotation = rightArmOriginPos;
             }
-                
 
-            if(Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1))
             {
                 myData.info.rightArm.Rotate(100f, 0, 30f, Space.Self);
             }
@@ -80,49 +62,63 @@ namespace OOO
             {
                 myData.info.rightArm.rotation = leftArmOriginPos;
             }
+        }
+        protected void PlayerMoveAndRotation()
+        {
+            if (!photonView.IsMine) return;
 
+            float  getAxisX = Input.GetAxis("Horizontal");
+            float getAxisZ = Input.GetAxis("Vertical");
+            
+            float xMove = myData.info.speed * getAxisX * 0.3f;
+            float zMove = myData.info.speed * getAxisZ * Time.fixedDeltaTime;
+
+            this.transform.Translate(new Vector3(0f, 0f, zMove));
+            this.transform.localEulerAngles += new Vector3(0f, xMove, 0f);
         }
 
         public void TransferDamage()
         {
-            //myData.info.curHp -= damage;
-
             this.gameObject.transform.localScale += new Vector3(0.2f, 0.2f, 0.2f);
-
-            //if(myData.info.curHp<=0)
-            //{
-            //    //dead = true;
-
-            //    //rb.AddForce(Vector3.up*10f, ForceMode.Impulse);
-
-            //    //Invoke("Active", 3f);
-            //}
+            rb.AddForce(1f,2f,3f,ForceMode.Impulse);
         }
-
-        void Active()
-        {
-            this.gameObject.SetActive(false);
-        }
-
 
         private void OnCollisionEnter(Collision collision)
         {
+            if (hitFlag) return;
+
             if (collision.gameObject.tag == "DeadZone")
                 Destroy(this.gameObject);
 
-
-            if (collision.gameObject.tag=="Weapon")
+            if (collision.gameObject.tag == "Weapon")
             {
+                StartCoroutine(nameof(Hit));
                 TransferDamage();
             }
-
         }
 
+        IEnumerator Hit()
+        {
+            hitFlag = true;
+            float time = 0f;
+            rb.freezeRotation = false;
 
+            while (true)
+            {
+                time += Time.deltaTime;
+                Debug.Log(time);
+
+                yield return null;  
+
+                if (time > 2f)
+                {
+                    Debug.Log("hi");
+                    this.transform.rotation = Quaternion.identity;
+                    rb.freezeRotation = true;
+                    hitFlag = false;
+                    yield break;
+                }
+            }
+        }
     }
-
-
-    
-
-    
 }
