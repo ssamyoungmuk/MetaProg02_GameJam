@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class GameManager_06 : MonoBehaviour
 {
     public float timer;
     public Text text_Timer;

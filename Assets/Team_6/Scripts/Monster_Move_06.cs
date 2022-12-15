@@ -4,17 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class Monster_Move : MonoBehaviour
+public class Monster_Move_06 : MonoBehaviour
 {
     [SerializeField] float monsterHP;
-    [SerializeField] Player player = null;
+    [SerializeField] Player_06 player = null;
     float monsterMaxHP = 0;
     float speed = 10f;
     public Image hpBar;
 
     private void Awake()
     {
-        player = FindObjectOfType<Player>();
+        player = FindObjectOfType<Player_06>();
         monsterHP = monsterMaxHP;
     }
 

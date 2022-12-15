@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player_06 : MonoBehaviour
 {
     [SerializeField] Transform playerArm = null;
     [SerializeField] Vector3 angle = new Vector3(0,0,-1);

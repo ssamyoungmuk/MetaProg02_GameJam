@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Monster : MonoBehaviour
+public class Monster_06 : MonoBehaviour
 {
     [SerializeField] GameObject[] monsterPrefab;
     public List<GameObject> monsterList = new List<GameObject>();
