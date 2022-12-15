@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/LobbyScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Team4/Scenes/PicoPark.unity
+    guid: 8d6d3e28a0becd243a81eda977e86542
+  - enabled: 1
+    path: Assets/Team4/Scenes/Loding.unity
+    guid: 4dc90477294609e49a81ab37bb2255e7
   m_configObjects: {}
