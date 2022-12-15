@@ -13,8 +13,6 @@ public class Monster_06 : MonoBehaviour
 
     private void Awake()
     {
-        monsterMove = GetComponent<Monster_Move_06>();
-
         int randNum = 0;
         for (int i = 0; i < 5; i++)
         {
@@ -23,7 +21,7 @@ public class Monster_06 : MonoBehaviour
             monster.transform.position = new Vector3(15, 0.5f, 0);
             monster.transform.rotation = Quaternion.identity;
             monster.transform.localScale = Vector3.one;
-            
+
             monster.gameObject.SetActive(false);
             monsterList.Add(monster);
         }
@@ -31,19 +29,20 @@ public class Monster_06 : MonoBehaviour
 
     void Update()
     {
-            stageTimer += Time.deltaTime;
-            spawnTime += Time.deltaTime;
-        
-        if(stageTimer >= 15f)
+        stageTimer += Time.deltaTime;
+        spawnTime += Time.deltaTime;
+
+        if (stageTimer >= 15f)
         {
             stage++;
 
             stageTimer = 0f;
         }
 
-        if(stage == 1)
+        if (stage == 1)
         {
-            if(spawnTime >= 2)
+            GameManager_06.Instance.stage = 1;
+            if (spawnTime >= 2)
             {
                 MonsterComing();
             }
@@ -51,6 +50,8 @@ public class Monster_06 : MonoBehaviour
 
         if (stage == 2)
         {
+            GameManager_06.Instance.stage = 2;
+            
             if (spawnTime >= 1.5)
             {
                 MonsterComing();
@@ -59,6 +60,8 @@ public class Monster_06 : MonoBehaviour
 
         if (stage == 3)
         {
+            GameManager_06.Instance.stage = 3;
+           
             if (spawnTime >= 1.15)
             {
                 MonsterComing();
@@ -67,21 +70,23 @@ public class Monster_06 : MonoBehaviour
 
         if (stage == 4)
         {
+            GameManager_06.Instance.stage = 4;
+        
             if (spawnTime >= 1)
-            {
+            {  
                 MonsterComing();
             }
         }
 
         if (stage == 5)
         {
+            GameManager_06.Instance.stage = 5;
+
             if (spawnTime >= 0.85)
-            {
+            {  
                 MonsterComing();
             }
         }
-
-
     }
 
     void MonsterComing()
@@ -92,5 +97,13 @@ public class Monster_06 : MonoBehaviour
         index++;
 
         spawnTime = 0f;
+    }
+
+    void MonsterMoveFaster(int addAmount)
+    {
+        for (int i = 0; i < monsterList.Count; i++)
+        {
+            monsterList[i].GetComponent<Monster_Move_06>().Speed += addAmount;
+        }
     }
 }

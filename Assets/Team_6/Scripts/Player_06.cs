@@ -56,4 +56,10 @@ public class Player_06 : MonoBehaviour
             Time.timeScale = 0;
         }
     }
+
+    public void Upgrade()
+    {
+        throwSpeed += 2;
+        rock.GetComponent<Rock_06>().MoveSpeed += 0.025f;
+    }
 }
