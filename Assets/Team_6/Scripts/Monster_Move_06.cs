@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 
 public class Monster_Move_06 : MonoBehaviour
 {
     [SerializeField] Player_06 player = null;
+    public float Speed { get { return speed; } set { speed = value; } }
     float speed = 10f;
     public Image hpBar;
 
