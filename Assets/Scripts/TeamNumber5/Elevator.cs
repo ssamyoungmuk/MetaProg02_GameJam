@@ -44,7 +44,8 @@ public class Elevator : MonoBehaviour
 
     public List<float> upDestination = new List<float>();
     public List<float> downDestination = new List<float>();
-    private float[] dest_y = new float[8] { 0f, -16f, -10f, -4f, 2f, 8f, 14f, 20f };
+    private Dictionary<float, int> dest_y = new Dictionary<float, int>()
+    { { 0f, 0 }, { -16f, 1 }, { -10f, 2 }, { -4f, 3 }, { 2f, 4 }, {8f, 5 }, {14f, 6 } , {20f, 7 } };
 
     [SerializeField] private float moveSpeed = 1f;
     private Coroutine myCoroutine = null;
@@ -56,31 +57,31 @@ public class Elevator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            SortAndAddDestination(dest_y[3]);
+            SortAndAddDestination(-4f);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            SortAndAddDestination(dest_y[1]);
+            SortAndAddDestination(-16f);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            SortAndAddDestination(dest_y[2]);
+            SortAndAddDestination(-10f);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            SortAndAddDestination(dest_y[4]);
+            SortAndAddDestination(2f);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            SortAndAddDestination(dest_y[5]);
+            SortAndAddDestination(8f);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha6))
         {
-            SortAndAddDestination(dest_y[6]);
+            SortAndAddDestination(14f);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha7))
         {
-            SortAndAddDestination(dest_y[7]);
+            SortAndAddDestination(20f);
         }
     }
     private float offset = 0f;
@@ -103,16 +104,16 @@ public class Elevator : MonoBehaviour
         }
         else if (myState == State.isDown)
         {
-            downDestination.Add(dest);
             if (dest <= transform.position.y - offset)
             {
+                downDestination.Add(dest);
                 downDestination.Sort();
                 downDestination.Reverse();
             }
         }
         else
         {
-            if (dest > transform.position.y)
+            if(dest > transform.position.y)
             {
                 upDestination.Add(dest);
             }
@@ -123,6 +124,7 @@ public class Elevator : MonoBehaviour
             else
             {
                 // Open Directly
+                StartCoroutine(ElevatorSystem.Instance.OpenDoor(dest_y[dest]));
             }
         }
     }
@@ -136,6 +138,7 @@ public class Elevator : MonoBehaviour
                 if (transform.position.y >= upDestination[0])
                 {
                     transform.position = new Vector3(transform.position.x, upDestination[0], transform.position.z);
+                    StartCoroutine(ElevatorSystem.Instance.OpenDoor(dest_y[upDestination[0]]));
                     upDestination.RemoveAt(0);
                     myState = State.stop;
                     yield return new WaitForSecondsRealtime(3f);
@@ -152,6 +155,7 @@ public class Elevator : MonoBehaviour
                 if (transform.position.y <= downDestination[0])
                 {
                     transform.position = new Vector3(transform.position.x, downDestination[0], transform.position.z);
+                    StartCoroutine(ElevatorSystem.Instance.OpenDoor(dest_y[downDestination[0]]));
                     downDestination.RemoveAt(0);
                     myState = State.stop;
                     yield return new WaitForSecondsRealtime(3f);

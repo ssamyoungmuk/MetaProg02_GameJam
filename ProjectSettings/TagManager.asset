@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - 1F_Button
+  - Button
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,10 @@ public class ButtonClick : MonoBehaviour
 
     private TextMeshProUGUI tm;
 
+    private Color origin;
+
+    private bool isSelected = false;
+
     Elevator ele;
     // Start is called before the first frame update
     void Start()
@@ -24,11 +28,25 @@ public class ButtonClick : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(ray, out hit))
             {
-                Debug.Log(hit.transform.gameObject.tag);
+                
                if( hit.transform.tag == "Button")
                 {
+                    if (!isSelected)
+                    {
+                    origin = hit.transform.GetChild(0).GetComponent<TextMeshPro>().color;
+                        hit.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.red;
+                        isSelected = true;
+                    }
+                    else
+                    {
 
-                hit.transform.gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+                        hit.transform.GetChild(0).GetComponent<TextMeshPro>().color = origin;
+                        Debug.Log(hit.transform.gameObject);
+                        //col = hit.transform.GetComponent<Color>();
+                        //hit.transform.gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+                        isSelected = false;
+                    }
+
                 } 
             }
         }

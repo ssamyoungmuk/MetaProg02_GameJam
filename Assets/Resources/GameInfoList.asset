@@ -30,7 +30,7 @@ MonoBehaviour:
     GameSceneName: 
   - GameName: Elevator Simulator
     GameImage: {fileID: 21300000, guid: 3f3659388eea40f4e8116066bd499fa7, type: 3}
-    GameSceneName: TeamNumber5
+    GameSceneName: DemoScene
   - GameName: 
     GameImage: {fileID: 0}
     GameSceneName: 

@@ -56,25 +56,25 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Photon\PhotonRealtime\Code\LoadbalancingPeer.cs" />
-    <Compile Include="Assets\Photon\PhotonRealtime\Code\Unity\PhotonAppSettings.cs" />
-    <Compile Include="Assets\Photon\PhotonRealtime\Code\SupportLogger.cs" />
-    <Compile Include="Assets\Photon\PhotonRealtime\Code\FriendInfo.cs" />
-    <Compile Include="Assets\Photon\PhotonRealtime\Code\AppSettings.cs" />
-    <Compile Include="Assets\Photon\PhotonRealtime\Code\PhotonPingClasses.cs" />
-    <Compile Include="Assets\Photon\PhotonRealtime\Code\Extensions.cs" />
-    <Compile Include="Assets\Photon\PhotonRealtime\Code\ConnectionHandler.cs" />
-    <Compile Include="Assets\Photon\PhotonRealtime\Code\Region.cs" />
-    <Compile Include="Assets\Photon\PhotonRealtime\Code\WebRpc.cs" />
-    <Compile Include="Assets\Photon\PhotonRealtime\Code\CustomTypesUnity.cs" />
     <Compile Include="Assets\Photon\PhotonRealtime\Code\RegionHandler.cs" />
-    <Compile Include="Assets\Photon\PhotonRealtime\Code\PhotonPing.cs" />
-    <Compile Include="Assets\Photon\PhotonRealtime\Code\RoomInfo.cs" />
-    <Compile Include="Assets\Photon\PhotonRealtime\Code\Room.cs" />
     <Compile Include="Assets\Photon\PhotonRealtime\Code\Unity\Editor\AccountService.cs" />
+    <Compile Include="Assets\Photon\PhotonRealtime\Code\Extensions.cs" />
+    <Compile Include="Assets\Photon\PhotonRealtime\Code\WebRpc.cs" />
+    <Compile Include="Assets\Photon\PhotonRealtime\Code\LoadbalancingPeer.cs" />
+    <Compile Include="Assets\Photon\PhotonRealtime\Code\PhotonPingClasses.cs" />
+    <Compile Include="Assets\Photon\PhotonRealtime\Code\Room.cs" />
+    <Compile Include="Assets\Photon\PhotonRealtime\Code\RoomInfo.cs" />
     <Compile Include="Assets\Photon\PhotonRealtime\Code\Player.cs" />
     <Compile Include="Assets\Photon\PhotonRealtime\Code\Unity\Editor\PhotonEditorUtils.cs" />
     <Compile Include="Assets\Photon\PhotonRealtime\Code\LoadBalancingClient.cs" />
+    <Compile Include="Assets\Photon\PhotonRealtime\Code\Region.cs" />
+    <Compile Include="Assets\Photon\PhotonRealtime\Code\AppSettings.cs" />
+    <Compile Include="Assets\Photon\PhotonRealtime\Code\SupportLogger.cs" />
+    <Compile Include="Assets\Photon\PhotonRealtime\Code\FriendInfo.cs" />
+    <Compile Include="Assets\Photon\PhotonRealtime\Code\Unity\PhotonAppSettings.cs" />
+    <Compile Include="Assets\Photon\PhotonRealtime\Code\PhotonPing.cs" />
+    <Compile Include="Assets\Photon\PhotonRealtime\Code\ConnectionHandler.cs" />
+    <Compile Include="Assets\Photon\PhotonRealtime\Code\CustomTypesUnity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Photon\PhotonRealtime\Code\changes-realtime.txt" />
@@ -348,6 +348,12 @@
     <Reference Include="Unity.VisualScripting.YamlDotNet">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
     </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>Assets\Photon\PhotonLibs\WebSocket\websocket-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Photon3Unity3D">
+      <HintPath>Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
     </Reference>
@@ -368,12 +374,6 @@
     </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
-    </Reference>
-    <Reference Include="websocket-sharp">
-      <HintPath>Assets\Photon\PhotonLibs\WebSocket\websocket-sharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Photon3Unity3D">
-      <HintPath>Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.7f1\Editor\Data\PlaybackEngines\AppleTVSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
