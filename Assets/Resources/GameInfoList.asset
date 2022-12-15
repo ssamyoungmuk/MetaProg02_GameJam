@@ -19,9 +19,9 @@ MonoBehaviour:
   - GameName: MafiaGame
     GameImage: {fileID: 21300000, guid: 1253fbc190bdf0744848efa6bab684e5, type: 3}
     GameSceneName: MafiaGame_LobbyScene
-  - GameName: 
-    GameImage: {fileID: 0}
-    GameSceneName: 
+  - GameName: OneOnOne
+    GameImage: {fileID: 21300000, guid: 644966388b554d94595e007b69dd6592, type: 3}
+    GameSceneName: OneOnOne
   - GameName: 
     GameImage: {fileID: 0}
     GameSceneName: 
