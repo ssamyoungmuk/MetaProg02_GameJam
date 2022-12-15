@@ -28,7 +28,11 @@ public class Team7_Player : MonoBehaviourPun
 
     void Update()
     {
+<<<<<<< HEAD
         if(photonView.IsMine)
+=======
+        if (photonView.IsMine)
+>>>>>>> Team_7_
         {
             PlayerMove();
 
@@ -37,7 +41,11 @@ public class Team7_Player : MonoBehaviourPun
                 StartCoroutine(PlayerAttack());
             }
         }
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> Team_7_
     }
 
     public void PlayerMove()
