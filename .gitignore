@@ -2,15 +2,7 @@
 /Library
 /Temp
 /obj
-<<<<<<< HEAD
-<<<<<<< HEAD
 /UserSettings
-=======
-*csproj
->>>>>>> remotes/origin/team_6
 /.vs
-/*.csproj
 *.csproj
-=======
-*csproj
->>>>>>> remotes/origin/team_6
+*.sln

@@ -4,8 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - Bullet
   - Stone
+=======
+  - Weapon
+>>>>>>> remotes/origin/CJY
   layers:
   - Default
   - TransparentFX
