@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5009102932512427448}
   - component: {fileID: 6418905212010593954}
   - component: {fileID: 5356692387889669927}
-  - component: {fileID: 960524291082471459}
-  - component: {fileID: -2535964098614181769}
+  - component: {fileID: 4924815937795036322}
+  - component: {fileID: 3884071813004970785}
   m_Layer: 0
   m_Name: Candy_Large
   m_TagString: Untagged
@@ -94,13 +94,13 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2319070374415489490}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &960524291082471459
+--- !u!114 &4924815937795036322
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,11 +118,12 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 3884071813004970785}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &-2535964098614181769
+--- !u!114 &3884071813004970785
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

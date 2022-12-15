@@ -42,6 +42,7 @@ MonoBehaviour:
   - ButtonColor
   - ReadyCounT
   - ZeroCounT
+  - PlayerAttack
   - GameStartUI
   - Player_JobSeting
   - PlayerNum
