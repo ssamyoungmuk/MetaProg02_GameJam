@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    [SerializeField] GameObject monsterPrefab;
-    [SerializeField] GameObject monsterPrefab2;
+    [SerializeField] GameObject[] monsterPrefab;
     public List<GameObject> monsterList = new List<GameObject>();
-    public List<GameObject> monsterList2 = new List<GameObject>();
     public int index = 0;
     public int index2 = 0;
 
@@ -17,9 +15,12 @@ public class Monster : MonoBehaviour
 
     private void Awake()
     {
+        int randNum = 0;
         for (int i = 0; i < 5; i++)
         {
-            GameObject monster = Instantiate(monsterPrefab);
+            randNum = Random.Range(0, 2);
+            Debug.Log(randNum);
+            GameObject monster = Instantiate(monsterPrefab[randNum]);
             monster.transform.position = new Vector3(15, 0.5f, 0);
             monster.transform.rotation = Quaternion.identity;
             monster.transform.localScale = Vector3.one;
@@ -27,20 +28,7 @@ public class Monster : MonoBehaviour
             monster.gameObject.SetActive(false);
             monsterList.Add(monster);
         }
-
-        for (int i = 0; i < 5; i++)
-        {
-            GameObject monster = Instantiate(monsterPrefab2);
-            monster.transform.position = new Vector3(15, 0.5f, 0);
-            monster.transform.rotation = Quaternion.identity;
-            monster.transform.localScale = Vector3.one;
-
-            monster.gameObject.SetActive(false);
-            monsterList2.Add(monster);
-        }
     }
-
-    
 
     void Update()
     {
@@ -51,11 +39,6 @@ public class Monster : MonoBehaviour
         {
             MonsterComing();
         }
-        if (spawnTime2 >= 3)
-        {
-            MonsterComing2();
-        }
-
     }
 
     void MonsterComing()
@@ -66,15 +49,5 @@ public class Monster : MonoBehaviour
         index++;
 
         spawnTime = 0f;
-    }
-
-    void MonsterComing2()
-    {
-        if (index2 >= monsterList2.Count) index2 = 0;
-        monsterList2[index2].SetActive(true);
-
-        index2++;
-
-        spawnTime2 = 0f;
     }
 }
