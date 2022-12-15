@@ -5,7 +5,7 @@ public class Monster_Move_06 : MonoBehaviour
 {
     [SerializeField] Player_06 player = null;
     public float Speed { get { return speed; } set { speed = value; } }
-    float speed = 10f;
+    [SerializeField] float speed = 10f;
     public Image hpBar;
 
     private void OnEnable()
@@ -32,13 +32,26 @@ public class Monster_Move_06 : MonoBehaviour
 
     public void Hit()
     {
+
         if(gameObject.name == "Monster_Gorilla(Clone)")
+        {
             hpBar.fillAmount -= 0.25f;
+        }
         else
+        {
             hpBar.fillAmount -= 0.33f;
+        }
 
         if (hpBar.fillAmount <= 0.1f)
         {
+            if (gameObject.name == "Monster_Gorilla(Clone)")
+            {
+                GameManager_06.Instance.AddMoney(20);
+            }
+            else
+            {
+                GameManager_06.Instance.AddMoney(10);
+            }
             ReturnPool();
         }
     }

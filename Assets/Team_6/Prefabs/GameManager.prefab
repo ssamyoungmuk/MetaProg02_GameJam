@@ -45,4 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
+  money: 0
+  myMoney: {fileID: 0}
   text_Timer: {fileID: 0}
