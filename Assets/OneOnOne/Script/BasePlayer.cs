@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 namespace OOO
 {
     [RequireComponent(typeof(PlayerData),typeof(Rigidbody),typeof(CapsuleCollider))]
-    public abstract class BasePlayer : MonoBehaviour
+    public abstract class BasePlayer : MonoBehaviourPun
     {
         [SerializeField] private FollowCamera cam = null;
         private PlayerData myData = null;
@@ -34,18 +35,18 @@ namespace OOO
         }
 
 
-        protected void PlayerMoveAndRotation()
+        protected virtual void PlayerMoveAndRotation()
         {
             getAxisX = Input.GetAxis("Horizontal");
             getAxisZ = Input.GetAxis("Vertical");
 
             transform.Translate(myData.info.speed*getAxisX*Time.deltaTime,0, myData.info.speed * getAxisZ * Time.deltaTime);
 
-            transform.rotation = Quaternion.Euler(cam.mousAxisY*-myData.info.rotationSensetive, cam.mousAxisX * myData.info.rotationSensetive, 0);
+            transform.rotation = Quaternion.Euler(0, cam.mousAxisX * myData.info.rotationSensetive, 0);
         }
 
 
-        protected void InputKey()
+        protected virtual void InputKey()
         {
             if(Input.GetMouseButtonDown(0)&& leftAttackCheck==false)
             {
