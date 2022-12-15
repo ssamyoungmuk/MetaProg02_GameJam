@@ -52,7 +52,7 @@ namespace MafiaGame
             {
                 JobSeting(playerNum, 0, playerNum);
                 PlayerInfo[] playerList = FindObjectsOfType<PlayerInfo>();
-                for (int i = 0; i < playerNum; i++)
+                for (int i = 0; i < playerList.Length; i++)
                 {
                     playerList[i].gameObject.GetPhotonView().RPC("Player_JobSeting",RpcTarget.All,job[i]);
                 }

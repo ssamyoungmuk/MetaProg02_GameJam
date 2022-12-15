@@ -31,6 +31,7 @@ namespace MafiaGame
         public TextMeshProUGUI[] playerName;
         public GameObject[] readyButton;
 
+        bool isPlay;
 
         private int readyCount = 0;
         private int myButtonNum = 0;
@@ -87,6 +88,7 @@ namespace MafiaGame
             {
                 Debug.Log(PhotonNetwork.NickName);
                 GameLogic.Instance.Fade(nameElseUI, fade.All);
+                StartCoroutine(Delay());
                 return;
              }
             else
@@ -97,6 +99,12 @@ namespace MafiaGame
                 GameLogic.Instance.Fade(nickNamePanel, fade.Out);
                 lobbyPanel.SetActive(true);
             }
+        }
+        IEnumerator Delay()
+        {
+            isNameElseUIFadeout = true;
+            yield return new WaitForSeconds(2f);
+            isNameElseUIFadeout = false;
         }
 
 
@@ -117,6 +125,7 @@ namespace MafiaGame
         //플레이어가 나갈때
         public override void OnPlayerLeftRoom(Player otherPlayer)
         {
+            if (isPlay) return;
             ClearLobby();
             SortedPlayer();
         }
@@ -187,6 +196,7 @@ namespace MafiaGame
             if (readyCount == PhotonNetwork.PlayerList.Length && readyCount > 3)
             {
                 gameObject.GetPhotonView().RPC("GameStartUI", RpcTarget.All);
+                isPlay = true;
             }
             else
             {
