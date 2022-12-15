@@ -16,12 +16,30 @@ MonoBehaviour:
   - GameName: 
     GameImage: {fileID: 0}
     GameSceneName: 
+<<<<<<< HEAD
   - GameName: MafiaGame
     GameImage: {fileID: 21300000, guid: 1253fbc190bdf0744848efa6bab684e5, type: 3}
     GameSceneName: MafiaGame_LobbyScene
   - GameName: OneOnOne
     GameImage: {fileID: 21300000, guid: 644966388b554d94595e007b69dd6592, type: 3}
     GameSceneName: OneOnOne
+=======
+  - GameName: test
+    GameImage: {fileID: 21300000, guid: ec03f79379868c642b48ae5ddc821b6d, type: 3}
+    GameSceneName: test
+  - GameName: 
+    GameImage: {fileID: 0}
+    GameSceneName: 
+  - GameName: Halli Galli
+    GameImage: {fileID: 21300000, guid: 8a5e966481026504baded3027f594b21, type: 3}
+    GameSceneName: HalliGalli
+  - GameName: 
+    GameImage: {fileID: 0}
+    GameSceneName: 
+  - GameName: 
+    GameImage: {fileID: 0}
+    GameSceneName: 
+>>>>>>> remotes/origin/team3
   - GameName: 
     GameImage: {fileID: 0}
     GameSceneName: 

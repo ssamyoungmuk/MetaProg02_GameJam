@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 namespace OOO
 {
     [RequireComponent(typeof(PlayerData),typeof(Rigidbody),typeof(CapsuleCollider))]
-    public abstract class BasePlayer : MonoBehaviour
+    public abstract class BasePlayer : MonoBehaviourPun
     {
         [SerializeField] private FollowCamera cam = null;
-        private PlayerData myData = null;
+        [HideInInspector] public PlayerData myData = null;
+
+        private Rigidbody rb = null;
 
         float getAxisX = 0;
         float getAxisZ = 0;
@@ -19,101 +22,104 @@ namespace OOO
         Quaternion leftArmOriginPos;
         bool leftAttackCheck = false;
 
+        bool dead = false;
 
         private void Awake()
         {
             myData = GetComponent<PlayerData>();
-            rightArmOriginPos = myData.info.rightArm.transform.rotation;
+            rb = GetComponent<Rigidbody>();
+            myData.info.curHp = myData.info.maxHp;
         }
 
+        private void FixedUpdate()
+        {
+
+            PlayerMoveAndRotation();
+
+        }
         private void Update()
         {
-            PlayerMoveAndRotation();
+            if (dead) return;
 
             InputKey();
         }
 
-
         protected void PlayerMoveAndRotation()
         {
+            if (!photonView.IsMine) return;
             getAxisX = Input.GetAxis("Horizontal");
             getAxisZ = Input.GetAxis("Vertical");
 
-            transform.Translate(myData.info.speed*getAxisX*Time.deltaTime,0, myData.info.speed * getAxisZ * Time.deltaTime);
+            transform.Translate(myData.info.speed*getAxisX*Time.fixedDeltaTime,0, myData.info.speed * getAxisZ * Time.fixedDeltaTime);
 
-            transform.rotation = Quaternion.Euler(cam.mousAxisY*-myData.info.rotationSensetive, cam.mousAxisX * myData.info.rotationSensetive, 0);
+            transform.rotation = Quaternion.Euler(0, cam.mousAxisX * myData.info.rotationSensetive, 0);
         }
 
 
-        protected void InputKey()
+        protected virtual void InputKey()
         {
-            if(Input.GetMouseButtonDown(0)&& leftAttackCheck==false)
+            if (!photonView.IsMine) return;
+
+            if (Input.GetMouseButtonDown(0))
             {
-                leftAttackCheck = true;
-
-               StartCoroutine(AttackDown(myData.info.leftArm, leftArmOriginPos));
+                myData.info.leftArm.Rotate(100f, 0, -30f, Space.Self);
             }
-            else if(Input.GetMouseButtonDown(1)&& rightAttackCheck==false)
+            if(Input.GetMouseButtonUp(0))
             {
-                rightAttackCheck = true;
-
-               StartCoroutine(AttackDown(myData.info.rightArm, rightArmOriginPos));
+                myData.info.leftArm.rotation = rightArmOriginPos;
             }
+                
 
+            if(Input.GetMouseButtonDown(1))
+            {
+                myData.info.rightArm.Rotate(100f, 0, 30f, Space.Self);
+            }
+            if (Input.GetMouseButtonUp(1))
+            {
+                myData.info.rightArm.rotation = leftArmOriginPos;
+            }
 
         }
 
-
-        #region AttackCorutine
-
-        private IEnumerator AttackDown(Transform arm,Quaternion originPos)
+        public void TransferDamage(float damage)
         {
+            myData.info.curHp -= damage;
 
+            this.gameObject.transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
 
-            while (true)
+            if(myData.info.curHp<=0)
             {
-                arm.Rotate(10f, 0, 0);
+                dead = true;
 
-                yield return new WaitForSeconds(Time.deltaTime);
-               
-                if (arm.localRotation.x <= -0.6f)
-                {
+                rb.AddForce(Vector3.up*10f, ForceMode.Impulse);
 
-                    StartCoroutine(AttackStart(arm,originPos));
-
-                    yield break;
-                }
-
+                Invoke("Active", 3f);
             }
         }
 
-        private IEnumerator AttackStart(Transform arm, Quaternion originPos)
+        void Active()
         {
-            while (true)
-            {
-                arm.Rotate(-10f, 0, 0);
-                yield return new WaitForSeconds(Time.deltaTime);
-
-                if (arm.localRotation.x >= 0.3f)
-                {
-                    arm.rotation = originPos;
-
-                    if(arm.name=="LeftArm")
-                    {
-                        leftAttackCheck = false;
-                    }
-                    else
-                    {
-                        rightAttackCheck = false;
-                    }
-                    
-                    yield break;
-                }
-
-            }
+            this.gameObject.SetActive(false);
         }
 
-        #endregion
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            Debug.Log(collision.gameObject.tag);
+
+            if (collision.gameObject.tag=="Weapon")
+            {
+                Debug.Log("»£√‚");
+                TransferDamage(1);
+            }
+
+        }
+
 
     }
+
+
+    
+
+    
 }
