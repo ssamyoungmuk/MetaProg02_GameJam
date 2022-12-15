@@ -125,7 +125,7 @@ namespace MafiaGame
         //플레이어가 나갈때
         public override void OnPlayerLeftRoom(Player otherPlayer)
         {
-            if (isPlay) return;
+            if(isPlay) return;
             ClearLobby();
             SortedPlayer();
         }
@@ -196,7 +196,6 @@ namespace MafiaGame
             if (readyCount == PhotonNetwork.PlayerList.Length && readyCount > 3)
             {
                 gameObject.GetPhotonView().RPC("GameStartUI", RpcTarget.All);
-                isPlay = true;
             }
             else
             {
@@ -209,8 +208,9 @@ namespace MafiaGame
         {
             for(int i=0;i<readyButton.Length;i++)
             {
-                readyButton[i].SetActive(false);
+                Destroy(readyButton[i]);
             }
+            isPlay = true;
             gameObject.AddComponent<CharacterJob>();
                 GameLogic.Instance.GameStart();
         }

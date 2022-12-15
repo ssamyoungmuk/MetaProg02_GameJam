@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using MafiaGame;
 
 public class PlayerInfo : MonoBehaviour
 {
-    [SerializeField] int player_Num = 0;
-    [SerializeField] int player_JobNum = 0;
-    [SerializeField] string player_JobName;
+    public int player_Num { get; private set; } = 0;
+    int player_JobNum = 0;
+    public string player_JobName { get; private set; }
 
-    [SerializeField] bool countChack = false;     // 플레이어의 수에 따라 직업을 결정할때 사용
+    bool countChack = false;     // 플레이어의 수에 따라 직업을 결정할때 사용
 
     public enum Job
     {
@@ -23,6 +24,7 @@ public class PlayerInfo : MonoBehaviour
     void PlayerNum(int num)
     {
         player_Num = num;
+        GameLogic.Instance.gameObject.GetPhotonView().RPC("CreateMafiaInfo", RpcTarget.All);
     }
 
     [PunRPC]

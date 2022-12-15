@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using System.Runtime.InteropServices;
 
 namespace MafiaGame
 {
@@ -24,14 +25,16 @@ namespace MafiaGame
                     _player.GetPhotonView().RPC("PlayerNum", RpcTarget.All, i);
                 }
             }
+
         }
-        
+
         public void JobSeting(int _playerNum, int _min, int _max)
         {
             if (job.Count >= _playerNum) return;
-
+            Debug.Log("리턴안됨");
             for (int i = 0; i < _playerNum; i++)
             {
+                Debug.Log("????"+i);
                 saveNum = Random.Range(_min, _max);
                 if (job.Contains(saveNum))
                 {
@@ -45,15 +48,20 @@ namespace MafiaGame
                 }
             }
         }
-        private void Start()
+        int count;
+        [PunRPC]
+        void CreateMafiaInfo()
         {
+            count++;
             int playerNum = PhotonNetwork.PlayerList.Length;
-            if (PhotonNetwork.IsMasterClient)
-            {
+            if (count < playerNum) return;
                 JobSeting(playerNum, 0, playerNum);
+            if (PhotonNetwork.IsMasterClient==true)
+            {
                 PlayerInfo[] playerList = FindObjectsOfType<PlayerInfo>();
                 for (int i = 0; i < playerList.Length; i++)
                 {
+                    Debug.Log("리스트"+i);
                     playerList[i].gameObject.GetPhotonView().RPC("Player_JobSeting",RpcTarget.All,job[i]);
                 }
             }
