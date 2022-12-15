@@ -19,21 +19,18 @@ public class Team7_Player : MonoBehaviour
         weapon = CandyAttack.gameObject.GetComponent<BoxCollider>();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         CandyAttack.transform.rotation = Quaternion.Euler(0, 180, 0);
         weapon.enabled = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         PlayerMove();
 
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("코루틴 호출");
             StartCoroutine(PlayerAttack());
         }
     }
