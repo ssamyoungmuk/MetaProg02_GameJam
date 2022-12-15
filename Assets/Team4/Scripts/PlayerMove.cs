@@ -62,6 +62,27 @@ namespace PicoPark
             }
             playerState = State.Ground;
         }
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.tag == "Door" && isGetKey == true && Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                isGetKey = false;
+                Debug.Log("Clear");
+                Vector3 newPos = gameObject.transform.position;
+                newPos.x = newPos.x + 12;
+                gameObject.transform.position = newPos;
+                GameMgr.Instance.uiMgr.CountPeopleNum();
+            }
+            else if (other.tag == "BackDoor" && isGetKey == false && Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                isGetKey = true;
+                Debug.Log("Clear");
+                Vector3 newPos = gameObject.transform.position;
+                newPos.x = newPos.x - 12;
+                gameObject.transform.position = newPos;
+                GameMgr.Instance.uiMgr.MinusPeopleNum();
+            }
+        }
 
         private void OnCollisionEnter(Collision collision)
         {

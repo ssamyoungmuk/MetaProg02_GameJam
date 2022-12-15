@@ -82,6 +82,7 @@
     <Compile Include="Assets\Team4\Scripts\SwichPush.cs" />
     <Compile Include="Assets\Team4\Scripts\KeyMove.cs" />
     <Compile Include="Assets\Team4\Scripts\GameMgr.cs" />
+    <Compile Include="Assets\Team4\Scripts\UIMgr.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
