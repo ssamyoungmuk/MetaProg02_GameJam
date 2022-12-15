@@ -24,5 +24,16 @@
 # CandyKong
 ## *** 사탕으로 적을 타격하는 성장형 서바이벌 게임 *** 
 ### 팀원 - 신성환, 한찬욱
+
+<div>
+
 ## 8팀
-### 게임 제목
+# WHBKYK_TOOLS
+<div>
+<p> 각자 원하는 툴 만들기 </p>
+<p> 1. Auto Git Push (이원혁) </p>
+<p> 2. Json Reader (김보강) </p>
+<p> 3. FindObjects (김영갑) </p>
+</div>
+
+</div>
