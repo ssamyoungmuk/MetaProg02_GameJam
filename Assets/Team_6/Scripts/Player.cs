@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public Transform rockStartPos = null;
     [SerializeField] Transform playerArm = null;
-    [SerializeField] float throwAngle = 0f;
     [SerializeField] Vector3 angle = new Vector3(0,0,-1);
 
     [SerializeField] private float throwSpeed = 0f;
     [SerializeField] private bool isThrowing = false;
     [SerializeField] private int invert = 1;
+    [SerializeField] GameObject rock = null;
 
     // Update is called once per frame
     void Update()
@@ -19,6 +18,7 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && isThrowing == false)
         {
             isThrowing = true;
+            rock.SendMessage("Fire", SendMessageOptions.DontRequireReceiver);
             StartCoroutine(Throw());
         }
     }
@@ -31,15 +31,14 @@ public class Player : MonoBehaviour
             {
                 invert = -1;
             }
-            if(invert == -1 && playerArm.rotation.z <= 0.01f)
+            else if(invert == -1 && playerArm.rotation.z <= 0.3f)
             {
                 isThrowing = false;
                 invert = 1;
                 yield break;
             }
             playerArm.localEulerAngles += angle * invert * Time.fixedDeltaTime * throwSpeed;
-            yield return new WaitForFixedUpdate();
-            
+            yield return new WaitForFixedUpdate();           
         }
     }
 }
