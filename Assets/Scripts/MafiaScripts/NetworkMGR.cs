@@ -104,21 +104,6 @@ namespace MafiaGame
         {
             Debug.Log("새로운 플레이어가 참가하셨습니다");
 
-            Player[] nickNameCheck = PhotonNetwork.PlayerList;
-            int checkNum = 0;
-            for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
-            {
-                if (nickNameCheck[i].NickName == PhotonNetwork.NickName)
-                {
-                    checkNum++;
-                    if (checkNum > 1)
-                    {
-                        PhotonNetwork.LeaveRoom();
-                        PhotonNetwork.LoadLevel("TitleScene");
-                    }
-                }
-            }
-
             myReadyState = ReadyState.UnReady;
             SortedPlayer();
         }
