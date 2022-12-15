@@ -31,10 +31,5 @@ namespace PicoPark
             uiMgr = FindObjectOfType<UIMgr>();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }
