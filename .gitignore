@@ -3,6 +3,7 @@
 /Temp
 /obj
 <<<<<<< HEAD
+<<<<<<< HEAD
 /UserSettings
 =======
 *csproj
@@ -10,3 +11,6 @@
 /.vs
 /*.csproj
 *.csproj
+=======
+*csproj
+>>>>>>> remotes/origin/team_6

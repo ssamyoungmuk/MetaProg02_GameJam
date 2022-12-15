@@ -1,25 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
-public class Rock : MonoBehaviour
+public class Rock_06 : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 0f;
     [SerializeField] Transform target = null;
     [SerializeField] Transform startPos = null;
     [SerializeField] Transform dummyPos = null;
     [SerializeField] List<GameObject> enableMonster = new List<GameObject>(5);
-    Monster monster = null;
+    Monster_06 monster = null;
 
     WaitForFixedUpdate time = new WaitForFixedUpdate();
     float duration = 0f;
 
     private void Awake()
     {
-        monster = FindObjectOfType<Monster>();
+        monster = FindObjectOfType<Monster_06>();
         transform.position = startPos.position;
         StartCoroutine(FindEnableMonster());
     }
@@ -68,6 +65,7 @@ public class Rock : MonoBehaviour
             if(Vector3.Distance(transform.position, target.position) <= 2f)
             {
                 transform.position = startPos.position;
+                target.SendMessage("Hit", SendMessageOptions.DontRequireReceiver);
                 yield break;
             }
             transform.position = Vector3.Slerp(gameObject.transform.position, target.transform.position + Vector3.left, moveSpeed);

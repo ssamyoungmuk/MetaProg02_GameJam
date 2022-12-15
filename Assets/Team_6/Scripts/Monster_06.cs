@@ -2,18 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Monster : MonoBehaviour
+public class Monster_06 : MonoBehaviour
 {
     [SerializeField] GameObject[] monsterPrefab;
     public List<GameObject> monsterList = new List<GameObject>();
     public int index = 0;
-    public int index2 = 0;
 
     float spawnTime = 0f;
-    float stageTime = 0f;
-
-    int stage = 1;
-
 
     private void Awake()
     {
@@ -21,11 +16,12 @@ public class Monster : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             randNum = Random.Range(0, 2);
+            Debug.Log(randNum);
             GameObject monster = Instantiate(monsterPrefab[randNum]);
             monster.transform.position = new Vector3(15, 0.5f, 0);
             monster.transform.rotation = Quaternion.identity;
             monster.transform.localScale = Vector3.one;
-
+            
             monster.gameObject.SetActive(false);
             monsterList.Add(monster);
         }
@@ -34,31 +30,11 @@ public class Monster : MonoBehaviour
     void Update()
     {
         spawnTime += Time.deltaTime;
-        stageTime += Time.deltaTime;
-
-        if (stage == 1)
+       
+        if (spawnTime >= 2)
         {
-            if (spawnTime >= 2)
-            {
-                MonsterComing();
-
-                if (stageTime >= 10)
-                {
-                    stage++;
-                }
-            }
+            MonsterComing();
         }
-
-        if (stage == 2)
-        {
-
-            if (spawnTime >= 1.5f)
-            {
-                MonsterComing();
-            }
-        }
-
-
     }
 
     void MonsterComing()
