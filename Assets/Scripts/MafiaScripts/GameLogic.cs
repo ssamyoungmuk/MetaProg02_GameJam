@@ -10,6 +10,11 @@ namespace MafiaGame
         [Header("GameUI")]
         [SerializeField] GameObject GameStartUI;
         [SerializeField] TextMeshProUGUI DayText;
+        [SerializeField] TextMeshProUGUI debate_Text;
+        [SerializeField] TextMeshProUGUI debateTime_Text;
+
+        int day = 0;
+        float time = 0;
 
         public void GameStart()
         {
@@ -20,8 +25,38 @@ namespace MafiaGame
         {
             Fade(GameStartUI, fade.All);
             yield return new WaitForSeconds(2f);
-            Fade(DayText.gameObject, fade.All);
+            StartCoroutine(Day_Morning());
         }
+
+        IEnumerator Day_Morning()
+        {
+            day++;
+            DayText.text = day + DayText.text + " Morning";
+            Fade(DayText.gameObject, fade.All);
+            yield return new WaitForSeconds(2f);
+        }
+
+        IEnumerator StartDebate()
+        {
+            time = 180f;
+            Fade(debate_Text.gameObject, fade.All);
+            yield return new WaitForSeconds(2f);
+            Fade(debateTime_Text.gameObject, fade.In);
+            while (time > 0)
+            {
+                time -= Time.deltaTime;
+                debateTime_Text.text = time.ToString();
+            }
+            //StartCoroutine();
+
+        }
+
+
+
+
+
+
+
 
         CanvasGroup canvasGroup;
         public void Fade(GameObject fadeIn, fade fd)
