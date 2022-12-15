@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Photon.Pun;
 
 namespace PicoPark
 {
@@ -11,7 +12,7 @@ namespace PicoPark
         Ground,
     }
 
-    public class PlayerMove : MonoBehaviour
+    public class PlayerMove : MonoBehaviourPun
     {
         [SerializeField] bool isGetKey = false;
         [SerializeField] float jumpPower = 330;
@@ -32,6 +33,7 @@ namespace PicoPark
         }
         void Update()
         {
+            if (!photonView.IsMine) return;
             if (Input.GetKeyDown(KeyCode.Space) && playerState == State.Ground)
             {
                 rigidbody.AddForce(jumpVelocity);
@@ -53,6 +55,7 @@ namespace PicoPark
 
         private void OnTriggerEnter(Collider other)
         {
+            
             if (other.tag == "DeadZone")
             {
                 Vector3 newPos = gameObject.transform.position;
@@ -62,6 +65,28 @@ namespace PicoPark
             }
             playerState = State.Ground;
         }
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.tag == "Door" && isGetKey == true && Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                isGetKey = false;
+                Debug.Log("Clear");
+                Vector3 newPos = gameObject.transform.position;
+                newPos.x = newPos.x + 12;
+                gameObject.transform.position = newPos;
+                GameMgr.Instance.uiMgr.CountPeopleNum();
+            }
+            else if (other.tag == "BackDoor" && isGetKey == false && Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                isGetKey = true;
+                Debug.Log("Clear");
+                Vector3 newPos = gameObject.transform.position;
+                newPos.x = newPos.x - 12;
+                gameObject.transform.position = newPos;
+                GameMgr.Instance.uiMgr.MinusPeopleNum();
+            }
+        }
+
 
         private void OnCollisionEnter(Collision collision)
         {
