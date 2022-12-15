@@ -70,11 +70,11 @@ namespace OOO
             float  getAxisX = Input.GetAxis("Horizontal");
             float getAxisZ = Input.GetAxis("Vertical");
             
-            float xMove = myData.info.speed * getAxisX * 0.3f;
+            float xMove = myData.info.speed * getAxisX * Time.fixedDeltaTime;
             float zMove = myData.info.speed * getAxisZ * Time.fixedDeltaTime;
 
-            this.transform.Translate(new Vector3(0f, 0f, zMove));
-            this.transform.localEulerAngles += new Vector3(0f, xMove, 0f);
+            this.transform.position += new Vector3(xMove, 0f,zMove);
+            this.transform.forward = new Vector3(xMove, 0f, zMove);
         }
 
         public void TransferDamage()

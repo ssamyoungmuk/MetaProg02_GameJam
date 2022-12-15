@@ -594,7 +594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a27f396922f732f4a8bbdb356c5884e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 5338909068565378721}
   myData: {fileID: 0}
 --- !u!114 &8924636482535954451
 MonoBehaviour:
