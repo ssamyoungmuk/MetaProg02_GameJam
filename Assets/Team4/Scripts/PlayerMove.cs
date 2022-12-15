@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace PicoPark
 {
@@ -16,6 +17,7 @@ namespace PicoPark
         [SerializeField] float jumpPower = 330;
         [SerializeField] float moveSpeed = 1.2f;
         [SerializeField] State playerState = State.Ground;
+        [SerializeField] KeyMove keyMove;
 
         Rigidbody rigidbody = null;
         Vector3 jumpVelocity = new Vector3(0, 330, 0);
@@ -26,7 +28,7 @@ namespace PicoPark
         private void Start()
         {
             jumpVelocity.y = jumpPower;
-
+            keyMove.del_KeyCheck = () => isGetKey = true;
         }
         void Update()
         {
@@ -55,11 +57,9 @@ namespace PicoPark
             {
                 Vector3 newPos = gameObject.transform.position;
                 newPos.y = 8;
-                newPos.x -= 5;
+                newPos.x -= 3;
                 gameObject.transform.position = newPos;
             }
-
-
             playerState = State.Ground;
         }
 

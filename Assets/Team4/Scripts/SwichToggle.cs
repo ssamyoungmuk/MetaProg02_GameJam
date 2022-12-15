@@ -26,7 +26,7 @@ namespace PicoPark
         IEnumerator Co_OpenBridge()
         {
             int i = 0;
-            while (i < 8)
+            while (i < 80)
             {
                 Bridge.transform.Translate(-Vector3.right * bridgeSpeed);
                 i++;

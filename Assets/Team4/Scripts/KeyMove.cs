@@ -21,7 +21,7 @@ namespace PicoPark
         }
         private void Update()
         {
-            if (haveMaster == true)
+            if (haveMaster == true&& Master!=null)
             {
                 Vector3 newPos = Master.transform.position;
                 newPos.y = newPos.y + 1;
