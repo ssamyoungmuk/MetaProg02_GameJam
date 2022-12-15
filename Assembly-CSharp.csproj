@@ -73,11 +73,11 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
     <Compile Include="Assets\Scripts\GameInfoList.cs" />
-    <Compile Include="Assets\Team4\Scripts\photonManager2.cs" />
     <Compile Include="Assets\Team4\Scripts\PlayerTestMove.cs" />
-    <Compile Include="Assets\Team4\Scripts\photonManager1.cs" />
-    <Compile Include="Assets\Team4\Scripts\PhotonInit.cs" />
     <Compile Include="Assets\Team4\Scripts\LobbyManager.cs" />
+    <Compile Include="Assets\Team4\Scripts\PlayerUI.cs" />
+    <Compile Include="Assets\Team4\Scripts\PlayerMove.cs" />
+    <Compile Include="Assets\Team4\Scripts\LodingManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

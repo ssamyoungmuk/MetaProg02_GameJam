@@ -74,9 +74,14 @@ namespace PicoPark
         public override void OnJoinedRoom()
         {
             this.connectionInfoText.text = "방 참가 성공!";
-
+            Debug.Log("현재 방인원 : " + PhotonNetwork.PlayerList.Length);
             //모든 룸 참가자가 Main 씬을 로드 하게 함 
             PhotonNetwork.LoadLevel("Loding");
+        }
+
+        public void OnClick_ReadyButton()
+        {
+            gameObject.SetActive(true);
         }
     }
 }
