@@ -2,4 +2,8 @@
 /Library
 /Temp
 /obj
+<<<<<<< HEAD
 /UserSettings
+=======
+*csproj
+>>>>>>> remotes/origin/team_6
