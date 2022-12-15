@@ -19,6 +19,8 @@ namespace OOO
         Quaternion rightArmOriginPos;
         bool rightAttackCheck = false;
 
+        Quaternion AttackQuat = Quaternion.EulerAngles(-10f,0f,0f);
+
         Quaternion leftArmOriginPos;
         bool leftAttackCheck = false;
 
