@@ -11,6 +11,10 @@ public class Monster_Move : MonoBehaviour
     float speed = 10f;
     public Image hpBar;
 
+    private void Awake()
+    {
+        monsterHP = monsterMaxHP;
+    }
 
     // Update is called once per frame
     void Update()
@@ -35,11 +39,12 @@ public class Monster_Move : MonoBehaviour
     {
         if (gameObject.CompareTag("Stone"))
         {
+
             monsterHP--;
 
             hpBar.rectTransform.sizeDelta = new Vector2(monsterHP, 0.1f);
 
-            if(monsterHP <= 0)
+            if (monsterHP <= 0)
             {
                 gameObject.SetActive(false);
             }

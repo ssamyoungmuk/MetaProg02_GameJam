@@ -78,8 +78,8 @@
     <Compile Include="Assets\Team_6\Scripts\Monster_Move.cs" />
     <Compile Include="Assets\Scripts\TeamNumber5\PlayerMove.cs" />
     <Compile Include="Assets\Team_6\Scripts\NextScene.cs" />
-    <Compile Include="Assets\Team_6\Scripts\MonsterHP.cs" />
     <Compile Include="Assets\Team_6\Scripts\Rock.cs" />
+    <Compile Include="Assets\Team_6\Scripts\GameManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -333,6 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterHP: 2
+  hpBar: {fileID: 8716378046305355545}
 --- !u!1 &6330974073773436943
 GameObject:
   m_ObjectHideFlags: 0
