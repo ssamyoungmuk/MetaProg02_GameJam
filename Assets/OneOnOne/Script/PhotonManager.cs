@@ -81,9 +81,15 @@ namespace OOO
 
             int randIndex = Random.Range(0, players.Count);
 
-            PhotonNetwork.Instantiate(players[randIndex].name, Vector3.one, Quaternion.identity);
+            PhotonNetwork.Instantiate(players[randIndex].name, this.transform.position, Quaternion.identity);
             Debug.Log(PhotonNetwork.CurrentRoom.PlayerCount);
         }
         #endregion
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawCube(this.transform.position,this.transform.localScale);   
+        }
     }
 }
