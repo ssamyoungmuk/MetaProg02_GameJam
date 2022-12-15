@@ -8,7 +8,7 @@ public class Team7_Player : MonoBehaviourPun
     [SerializeField]
     GameObject CandyAttack;
 
-    float moveSpeed = 20f;
+    float moveSpeed = 40f;
     float attackRotate = 0f;
 
     Rigidbody rb = null;

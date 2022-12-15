@@ -87,7 +87,7 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
 
     private Vector3 SetRandomPos() // 게임 매니저 내부 함수 중에 랜덤 위치값을 반환하는 경우 사용
     {
-        return new Vector3(Random.Range(0, 20), 1, Random.Range(0, 20));
+        return new Vector3(Random.Range(-50, 50), 1, Random.Range(-50, 50));
     }
 
     private void InstCandy(int Num)
@@ -95,7 +95,7 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
         int RanNum = 0;
         for (int i = 0; i < Num; i++)
         {
-            RanNum = Random.Range(1, 3);
+            RanNum = Random.Range(1, 4);
             if (RanNum % 3 == 0)
             {
                 candy = PhotonNetwork.Instantiate("Candy_Large", SetRandomPos(), Quaternion.identity);
