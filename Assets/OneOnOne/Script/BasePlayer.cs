@@ -19,6 +19,8 @@ namespace OOO
         Quaternion rightArmOriginPos;
         bool rightAttackCheck = false;
 
+        Quaternion AttackQuat = Quaternion.EulerAngles(-10f,0f,0f);
+
         Quaternion leftArmOriginPos;
         bool leftAttackCheck = false;
 
@@ -31,7 +33,7 @@ namespace OOO
             myData.info.curHp = myData.info.maxHp;
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             if (dead) return;
 
@@ -60,66 +62,50 @@ namespace OOO
             if (Input.GetMouseButtonDown(0)&& leftAttackCheck==false)
             {
                 leftAttackCheck = true;
-
-               StartCoroutine(AttackDown(myData.info.leftArm, leftArmOriginPos));
+                StartCoroutine(LeftAttack());
             }
             else if(Input.GetMouseButtonDown(1)&& rightAttackCheck==false)
             {
                 rightAttackCheck = true;
-
-               StartCoroutine(AttackDown(myData.info.rightArm, rightArmOriginPos));
+                StartCoroutine(RightAttack());
             }
-
 
         }
 
 
         #region AttackCorutine
 
-        private IEnumerator AttackDown(Transform arm,Quaternion originPos)
+        private IEnumerator LeftAttack()
         {
-
-
             while (true)
             {
-                arm.Rotate(10f, 0, 0, Space.Self);
+                myData.info.leftArm.localRotation = Quaternion.Lerp(myData.info.leftArm.localRotation, AttackQuat, 0.1f);
 
-                yield return new WaitForSeconds(Time.deltaTime);
-               
-                if (arm.localRotation.x <= -0.6f)
+                if (myData.info.leftArm.localRotation.x >= 0.9f)
                 {
-
-                    StartCoroutine(AttackStart(arm,originPos));
-
+                    myData.info.leftArm.localRotation = Quaternion.identity;
+                    leftAttackCheck = false;
                     yield break;
                 }
 
+                yield return null;
             }
         }
 
-        private IEnumerator AttackStart(Transform arm, Quaternion originPos)
+        private IEnumerator RightAttack()
         {
             while (true)
             {
-                arm.Rotate(-10f, 0, 0,Space.Self);
-                yield return new WaitForSeconds(Time.deltaTime);
-                Debug.Log("GD");
-                if (arm.localRotation.x >= 0.3f)
+                myData.info.rightArm.localRotation = Quaternion.Lerp(myData.info.rightArm.localRotation, AttackQuat, 0.1f);
+                
+                if (myData.info.rightArm.localRotation.x >= 0.9f)
                 {
-                    arm.rotation = originPos;
-
-                    if(arm.name=="LeftArm")
-                    {
-                        leftAttackCheck = false;
-                    }
-                    else if(arm.name == "RightArm")
-                    {
-                        rightAttackCheck = false;
-                    }
-                    
+                    myData.info.rightArm.localRotation = Quaternion.identity;
+                    rightAttackCheck = false;
                     yield break;
                 }
 
+                yield return null;
             }
         }
 
