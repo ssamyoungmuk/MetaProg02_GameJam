@@ -33,7 +33,7 @@ namespace OOO
             myData.info.curHp = myData.info.maxHp;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
 
             PlayerMoveAndRotation();
