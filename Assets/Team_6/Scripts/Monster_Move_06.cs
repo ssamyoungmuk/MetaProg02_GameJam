@@ -6,16 +6,18 @@ using UnityEngine.UI;
 
 public class Monster_Move_06 : MonoBehaviour
 {
-    [SerializeField] float monsterHP;
     [SerializeField] Player_06 player = null;
-    float monsterMaxHP = 0;
     float speed = 10f;
     public Image hpBar;
+
+    private void OnEnable()
+    {
+        hpBar.fillAmount = 1;
+    }
 
     private void Awake()
     {
         player = FindObjectOfType<Player_06>();
-        monsterHP = monsterMaxHP;
     }
 
     // Update is called once per frame
@@ -26,27 +28,28 @@ public class Monster_Move_06 : MonoBehaviour
         if (Vector3.Distance(transform.position, player.transform.position) <= 3f)
         {
             player.Hit();
-            transform.position = new Vector3(15, 0.5f, 0);
-            transform.rotation = Quaternion.identity;
-            transform.localScale = Vector3.one;
-
-            gameObject.SetActive(false);
+            ReturnPool();
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void Hit()
     {
-        if (gameObject.CompareTag("Stone"))
+        if(gameObject.name == "Monster_Gorilla(Clone)")
+            hpBar.fillAmount -= 0.25f;
+        else
+            hpBar.fillAmount -= 0.33f;
+
+        if (hpBar.fillAmount <= 0.1f)
         {
-
-            monsterHP--;
-
-            hpBar.rectTransform.sizeDelta = new Vector2(monsterHP, 0.1f);
-
-            if (monsterHP <= 0)
-            {
-                gameObject.SetActive(false);
-            }
+            ReturnPool();
         }
+    }
+
+    private void ReturnPool()
+    {
+        transform.position = new Vector3(15, 0.5f, 0);
+        transform.rotation = Quaternion.identity;
+        transform.localScale = Vector3.one;
+        gameObject.SetActive(false);
     }
 }

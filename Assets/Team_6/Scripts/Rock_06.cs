@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class Rock_06 : MonoBehaviour
 {
@@ -68,6 +65,7 @@ public class Rock_06 : MonoBehaviour
             if(Vector3.Distance(transform.position, target.position) <= 2f)
             {
                 transform.position = startPos.position;
+                target.SendMessage("Hit", SendMessageOptions.DontRequireReceiver);
                 yield break;
             }
             transform.position = Vector3.Slerp(gameObject.transform.position, target.transform.position + Vector3.left, moveSpeed);
