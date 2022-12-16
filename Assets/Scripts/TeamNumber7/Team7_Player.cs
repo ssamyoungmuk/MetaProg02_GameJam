@@ -77,12 +77,13 @@ public class Team7_Player : MonoBehaviourPun
         yield break;
     }
 
-
+    [PunRPC]
     public void Team7_Die()
     {
         PhotonNetwork.Destroy(this.gameObject);
 
-        photonView.RPC("DieNow", RpcTarget.All);
+
+        // photonView.RPC("DieNow", RpcTarget.All);
     }
 
     [PunRPC]
