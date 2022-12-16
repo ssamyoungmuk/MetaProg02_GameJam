@@ -9,6 +9,7 @@ TagManager:
   - Button
   - Stone
   - Weapon
+  - DeadZone
   layers:
   - Default
   - TransparentFX

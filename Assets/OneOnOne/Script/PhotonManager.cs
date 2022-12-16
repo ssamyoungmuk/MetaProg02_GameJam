@@ -11,12 +11,6 @@ namespace OOO
         [SerializeField] string ApplicationID = null;
         [SerializeField] List<GameObject> players = new List<GameObject>();
 
-        RoomOptions roomOptions = new RoomOptions();
-        byte maxPlayers = byte.Parse(2.ToString()); // 드롭다운에서 값 얻어오기.
-        byte maxTime = byte.Parse(60.ToString());
-
-        ExitGames.Client.Photon.Hashtable expectedCustomRoomProperties;
-
         //flag
         private static bool InServer = false;
         private static bool InLobby = false;
@@ -65,25 +59,28 @@ namespace OOO
         {
             base.OnConnectedToMaster();
             InServer = true;
-            Debug.Log("PhotonManager## Server Connected!");
         }
         public override void OnJoinedLobby()
         {
             base.OnJoinedLobby();
             InLobby = true;
-            Debug.Log("PhotonManager## Lobby Joined!");
         }
         public override void OnJoinedRoom()
         {
             base.OnJoinedRoom();
             InRoom = true;
-            Debug.Log("PhotonManager## Room Joined!");
 
             int randIndex = Random.Range(0, players.Count);
 
-            PhotonNetwork.Instantiate(players[randIndex].name, Vector3.one, Quaternion.identity);
+            PhotonNetwork.Instantiate(players[randIndex].name, this.transform.position, Quaternion.identity);
             Debug.Log(PhotonNetwork.CurrentRoom.PlayerCount);
         }
         #endregion
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawCube(this.transform.position,this.transform.localScale);   
+        }
     }
 }

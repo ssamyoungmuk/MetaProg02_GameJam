@@ -13,48 +13,37 @@ namespace OOO
 
         private Rigidbody rb = null;
 
-        float getAxisX = 0;
-        float getAxisZ = 0;
-
         Quaternion rightArmOriginPos;
-        bool rightAttackCheck = false;
-
         Quaternion leftArmOriginPos;
-        bool leftAttackCheck = false;
 
+        Vector3 lookForward;
+        Vector3 lookRight;
+        Vector3 moveDir;
+
+        bool hitFlag = false;
         bool dead = false;
-
+        
         private void Awake()
         {
+            hitFlag = false;
             myData = GetComponent<PlayerData>();
             rb = GetComponent<Rigidbody>();
             myData.info.curHp = myData.info.maxHp;
+            rb.freezeRotation = true;
         }
 
-        private void FixedUpdate()
-        {
-
-            PlayerMoveAndRotation();
-
-        }
         private void Update()
         {
             if (dead) return;
+            if (hitFlag) return;
 
             InputKey();
         }
-
-        protected void PlayerMoveAndRotation()
+        private void FixedUpdate()
         {
-            if (!photonView.IsMine) return;
-            getAxisX = Input.GetAxis("Horizontal");
-            getAxisZ = Input.GetAxis("Vertical");
-
-            transform.Translate(myData.info.speed*getAxisX*Time.fixedDeltaTime,0, myData.info.speed * getAxisZ * Time.fixedDeltaTime);
-
-            transform.rotation = Quaternion.Euler(0, cam.mousAxisX * myData.info.rotationSensetive, 0);
+            if (hitFlag) return;
+            PlayerMoveAndRotation();
         }
-
 
         protected virtual void InputKey()
         {
@@ -64,13 +53,12 @@ namespace OOO
             {
                 myData.info.leftArm.Rotate(100f, 0, -30f, Space.Self);
             }
-            if(Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(0))
             {
                 myData.info.leftArm.rotation = rightArmOriginPos;
             }
-                
 
-            if(Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1))
             {
                 myData.info.rightArm.Rotate(100f, 0, 30f, Space.Self);
             }
@@ -78,48 +66,70 @@ namespace OOO
             {
                 myData.info.rightArm.rotation = leftArmOriginPos;
             }
-
         }
 
-        public void TransferDamage(float damage)
+        protected void PlayerMoveAndRotation()
         {
-            myData.info.curHp -= damage;
+            if (!photonView.IsMine) return;
 
-            this.gameObject.transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
+            float getAxisX = Input.GetAxis("Horizontal");
+            float getAxisZ = Input.GetAxis("Vertical");
 
-            if(myData.info.curHp<=0)
+
+            lookForward = new Vector3(cam.transform.forward.x, 0f, cam.transform.forward.z).normalized;
+            lookRight = new Vector3(cam.transform.right.x, 0f, cam.transform.right.z).normalized;
+
+            moveDir = lookForward * getAxisZ + lookRight * getAxisX;
+
+            Vector3 newPos = myData.info.speed * Time.deltaTime * moveDir.normalized;
+
+            if (getAxisX != 0 || getAxisZ != 0)
             {
-                dead = true;
-
-                rb.AddForce(Vector3.up*10f, ForceMode.Impulse);
-
-                Invoke("Active", 3f);
+                rb.transform.rotation = Quaternion.LookRotation(moveDir);
             }
+            rb.position += newPos;
         }
 
-        void Active()
+        public void TransferDamage()
         {
-            this.gameObject.SetActive(false);
+            this.gameObject.transform.localScale += new Vector3(0.2f, 0.2f, 0.2f);
+            rb.AddForce(1f,2f,3f,ForceMode.Impulse);
         }
-
 
         private void OnCollisionEnter(Collision collision)
         {
-            Debug.Log(collision.gameObject.tag);
+            if (hitFlag) return;
 
-            if (collision.gameObject.tag=="Weapon")
+            if (collision.gameObject.tag == "DeadZone")
+                Destroy(this.gameObject);
+
+            if (collision.gameObject.tag == "Weapon")
             {
-                Debug.Log("È£Ãâ");
-                TransferDamage(1);
+                StartCoroutine(nameof(Hit));
+                TransferDamage();
             }
-
         }
 
+        IEnumerator Hit()
+        {
+            hitFlag = true;
+            float time = 0f;
+            rb.freezeRotation = false;
 
+            while (true)
+            {
+                time += Time.deltaTime;
+
+                yield return null;  
+
+                if (time > 2f)
+                {
+                    this.transform.rotation = Quaternion.identity;
+                    rb.freezeRotation = true;
+                    hitFlag = false;
+                    yield break;
+                }
+            }
+        }
     }
-
-
-    
-
-    
 }
