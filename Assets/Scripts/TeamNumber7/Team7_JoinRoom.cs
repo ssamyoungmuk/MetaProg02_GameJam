@@ -15,6 +15,4 @@ public class Team7_JoinRoom : MonoBehaviourPun
     // 씬에 입장했을 때, 유저가 있다면 일반
     
     // 마스터 클라이언트가 죽으면 다른 유저가 마스터클라이언트가 된다.
-
-
 }
