@@ -100,6 +100,7 @@ namespace MafiaGame
             time = tm;
             timeSet = true;
         }
+        bool voteEndSet;
         bool timeSet;
         IEnumerator StartDebate()
         {
@@ -107,7 +108,7 @@ namespace MafiaGame
             {
 
                 if (PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("YouDie", RpcTarget.All, killPlayerNum);
-                GameEnd();
+                if (PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("GameEnd", RpcTarget.All);
             }
             for (int i = 0; i < voteButton.Length; i++) if (voteButton[i].GetComponent<Image>().color == Color.yellow) voteButton[i].GetComponent<Image>().color = Color.white;
             killPlayerNum = -1;
@@ -117,13 +118,14 @@ namespace MafiaGame
             myInfo.Heal(false);
             if (PhotonNetwork.IsMasterClient)
             {
-                time = 120;
+                time = 10;
                 gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
             }
             maxVote = 0;
             maxVotePlayer = -1;
             debateTime_Text.gameObject.SetActive(true);
             debateTime_Text.text = time.ToString();
+            timeSet = false;
             yield return new WaitUntil(() => timeSet);
             timeSet = false;
             while (time > 0)
@@ -151,6 +153,7 @@ namespace MafiaGame
                 time = 10;
                 gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
             }
+            timeSet = false;
             yield return new WaitUntil(() => timeSet);
             timeSet = false;
             while (time > 0)
@@ -166,6 +169,8 @@ namespace MafiaGame
             isVoteOn = false;
             //¹Ý·Ð
             if (PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("VoteEnd", RpcTarget.All);
+            yield return new WaitUntil(() => voteEndSet);
+            voteEndSet = false;
             if (Night == false)
             {
                 if (PhotonNetwork.IsMasterClient)
@@ -173,6 +178,7 @@ namespace MafiaGame
                     time = 20;
                     gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
                 }
+                timeSet = false;
                 yield return new WaitUntil(() => timeSet);
                 timeSet = false;
                 while (time > 0)
@@ -192,6 +198,7 @@ namespace MafiaGame
                     time = 10;
                     gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
                 }
+                timeSet = false;
                 yield return new WaitUntil(() => timeSet);
                 timeSet = false;
 
@@ -208,13 +215,15 @@ namespace MafiaGame
                 if (PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("VoteVoteEnd", RpcTarget.All);
                 voteVote.SetActive(false);
             }
-            //»ç¸ÁÈÄ ¹ãchat.SetActive(true);
+            //»ç¸ÁÈÄ ¹ã
+            chat.SetActive(true);
             Fade(chat.gameObject, fade.Out);
             for (int i = 0; i < voteButton.Length; i++) if (voteButton[i].GetComponent<Image>().color == Color.yellow) voteButton[i].GetComponent<Image>().color = Color.white;
 
+            yield return new WaitForSeconds(1f);
             Vote_Text.gameObject.SetActive(false);
 
-            GameEnd();
+            if (PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("GameEnd", RpcTarget.All);
             Monning = false;
             Night = true;
             DayText.text = day + "Day Night";
@@ -224,6 +233,7 @@ namespace MafiaGame
                 time = 10;
                 gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
             }
+            timeSet = false;
             yield return new WaitUntil(() => timeSet);
             timeSet = false;
             while (time > 0)
@@ -259,6 +269,7 @@ namespace MafiaGame
             job.Add(a);
         }
         bool isGameEnd;
+        [PunRPC]
         void GameEnd()
         {
             if (characterJob.mafiaNum == characterJob.peopleNum)
@@ -521,6 +532,7 @@ namespace MafiaGame
                 Vote_Text.gameObject.SetActive(true);
                 Fade(Vote_Text.gameObject, fade.All);
             }
+            voteEndSet = true;
         }
         bool isVoteVoteChack;//Âù¹ÝÅõÇ¥ Çß´ÂÁö
         [PunRPC]
@@ -581,14 +593,13 @@ namespace MafiaGame
         }
 
         ////////////////////////////////////////////////////////////////////
-        CanvasGroup canvasGroup;
         public void Fade(GameObject fadeIn, fade fd)
         {
-            canvasGroup = fadeIn.GetComponent<CanvasGroup>();
             StartCoroutine(Fade_Delay(fadeIn, fd));
         }
         IEnumerator Fade_Delay(GameObject fadeIn, fade fd)
         {
+            CanvasGroup canvasGroup = fadeIn.GetComponent<CanvasGroup>();
             if (fd == fade.In || fd == fade.All)
             {
                 canvasGroup.alpha = 0;

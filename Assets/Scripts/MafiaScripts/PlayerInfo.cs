@@ -25,7 +25,11 @@ public class PlayerInfo : MonoBehaviourPun
     {
         if (isHeal)
         {
-            if (photonView.IsMine) GameLogic.Instance.uIChatManager.SystemMessge($"{PhotonNetwork.PlayerList[player_Num].NickName}님이 의사의 도음으로 살았습니다.");
+            if (photonView.IsMine)
+            {
+                string st = $"{PhotonNetwork.PlayerList[player_Num].NickName}님이 의사의 도음으로 살았습니다.";
+                GameLogic.Instance.uIChatManager.gameObject.GetPhotonView().RPC("SystemMessge", RpcTarget.All, st);
+            }
 
         }
         else
@@ -33,7 +37,11 @@ public class PlayerInfo : MonoBehaviourPun
             isDie = true;
             if (jobName == jobList.Mafia) GameLogic.Instance.characterJob.mafiaNum--;
             else GameLogic.Instance.characterJob.peopleNum--;
-            if (photonView.IsMine) GameLogic.Instance.uIChatManager.SystemMessge($"{PhotonNetwork.PlayerList[player_Num].NickName}님이 죽었습니다.");
+            if (photonView.IsMine)
+            {
+            string st = $"{PhotonNetwork.PlayerList[player_Num].NickName}님이 죽었습니다.";
+                GameLogic.Instance.uIChatManager.gameObject.GetPhotonView().RPC("SystemMessge", RpcTarget.All, st);
+            }
             GameLogic.Instance.voteButton[player_Num].GetComponent<Image>().color = Color.red;
             GameLogic.Instance.voteButton[player_Num].GetComponent<Button>().interactable = false;
         }

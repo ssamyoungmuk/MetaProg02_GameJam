@@ -66,6 +66,8 @@ MonoBehaviour:
   - YouHeal
   - MafiaNight
   - SetTime
+  - GameEnd
+  - SystemMessge
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

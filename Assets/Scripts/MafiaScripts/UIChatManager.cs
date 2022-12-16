@@ -116,6 +116,7 @@ public class UIChatManager : MonoBehaviour, IChatClientListener
 		}
 
 	}
+	[PunRPC]
     public void SystemMessge(string chatLine)
     {
         //txtChat.text += $"[{userName}] : {chatLine}\n";	// [내이름] : 대화내용
