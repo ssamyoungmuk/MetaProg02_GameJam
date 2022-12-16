@@ -104,7 +104,7 @@ public class Team7_Player : MonoBehaviourPun
         exp += point;
         if (exp >= 100)
         {
-            transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+            transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
             exp = 0;
         }
     }
