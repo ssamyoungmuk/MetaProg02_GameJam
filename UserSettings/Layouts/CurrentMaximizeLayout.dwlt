@@ -25,6 +25,7 @@ MonoBehaviour:
 =======
   - {fileID: 7}
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 12}
 >>>>>>> remotes/origin/team_6
 =======
@@ -35,6 +36,12 @@ MonoBehaviour:
   - {fileID: 14}
 >>>>>>> remotes/origin/Team_7_
 =======
+>>>>>>> remotes/origin/team_6
+<<<<<<< HEAD
+>>>>>>> main
+=======
+=======
+  - {fileID: 12}
 >>>>>>> remotes/origin/team_6
 >>>>>>> main
   m_Position:
@@ -429,11 +436,11 @@ MonoBehaviour:
 --- !u!114 &6
 =======
     width: 1920
-    height: 939
-  m_MinSize: {x: 400, y: 200}
-  m_MaxSize: {x: 32384, y: 16192}
+    height: 1067
+  m_MinSize: {x: 300, y: 200}
+  m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 35176
+  controlID: 1480
 --- !u!114 &2
 >>>>>>> remotes/origin/team_6
 =======
@@ -468,9 +475,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 73
-    width: 869
-    height: 496
+    y: 620
+    width: 906
+    height: 499
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -490,7 +497,7 @@ MonoBehaviour:
   m_VSyncEnabled: 0
   m_Gizmos: 0
   m_Stats: 0
-  m_SelectedSizes: 03000000000000000000000006000000000000000000000000000000000000000000000000000000
+  m_SelectedSizes: 03000000000000000000000000000000000000000000000000000000000000000000000000000000
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
@@ -524,6 +531,7 @@ MonoBehaviour:
       x: 0
       y: 21
 <<<<<<< HEAD
+<<<<<<< HEAD
       width: 869
       height: 475
     m_Scale: {x: 0.4398148, y: 0.4398148}
@@ -534,6 +542,12 @@ MonoBehaviour:
     m_Scale: {x: 1, y: 1}
     m_Translation: {x: 358, y: 184.5}
 >>>>>>> remotes/origin/Team_7_
+=======
+      width: 906
+      height: 478
+    m_Scale: {x: 0.4425926, y: 0.4425926}
+    m_Translation: {x: 453, y: 239}
+>>>>>>> remotes/origin/team_6
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -541,11 +555,16 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
       x: -987.91583
+=======
+      x: -1023.51465
+>>>>>>> remotes/origin/team_6
       y: -540
-      width: 1975.8317
+      width: 2047.0293
       height: 1080
     m_MinimalGUI: 1
+<<<<<<< HEAD
   m_defaultScale: 0.4398148
   m_LastWindowPixelSize: {x: 869, y: 496}
 =======
@@ -557,9 +576,13 @@ MonoBehaviour:
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 716, y: 390}
 >>>>>>> remotes/origin/Team_7_
+=======
+  m_defaultScale: 0.4425926
+  m_LastWindowPixelSize: {x: 906, y: 499}
+>>>>>>> remotes/origin/team_6
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
-  m_LowResolutionForAspectRatios: 01000001000000000000
+  m_LowResolutionForAspectRatios: 01000000000000000000
   m_XRRenderMode: 0
   m_RenderTexture: {fileID: 0}
 --- !u!114 &3
@@ -570,17 +593,18 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
-  m_EditorHideFlags: 0
+  m_EditorHideFlags: 1
   m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
   - {fileID: 4}
-  - {fileID: 5}
+  - {fileID: 6}
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
     width: 870
     height: 939
@@ -596,6 +620,14 @@ MonoBehaviour:
   vertical: 1
   controlID: 80
 >>>>>>> remotes/origin/Team_7_
+=======
+    width: 907
+    height: 1067
+  m_MinSize: {x: 100, y: 200}
+  m_MaxSize: {x: 8096, y: 16192}
+  vertical: 1
+  controlID: 1481
+>>>>>>> remotes/origin/team_6
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -606,13 +638,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: GameView
+  m_Name: 
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
     width: 870
     height: 517
@@ -626,37 +659,18 @@ MonoBehaviour:
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 5}
 >>>>>>> remotes/origin/Team_7_
+=======
+    width: 907
+    height: 547
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 5}
+>>>>>>> remotes/origin/team_6
   m_Panes:
-  - {fileID: 2}
+  - {fileID: 5}
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &5
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: SceneView
-  m_EditorClassIdentifier: 
-  m_Children: []
-  m_Position:
-    serializedVersion: 2
-    x: 0
-    y: 517
-    width: 870
-    height: 422
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 6}
-  m_Panes:
-  - {fileID: 6}
-  m_Selected: 0
-  m_LastSelected: 0
---- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -692,6 +706,7 @@ MonoBehaviour:
 =======
     x: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     y: 73
     width: 906
     height: 525
@@ -718,6 +733,14 @@ MonoBehaviour:
     width: 716
     height: 323
 >>>>>>> remotes/origin/Team_7_
+<<<<<<< HEAD
+>>>>>>> main
+=======
+=======
+    y: 73
+    width: 906
+    height: 526
+>>>>>>> remotes/origin/team_6
 >>>>>>> main
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -831,12 +854,19 @@ MonoBehaviour:
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       snapOffset: {x: 0, y: 25}
 =======
       snapOffset: {x: 0, y: 0}
 >>>>>>> remotes/origin/Team_7_
 =======
       snapOffset: {x: 0, y: 25}
+>>>>>>> remotes/origin/team_6
+<<<<<<< HEAD
+>>>>>>> main
+=======
+=======
+      snapOffset: {x: 0, y: 0}
 >>>>>>> remotes/origin/team_6
 >>>>>>> main
       snapOffsetDelta: {x: 0, y: 0}
@@ -1162,6 +1192,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_WindowGUID: cc27987af1a868c49b0894db9c0f5429
 =======
   m_WindowGUID: d134baada1a762b4dbf1df0c148d582b
@@ -1182,6 +1213,9 @@ MonoBehaviour:
 =======
   m_WindowGUID: 38c4340746e3c754fac2e920892f1208
 >>>>>>> remotes/origin/team_6
+=======
+  m_WindowGUID: d134baada1a762b4dbf1df0c148d582b
+>>>>>>> remotes/origin/team_6
   m_Gizmos: 1
   m_OverrideSceneCullingMask: 6917529027641081856
   m_SceneIsLit: 1
@@ -1197,16 +1231,19 @@ MonoBehaviour:
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
 >>>>>>> main
   m_SceneLighting: 1
-  m_2DMode: 0
+  m_2DMode: 1
   m_isRotationLocked: 0
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Target: {x: 9.838841, y: 81.09825, z: -2.2230787}
     speed: 2
     m_Value: {x: 9.838841, y: 81.09825, z: -2.2230787}
 =======
+=======
+>>>>>>> main
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -1252,6 +1289,14 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0}
 >>>>>>> remotes/origin/Team_7_
+<<<<<<< HEAD
+>>>>>>> main
+=======
+=======
+    m_Target: {x: 453, y: 239, z: 0}
+    speed: 2
+    m_Value: {x: 453, y: 239, z: 0}
+>>>>>>> remotes/origin/team_6
 >>>>>>> main
   m_RenderMode: 0
   m_CameraMode:
@@ -1299,17 +1344,17 @@ MonoBehaviour:
       m_Size: {x: 0, y: 0}
     yGrid:
       m_Fade:
-        m_Target: 1
+        m_Target: 0
         speed: 2
-        m_Value: 1
+        m_Value: 0
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
       m_Size: {x: 1, y: 1}
     zGrid:
       m_Fade:
-        m_Target: 0
+        m_Target: 1
         speed: 2
-        m_Value: 0
+        m_Value: 1
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
       m_Size: {x: 0, y: 0}
@@ -1317,6 +1362,7 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
+<<<<<<< HEAD
 <<<<<<< HEAD
     m_Target: {x: 0.70669883, y: -0.002119382, z: 0.0021261119, w: 0.70753235}
     speed: 2
@@ -1326,6 +1372,8 @@ MonoBehaviour:
     speed: 2
     m_Value: 10
 =======
+=======
+>>>>>>> main
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -1361,11 +1409,15 @@ MonoBehaviour:
 =======
     m_Target: {x: 0.032986674, y: 0.01948885, z: -0.0006419772, w: 0.99925333}
 >>>>>>> remotes/origin/team_6
+=======
+    m_Target: {x: 0, y: 0, z: 0, w: 1}
+>>>>>>> remotes/origin/team_6
     speed: 2
-    m_Value: {x: 0.032987077, y: 0.019489089, z: -0.00064198504, w: 0.99926555}
+    m_Value: {x: -0, y: 0, z: -0, w: -1}
   m_Size:
-    m_Target: 0.8660259
+    m_Target: 512.1816
     speed: 2
+<<<<<<< HEAD
 <<<<<<< HEAD
     m_Value: 23.267782
 >>>>>>> remotes/origin/team_6
@@ -1397,17 +1449,24 @@ MonoBehaviour:
     m_Value: 10
 >>>>>>> remotes/origin/Team_7_
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
+<<<<<<< HEAD
+>>>>>>> main
+=======
+=======
+    m_Value: 512.1816
+>>>>>>> remotes/origin/team_6
 >>>>>>> main
   m_Ortho:
-    m_Target: 0
+    m_Target: 1
     speed: 2
-    m_Value: 0
+    m_Value: 1
   m_CameraSettings:
     m_Speed: 1
     m_SpeedNormalized: 0.5
 <<<<<<< HEAD
     m_SpeedMin: 0.01
 =======
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1425,6 +1484,12 @@ MonoBehaviour:
 =======
     m_SpeedMin: 0.001
 >>>>>>> remotes/origin/team_6
+<<<<<<< HEAD
+>>>>>>> main
+=======
+=======
+    m_SpeedMin: 0.01
+>>>>>>> remotes/origin/team_6
 >>>>>>> main
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -1441,6 +1506,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_LastSceneViewRotation: {x: 0, y: 0, z: 0, w: 0}
 =======
   m_LastSceneViewRotation: {x: -0.06596068, y: 0.8988419, z: -0.4082203, w: -0.14523889}
@@ -1451,6 +1517,12 @@ MonoBehaviour:
 =======
   m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
 >>>>>>> remotes/origin/team_6
+<<<<<<< HEAD
+>>>>>>> main
+=======
+=======
+  m_LastSceneViewRotation: {x: -0.06596068, y: 0.8988419, z: -0.4082203, w: -0.14523889}
+>>>>>>> remotes/origin/team_6
 >>>>>>> main
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
@@ -1460,6 +1532,7 @@ MonoBehaviour:
   m_ViewIsLockedToObject: 0
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1561,6 +1634,11 @@ MonoBehaviour:
   m_LastSelected: 0
 =======
 >>>>>>> remotes/origin/Team_7_
+<<<<<<< HEAD
+>>>>>>> main
+=======
+=======
+>>>>>>> remotes/origin/team_6
 >>>>>>> main
 --- !u!114 &6
 MonoBehaviour:
@@ -1571,18 +1649,51 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+  m_Script: {fileID: 12015, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Game
+    m_Image: {fileID: -6423792434712278376, guid: 0000000000000000d000000000000000, type: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 0
+    y: 619
+    width: 906
+    height: 500
+=======
+>>>>>>> main
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: GameView
+=======
+  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+>>>>>>> remotes/origin/team_6
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 344
     width: 717
     height: 534
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
+=======
+    y: 547
+    width: 907
+    height: 520
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+>>>>>>> remotes/origin/team_6
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 2}
@@ -1761,17 +1872,17 @@ MonoBehaviour:
 --- !u!114 &9
 =======
   - {fileID: 8}
-  - {fileID: 15}
+  - {fileID: 10}
   m_Position:
     serializedVersion: 2
-    x: 870
+    x: 907
     y: 0
-    width: 1050
-    height: 939
-  m_MinSize: {x: 300, y: 200}
-  m_MaxSize: {x: 24288, y: 16192}
+    width: 527
+    height: 1067
+  m_MinSize: {x: 100, y: 200}
+  m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 35100
+  controlID: 1462
 --- !u!114 &8
 >>>>>>> remotes/origin/team_6
 =======
@@ -1801,6 +1912,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_EditorHideFlags: 0
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: SceneHierarchyWindow
@@ -1812,12 +1924,13 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
 >>>>>>> remotes/origin/team_6
+=======
+  m_EditorHideFlags: 1
+  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
+>>>>>>> remotes/origin/team_6
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Children:
-  - {fileID: 9}
-  - {fileID: 11}
-  - {fileID: 13}
+  m_Children: []
   m_Position:
     serializedVersion: 2
     x: 0
@@ -1825,6 +1938,7 @@ MonoBehaviour:
 <<<<<<< HEAD
     width: 378
 =======
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1843,11 +1957,18 @@ MonoBehaviour:
     height: 541
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
+=======
+    width: 527
+    height: 541
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+>>>>>>> remotes/origin/team_6
   m_ActualView: {fileID: 9}
   m_Panes:
   - {fileID: 9}
   m_Selected: 0
   m_LastSelected: 0
+<<<<<<< HEAD
 =======
     width: 1050
     height: 626
@@ -1855,6 +1976,8 @@ MonoBehaviour:
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
   controlID: 35101
+>>>>>>> remotes/origin/team_6
+=======
 >>>>>>> remotes/origin/team_6
 --- !u!114 &9
 >>>>>>> remotes/origin/team_6
@@ -1878,6 +2001,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> remotes/origin/team_6
   m_EditorHideFlags: 1
   m_Script: {fileID: 12061, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
@@ -1890,10 +2016,37 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 718
     y: 81
     width: 376
     height: 449
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+    x: 843
+    y: 81
+    width: 355
+    height: 381
+=======
+=======
+>>>>>>> remotes/origin/team_6
+    x: 907
+    y: 73
+    width: 525
+    height: 520
+<<<<<<< HEAD
+>>>>>>> remotes/origin/team_6
+=======
+    x: 623
+    y: 81
+    width: 307
+    height: 449
+>>>>>>> remotes/origin/Team_7_
+=======
+>>>>>>> remotes/origin/team_6
+>>>>>>> main
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1901,33 +2054,129 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
       m_SelectedIDs: 
       m_LastClickedID: 0
       m_ExpandedIDs: 3c2affffb63dfffff442ffff5647ffff38d3ffff06d8ffff2cfbfffff4fffffff05c0000045d00005c5d0000d06700003c680000
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+      m_SelectedIDs: ec94ffff
+      m_LastClickedID: -27412
+      m_ExpandedIDs: ec94ffffb299ffff889affff72a0ffff8aa5ffff2efbffff42fbffff
+=======
+      m_SelectedIDs: 12a80000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 8ca6fdffdef6fdffa248feff129dfeff4cb5feff92f4feff28f8feffd440ffffecb4ffff2cfbffffc4aa0200dab40200
+>>>>>>> remotes/origin/team_6
+=======
+      m_SelectedIDs: 466e0000
+      m_LastClickedID: 28230
+      m_ExpandedIDs: 8ca6fdffdef6fdffa248feff129dfeffd440ffff92d9ffff98d9ffff0cf4ffff2cfbffffc0630000da630000c4aa0200dab40200
+>>>>>>> remotes/origin/team_6
+>>>>>>> main
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
         m_OriginalName: 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+      m_SelectedIDs: 0e630000
+      m_LastClickedID: 0
+      m_ExpandedIDs: e0d9ffff2afbfffff05c0000045d0000565d00005a5d0000
+      m_RenameOverlay:
+        m_UserAcceptedRename: 0
+        m_Name: Candy
+        m_OriginalName: Candy
+>>>>>>> remotes/origin/Team_7_
+=======
+>>>>>>> remotes/origin/team_6
+>>>>>>> main
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> remotes/origin/team_6
+>>>>>>> main
         m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
+<<<<<<< HEAD
         m_ClientGUIView: {fileID: 10}
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        m_ClientGUIView: {fileID: 5}
+=======
+        m_ClientGUIView: {fileID: 8}
+>>>>>>> remotes/origin/team_6
+=======
+        m_UserData: 23894
+        m_IsWaitingForDelay: 0
+        m_IsRenaming: 0
+        m_OriginalEventType: 0
+        m_IsRenamingFilename: 0
+        m_ClientGUIView: {fileID: 10}
+>>>>>>> remotes/origin/Team_7_
+=======
+        m_ClientGUIView: {fileID: 8}
+>>>>>>> remotes/origin/team_6
+>>>>>>> main
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
     m_LockTracker:
       m_IsLocked: 0
     m_CurrentSortingName: TransformSorting
+<<<<<<< HEAD
   m_WindowGUID: 241d52a33bfd8104a9980c1319f0d33b
 --- !u!114 &12
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+  m_WindowGUID: 4c969a2b90040154d917609493e03593
+--- !u!114 &11
+=======
+  m_WindowGUID: 91f53cd08b7702a46a1bf0a2902d980a
+--- !u!114 &10
+>>>>>>> remotes/origin/team_6
+=======
+  - {fileID: 8}
+  - {fileID: 10}
+  m_Position:
+    serializedVersion: 2
+    x: 0
+    y: 624
+    width: 750
+    height: 443
+  m_MinSize: {x: 200, y: 100}
+  m_MaxSize: {x: 16192, y: 8096}
+  vertical: 0
+  controlID: 503
+--- !u!114 &8
+>>>>>>> remotes/origin/CJY
+=======
+  m_WindowGUID: 241d52a33bfd8104a9980c1319f0d33b
+--- !u!114 &12
+>>>>>>> remotes/origin/Team_7_
+=======
+  m_WindowGUID: 91f53cd08b7702a46a1bf0a2902d980a
+--- !u!114 &10
+>>>>>>> remotes/origin/team_6
+>>>>>>> main
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1935,6 +2184,9 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
+<<<<<<< HEAD
+=======
+>>>>>>> remotes/origin/team_6
 =======
 >>>>>>> remotes/origin/team_6
   m_EditorHideFlags: 0
@@ -1947,6 +2199,7 @@ MonoBehaviour:
     x: 0
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1980,12 +2233,18 @@ MonoBehaviour:
     width: 399
     height: 626
 >>>>>>> remotes/origin/team_6
+=======
+    y: 541
+    width: 527
+    height: 526
+>>>>>>> remotes/origin/team_6
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
-  m_ActualView: {fileID: 10}
+  m_ActualView: {fileID: 11}
   m_Panes:
-  - {fileID: 10}
+  - {fileID: 11}
   m_Selected: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
   m_LastSelected: -1
 --- !u!114 &11
@@ -2012,6 +2271,13 @@ MonoBehaviour:
 =======
   m_LastSelected: 0
 --- !u!114 &10
+>>>>>>> remotes/origin/team_6
+<<<<<<< HEAD
+>>>>>>> main
+=======
+=======
+  m_LastSelected: -1
+--- !u!114 &11
 >>>>>>> remotes/origin/team_6
 >>>>>>> main
 MonoBehaviour:
@@ -2040,15 +2306,19 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 843
     y: 483
     width: 355
     height: 181
 =======
+=======
+>>>>>>> remotes/origin/team_6
     x: 907
     y: 614
     width: 525
     height: 505
+<<<<<<< HEAD
 >>>>>>> remotes/origin/team_6
 =======
     x: 0
@@ -2070,6 +2340,11 @@ MonoBehaviour:
     y: 73
     width: 397
     height: 605
+>>>>>>> remotes/origin/team_6
+<<<<<<< HEAD
+>>>>>>> main
+=======
+=======
 >>>>>>> remotes/origin/team_6
 >>>>>>> main
   m_ViewDataDictionary: {fileID: 0}
@@ -2096,6 +2371,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     - Assets/OneOnOne/prefab
 =======
     - Assets/OneOnOne/Script
@@ -2103,17 +2379,26 @@ MonoBehaviour:
 =======
     - Assets/Scenes
 >>>>>>> remotes/origin/Team_7_
+<<<<<<< HEAD
+>>>>>>> main
+=======
+=======
+    - Assets/Team_6/Scripts
+>>>>>>> remotes/origin/team_6
 >>>>>>> main
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
-  m_StartGridSize: 16
+  m_StartGridSize: 64
   m_LastFolders:
+<<<<<<< HEAD
 <<<<<<< HEAD
   - Assets/Resources
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\User\Desktop\GameJam_22.12.15\MetaProg02_GameJam
 =======
+=======
+>>>>>>> main
 <<<<<<< HEAD
   - Assets/OneOnOne/Script
   m_LastFoldersGridSize: 16
@@ -2147,16 +2432,27 @@ MonoBehaviour:
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\whdgn\Desktop\ClassProject\MetaProg02_GameJam
 >>>>>>> remotes/origin/team_6
+<<<<<<< HEAD
+>>>>>>> main
+=======
+=======
+  - Assets/Team_6/Scripts
+  m_LastFoldersGridSize: -1
+  m_LastProjectPath: "C:\\Users\\User\\Desktop\\\uC0C8 \uD3F4\uB354\\MetaProg02_GameJam"
+>>>>>>> remotes/origin/team_6
 >>>>>>> main
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_SelectedIDs: d45d0000
     m_LastClickedID: 24020
     m_ExpandedIDs: 00000000985d00009a5d000000ca9a3b
 =======
+=======
+>>>>>>> main
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -2196,6 +2492,14 @@ MonoBehaviour:
     m_ExpandedIDs: 000000002e5e00003a5e000000ca9a3b
 >>>>>>> remotes/origin/team_6
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
+<<<<<<< HEAD
+>>>>>>> main
+=======
+=======
+    m_SelectedIDs: d0620000
+    m_LastClickedID: 25296
+    m_ExpandedIDs: 000000001a6200005462000000ca9a3b
+>>>>>>> remotes/origin/team_6
 >>>>>>> main
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -2218,6 +2522,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       m_ClientGUIView: {fileID: 0}
 =======
       m_ClientGUIView: {fileID: 10}
@@ -2227,6 +2532,12 @@ MonoBehaviour:
 >>>>>>> remotes/origin/Team_7_
 =======
       m_ClientGUIView: {fileID: 0}
+>>>>>>> remotes/origin/team_6
+<<<<<<< HEAD
+>>>>>>> main
+=======
+=======
+      m_ClientGUIView: {fileID: 10}
 >>>>>>> remotes/origin/team_6
 >>>>>>> main
     m_SearchString: 
@@ -2241,8 +2552,11 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000985d00009a5d000000ca9a3b
 =======
+=======
+>>>>>>> main
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -2270,6 +2584,12 @@ MonoBehaviour:
     m_ExpandedIDs: 000000002e5e000000ca9a3b
 >>>>>>> remotes/origin/team_6
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
+<<<<<<< HEAD
+>>>>>>> main
+=======
+=======
+    m_ExpandedIDs: 000000001a62000000ca9a3b
+>>>>>>> remotes/origin/team_6
 >>>>>>> main
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -2296,11 +2616,14 @@ MonoBehaviour:
       m_ResourceFile: 
   m_ListAreaState:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 
 =======
+=======
+>>>>>>> main
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -2352,6 +2675,12 @@ MonoBehaviour:
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000
 >>>>>>> remotes/origin/team_6
+=======
+    m_SelectedInstanceIDs: 466e0000
+    m_LastClickedInstanceID: 28230
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: 
+>>>>>>> remotes/origin/team_6
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2401,10 +2730,14 @@ MonoBehaviour:
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
       m_ClientGUIView: {fileID: 0}
 >>>>>>> remotes/origin/Team_7_
 =======
       m_ClientGUIView: {fileID: 9}
+>>>>>>> remotes/origin/team_6
+=======
+      m_ClientGUIView: {fileID: 10}
 >>>>>>> remotes/origin/team_6
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -2414,6 +2747,7 @@ MonoBehaviour:
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
     m_ScrollPosition: {x: 0, y: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -2468,6 +2802,12 @@ MonoBehaviour:
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &11
+=======
+    m_GridSize: 64
+  m_SkipHiddenPackages: 0
+  m_DirectoriesAreaWidth: 218
+--- !u!114 &12
+>>>>>>> remotes/origin/team_6
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2475,18 +2815,16 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
-  m_EditorHideFlags: 1
-  m_Script: {fileID: 12061, guid: 0000000000000000e000000000000000, type: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_TitleContent:
-    m_Text: Hierarchy
-    m_Image: {fileID: 7966133145522015247, guid: 0000000000000000d000000000000000, type: 0}
-    m_Tooltip: 
-  m_Pos:
+  m_Children:
+  - {fileID: 13}
+  - {fileID: 15}
+  m_Position:
     serializedVersion: 2
+<<<<<<< HEAD
 <<<<<<< HEAD
     x: 463
 =======
@@ -2598,10 +2936,16 @@ MonoBehaviour:
     width: 674
 >>>>>>> remotes/origin/CJY
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
+=======
+    x: 1434
+    y: 0
+    width: 486
+>>>>>>> remotes/origin/team_6
     height: 1067
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -2701,6 +3045,9 @@ MonoBehaviour:
     m_CurrentSortingName: TransformSorting
   m_WindowGUID: 5212af353245ea6449d97ae6445bd672
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
+=======
+  controlID: 1562
+>>>>>>> remotes/origin/team_6
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -2709,14 +3056,19 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
-  m_EditorHideFlags: 0
+  m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
+<<<<<<< HEAD
   m_Name: InspectorWindow
+>>>>>>> remotes/origin/team_6
+=======
+  m_Name: 
 >>>>>>> remotes/origin/team_6
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     x: 0
@@ -2737,11 +3089,14 @@ MonoBehaviour:
 >>>>>>> remotes/origin/Team_7_
 =======
     x: 610
+=======
+    x: 0
+>>>>>>> remotes/origin/team_6
     y: 0
-    width: 440
-    height: 626
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+    width: 486
+    height: 711
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -2871,10 +3226,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1480
+    x: 1434
     y: 73
-    width: 439
-    height: 605
+    width: 485
+    height: 690
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -2910,6 +3265,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     y: 623
     width: 595
     height: 444
@@ -2922,6 +3278,13 @@ MonoBehaviour:
     height: 313
   m_MinSize: {x: 101, y: 121}
   m_MaxSize: {x: 4001, y: 4021}
+=======
+    y: 711
+    width: 486
+    height: 356
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+>>>>>>> remotes/origin/team_6
   m_ActualView: {fileID: 16}
 >>>>>>> remotes/origin/team_6
   m_Panes:
@@ -2949,6 +3312,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 750
 =======
 <<<<<<< HEAD
@@ -2962,6 +3326,12 @@ MonoBehaviour:
     y: 699
     width: 1049
     height: 292
+>>>>>>> remotes/origin/team_6
+=======
+    x: 1434
+    y: 784
+    width: 485
+    height: 335
 >>>>>>> remotes/origin/team_6
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
