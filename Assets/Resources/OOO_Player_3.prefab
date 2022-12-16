@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 1605847280010692492}
   m_Layer: 0
   m_Name: Weapon
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -236,8 +236,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816721194995695489}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.93, y: 2.642, z: -0.241}
-  m_LocalScale: {x: 0.77903, y: 0.77903, z: 0.77903}
+  m_LocalPosition: {x: -0.93, y: 3.0200002, z: -0.241}
+  m_LocalScale: {x: 0.77903, y: 2.003204, z: 0.77903}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3081012144193772336}
@@ -268,6 +268,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb2e7186fca1224999ced60f5e0fab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2807139562368136471}
+  type: 0
 --- !u!1 &1690191682826429900
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,7 +899,7 @@ GameObject:
   - component: {fileID: 8924636482535954451}
   m_Layer: 0
   m_Name: OOO_Player_3
-  m_TagString: Weapon
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -970,6 +972,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 5338909068565378721}
   myData: {fileID: 0}
+  leftAttackCheck: 0
+  rightAttackCheck: 0
 --- !u!114 &7501456324615867232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4993,7 +4997,7 @@ GameObject:
   - component: {fileID: 7703007359923640538}
   m_Layer: 0
   m_Name: 'Weapon '
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5006,8 +5010,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7531800188054062897}
   m_LocalRotation: {x: -0, y: -0, z: 0.0000000013969838, w: 1}
-  m_LocalPosition: {x: 0.52, y: 2.832, z: -0.24099994}
-  m_LocalScale: {x: 0.77903, y: 0.77903, z: 0.77903}
+  m_LocalPosition: {x: 0.52, y: 3.21, z: -0.24099994}
+  m_LocalScale: {x: 0.77903, y: 2.003204, z: 0.77903}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7764771145476296889}
@@ -5038,6 +5042,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb2e7186fca1224999ced60f5e0fab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2807139562368136471}
+  type: 1
 --- !u!1 &7675884787128996276
 GameObject:
   m_ObjectHideFlags: 0
