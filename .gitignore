@@ -2,5 +2,6 @@
 /Library
 /Temp
 /obj
-*csproj
-*obj
+*.csproj
+*.obj
+
