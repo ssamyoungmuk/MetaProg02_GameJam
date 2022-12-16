@@ -96,9 +96,9 @@ public class Elevator : MonoBehaviour
                 downDestination.Reverse();
                 return;
             }
-            upDestination.Add(dest);
             if (dest >= transform.position.y + offset)
             {
+                upDestination.Add(dest);
                 upDestination.Sort();
             }
         }
@@ -110,6 +110,7 @@ public class Elevator : MonoBehaviour
                 downDestination.Sort();
                 downDestination.Reverse();
             }
+           
         }
         else
         {
