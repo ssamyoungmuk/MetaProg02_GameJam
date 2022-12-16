@@ -33,6 +33,7 @@ public class PlayerInfo : MonoBehaviourPun
             isDie = true;
             if (photonView.IsMine) GameLogic.Instance.uIChatManager.SystemMessge($"{PhotonNetwork.PlayerList[player_Num].NickName}´ÔÀÌ Á×¾ú½À´Ï´Ù.");
             GameLogic.Instance.voteButton[player_Num].GetComponent<Image>().color = Color.red;
+            GameLogic.Instance.voteButton[player_Num].GetComponent<Button>().interactable = false;
         }
     }
     [PunRPC]

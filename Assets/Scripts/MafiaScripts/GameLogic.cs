@@ -74,7 +74,8 @@ namespace MafiaGame
             {
                 if (myInfo.jobName == jobList.Mafia)
                 {
-                    if(play[0].player_Num!= myInfo.player_Num) myTeam.text = $"{PhotonNetwork.PlayerList[play[0].player_Num].NickName}";
+                    myTeam.gameObject.SetActive(true);
+                    if (play[0].player_Num!= myInfo.player_Num) myTeam.text = $"{PhotonNetwork.PlayerList[play[0].player_Num].NickName}";
                     else if(play[1].player_Num!= myInfo.player_Num) myTeam.text = $"{PhotonNetwork.PlayerList[play[1].player_Num].NickName}";
                 }
             }
@@ -103,6 +104,7 @@ namespace MafiaGame
                 if(PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("YouDie", RpcTarget.All, killPlayerNum);
                 GameEnd();
             }
+            for(int i = 0; i<voteButton.Length;i++) if (voteButton[i].GetComponent<Image>().color == Color.yellow) voteButton[i].GetComponent<Image>().color = Color.white;
             killPlayerNum = -1;
                 chat.SetActive(true);
             Fade(chat.gameObject, fade.In);
@@ -379,9 +381,9 @@ namespace MafiaGame
             {
                 canvasGroup.alpha = 0;
                 fadeIn.SetActive(true);
-                for (int i = 0; i < 100; i++)
+                for (int i = 0; i < 50; i++)
                 {
-                    canvasGroup.alpha += 0.01f;
+                    canvasGroup.alpha += 0.02f;
                     yield return new WaitForSeconds(0.01f);
                 }
             }
@@ -389,9 +391,9 @@ namespace MafiaGame
             {
 
                 canvasGroup.alpha = 1;
-                for (int i = 0; i < 100; i++)
+                for (int i = 0; i < 50; i++)
                 {
-                    canvasGroup.alpha -= 0.01f;
+                    canvasGroup.alpha -= 0.02f;
                     yield return new WaitForSeconds(0.01f);
                 }
                 fadeIn.SetActive(false);

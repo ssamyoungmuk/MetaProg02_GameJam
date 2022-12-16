@@ -50,7 +50,10 @@ namespace MafiaGame
         private void Awake()
         {
             PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime = "1adfdb50-72b8-47e6-af98-608eb7519a4d\n";
-            
+            PhotonNetwork.SendRate = 300;
+            PhotonNetwork.SerializationRate = 150;
+            Application.targetFrameRate = 60;
+
         }
         void Start()
         {

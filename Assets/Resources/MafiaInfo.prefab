@@ -69,3 +69,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <jobName>k__BackingField: 0
   <isDie>k__BackingField: 0
+  <isHeal>k__BackingField: 0
