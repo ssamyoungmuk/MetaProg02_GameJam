@@ -8,10 +8,50 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LobbyScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  - enabled: 1
+    path: Assets/Scenes/OneOnOne.unity
+    guid: 0cf2d0d7aaa0ccf4284b7463cb95777b
+  - enabled: 1
+    path: Assets/Scenes/Team6_Title.unity
+    guid: 30c8c875b88962c44b56e0d109d56e81
+  - enabled: 1
+    path: Assets/Scenes/TeamNumber5.unity
+    guid: 640b4a655a457d14faaa4c8b5ec43ba4
+  - enabled: 1
+    path: Assets/Scenes/TeamNumber7.unity
+    guid: d8584d513925db140a52894c7c8e30b2
+  - enabled: 1
+    path: Assets/Scenes/MafiaGame/MafiaGame_GameScene.unity
+    guid: 0cda0e79c618bb742836ccbfa9f8c73e
+=======
+>>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
+>>>>>>> main
   - enabled: 1
     path: Assets/Scenes/MafiaGame/MafiaGame_LobbyScene.unity
     guid: f2d0480d0ab9b004f8bbbc07fa3c0003
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scenes/TeamNumber7.unity
     guid: d8584d513925db140a52894c7c8e30b2
+=======
+<<<<<<< HEAD
+    path: Assets/Scenes/DemoScene.unity
+    guid: 3e39ceea67d5e7f4e9f161b6e080ffbd
+=======
+    path: Assets/Scenes/Team6_Title.unity
+    guid: 30c8c875b88962c44b56e0d109d56e81
+  - enabled: 1
+    path: Assets/Team_6/Scene/Team_6.unity
+    guid: 8cca0ae01d7cb15428c690c5fa93c469
+  - enabled: 1
+    path: Assets/Team4/Scenes/PicoPark.unity
+    guid: 8d6d3e28a0becd243a81eda977e86542
+  - enabled: 1
+    path: Assets/Team4/Scenes/Loding.unity
+    guid: 4dc90477294609e49a81ab37bb2255e7
+>>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
+>>>>>>> main
   m_configObjects: {}

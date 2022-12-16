@@ -6,7 +6,18 @@ TagManager:
   tags:
   - Bullet
   - Team7_Me
+<<<<<<< HEAD
   - Team7_Other
+=======
+  - 1F_Button
+  - Button
+  - Stone
+  - Weapon
+  - Ground
+  - DeadZone
+  - Door
+  - BackDoor
+>>>>>>> main
   layers:
   - Default
   - TransparentFX

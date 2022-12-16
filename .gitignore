@@ -1,7 +1,19 @@
 /Logs
+<<<<<<< HEAD
 /Library
+=======
+/obj
+<<<<<<< HEAD
+>>>>>>> main
 /Temp
 /obj
 *.csproj
+<<<<<<< HEAD
 *.obj
 
+=======
+*.sln
+=======
+*.cjproj
+>>>>>>> remotes/origin/Team4
+>>>>>>> main
