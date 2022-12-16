@@ -916,7 +916,7 @@ MonoBehaviour:
   jobUI2: {fileID: 2019245302}
   myJobText: {fileID: 1204406563}
   myTeam: {fileID: 2114594362}
-  policeClick: {fileID: 1759854386}
+  skillClick: {fileID: 1759854386}
   voteButton:
   - {fileID: 5913733711253716014}
   - {fileID: 5913733710746554351}
@@ -928,6 +928,7 @@ MonoBehaviour:
   - {fileID: 5913733710205269161}
   characterJob: {fileID: 0}
   myInfo: {fileID: 0}
+  uIChatManager: {fileID: 1810016694}
 --- !u!1 &853266226
 GameObject:
   m_ObjectHideFlags: 0
@@ -6008,7 +6009,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!222 &5913733710338378194
 CanvasRenderer:
   m_ObjectHideFlags: 0

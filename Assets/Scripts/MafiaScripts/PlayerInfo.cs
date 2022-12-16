@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using MafiaGame;
+using UnityEngine.UI;
 
-public class PlayerInfo : MonoBehaviour
+public class PlayerInfo : MonoBehaviourPun
 {
     public int player_Num { get; private set; } = 0;
     [field:SerializeField] public jobList jobName { get; private set; }
@@ -22,7 +23,17 @@ public class PlayerInfo : MonoBehaviour
     [PunRPC]
     void Die()
     {
-        isDie=true;
+        if (isHeal)
+        {
+            if (photonView.IsMine) GameLogic.Instance.uIChatManager.SystemMessge($"{PhotonNetwork.PlayerList[player_Num].NickName}님이 의사의 도음으로 살았습니다.");
+
+        }
+        else
+        {
+            isDie = true;
+            if (photonView.IsMine) GameLogic.Instance.uIChatManager.SystemMessge($"{PhotonNetwork.PlayerList[player_Num].NickName}님이 죽었습니다.");
+            GameLogic.Instance.voteButton[player_Num].GetComponent<Image>().color = Color.red;
+        }
     }
     [PunRPC]
     void PlayerNum(int num)

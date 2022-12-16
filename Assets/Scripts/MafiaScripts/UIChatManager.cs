@@ -97,7 +97,7 @@ public class UIChatManager : MonoBehaviour, IChatClientListener
 		//addChatLine(PhotonNetwork.NickName, inStr);
 	}
 
-	void addChatLine(string userName, string chatLine)
+    void addChatLine(string userName, string chatLine)
 	{
 		//txtChat.text += $"[{userName}] : {chatLine}\n";	// [내이름] : 대화내용
 
@@ -116,13 +116,32 @@ public class UIChatManager : MonoBehaviour, IChatClientListener
 		}
 
 	}
+    public void SystemMessge(string chatLine)
+    {
+        //txtChat.text += $"[{userName}] : {chatLine}\n";	// [내이름] : 대화내용
+
+        // UI 프리팹을 기준으로 UI 객체 하나 생성해서
+        UIChatLine instObj = Instantiate<UIChatLine>(prefChatLine, srChat.content.transform);
+        instObj.SetChat("[System]", chatLine);
+        listCurLines.Add(instObj);
+
+        if (listCurLines.Count > 10)
+        {
+            // 제일 처음에 입력된 채팅컨트롤은 삭제
+            instObj = listCurLines[0];
+            Destroy(instObj.gameObject);
+            // 리스트에서도 삭제
+            listCurLines.RemoveAt(0);
+        }
+
+    }
 
 
 
-	//----------------------------------------------------------------------------
-	// 포톤채팅 인터페이스 구현 함수
-	#region 포톤채팅 인터페이스 구현 함수
-	public void DebugReturn(DebugLevel level, string message)
+    //----------------------------------------------------------------------------
+    // 포톤채팅 인터페이스 구현 함수
+    #region 포톤채팅 인터페이스 구현 함수
+    public void DebugReturn(DebugLevel level, string message)
 	{
 		//throw new System.NotImplementedException();
 	}
