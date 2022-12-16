@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager_06 : MonoBehaviour
 {
-    public float timer;
+    public float timer; // 주석을 달자~~
     public Text text_Timer;
 
 
