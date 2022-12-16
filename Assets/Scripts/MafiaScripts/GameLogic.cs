@@ -67,6 +67,7 @@ namespace MafiaGame
             List<PlayerInfo> list = new List<PlayerInfo>();
             PlayerInfo[] play = FindObjectsOfType<PlayerInfo>();
             playerInfos = FindObjectsOfType<PlayerInfo>();
+            for(int i=0;i<PhotonNetwork.PlayerList.Length;i++) photonNick.Add(PhotonNetwork.PlayerList[i].NickName);
             for (int i = 0; i < play.Length; i++)
             {
                 if (play[i].jobName == jobList.Mafia) list.Add(play[i]);
@@ -114,9 +115,10 @@ namespace MafiaGame
             chat.SetActive(true);
             Fade(chat.gameObject, fade.In);
             isSkill = false;
+
             if (PhotonNetwork.IsMasterClient)
             {
-                time = 120;
+                time = 5;
                 gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
             }
             maxVote = 0;
@@ -126,6 +128,7 @@ namespace MafiaGame
             timeSet = false;
             yield return new WaitUntil(() => timeSet);
             timeSet = false;
+            chat.SetActive(true);
             killPlayerNum = -1;
             if (PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("GameEnd", RpcTarget.AllBufferedViaServer);
             myInfo.Heal(false);
@@ -261,9 +264,8 @@ namespace MafiaGame
         int maxVote;//젤높은투표수
         int maxVotePlayer;//젤높은플레이어번호
 
-
-        string jobString;
         List<jobList> job = new List<jobList>(0);
+        public List<string> photonNick = new List<string>();
         [PunRPC]
         void PlayerJobList(jobList a)
         {
@@ -323,6 +325,10 @@ namespace MafiaGame
             if (isSkill == true) return;
             isSkill = true;
             skillClick.gameObject.SetActive(true);
+            Debug.Log(job[num]);
+            Debug.Log(num);
+            for(int i = 0; i<job.Count;i++)
+            Debug.Log(job[i]);
             if (job[num] == jobList.Mafia) skillClick.text = "마피아 입니다.";
             else skillClick.text = "마피아가 아닙니다.";
             Fade(skillClick.gameObject, fade.All);
@@ -530,7 +536,7 @@ namespace MafiaGame
             }
             else
             {
-                Vote_Text.text = $"{PhotonNetwork.PlayerList[maxVotePlayer].NickName}의 반론";
+                Vote_Text.text = $"{photonNick[maxVotePlayer]}의 반론";
                 Vote_Text.gameObject.SetActive(true);
                 Fade(Vote_Text.gameObject, fade.All);
             }
@@ -580,10 +586,9 @@ namespace MafiaGame
             }
             else
             {
-                Vote_Text.text = $"{PhotonNetwork.PlayerList[maxVotePlayer].NickName}님이 죽었습니다.";
+                Vote_Text.text = $"{photonNick[maxVotePlayer]}님이 죽었습니다.";
                 Vote_Text.gameObject.SetActive(true);
-
-                YouDie(maxVotePlayer);
+                if (PhotonNetwork.IsMasterClient) YouDie(maxVotePlayer);
                 Fade(Vote_Text.gameObject, fade.All);
             }
         }
