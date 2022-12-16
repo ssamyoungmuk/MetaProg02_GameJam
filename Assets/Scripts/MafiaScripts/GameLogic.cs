@@ -115,7 +115,6 @@ namespace MafiaGame
             chat.SetActive(true);
             Fade(chat.gameObject, fade.In);
             isSkill = false;
-            myInfo.Heal(false);
             if (PhotonNetwork.IsMasterClient)
             {
                 time = 10;
@@ -128,6 +127,7 @@ namespace MafiaGame
             timeSet = false;
             yield return new WaitUntil(() => timeSet);
             timeSet = false;
+            myInfo.Heal(false);
             while (time > 0)
             {
                 if (PhotonNetwork.IsMasterClient)
