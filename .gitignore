@@ -1,13 +1,6 @@
-/.git
-/.vs
-/Library
 /Logs
-/obj
-<<<<<<< HEAD
+/Library
 /Temp
-/UserSettings
-*.csproj
-*.sln
-=======
-*.cjproj
->>>>>>> remotes/origin/Team4
+/obj
+*csproj
+*obj
