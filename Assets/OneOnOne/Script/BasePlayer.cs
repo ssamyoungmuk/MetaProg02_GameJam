@@ -24,7 +24,10 @@ namespace OOO
         float freezTime = 3f;
         bool hitFlag = false;
         bool dead = false;
-        
+
+        [HideInInspector] public bool leftAttackCheck = false;
+        [HideInInspector] public bool rightAttackCheck = false;
+
         private void Awake()
         {
             hitFlag = false;
@@ -61,19 +64,23 @@ namespace OOO
 
             if (Input.GetMouseButtonDown(0))
             {
+                leftAttackCheck = true;
                 myData.info.leftArm.Rotate(100f, 0, -30f, Space.Self);
             }
             if (Input.GetMouseButtonUp(0))
             {
+                leftAttackCheck = false;
                 myData.info.leftArm.rotation = rightArmOriginPos;
             }
 
             if (Input.GetMouseButtonDown(1))
             {
+                rightAttackCheck = true;
                 myData.info.rightArm.Rotate(100f, 0, 30f, Space.Self);
             }
             if (Input.GetMouseButtonUp(1))
             {
+                rightAttackCheck = false;
                 myData.info.rightArm.rotation = leftArmOriginPos;
             }
         }
@@ -115,6 +122,7 @@ namespace OOO
 
             if (collision.gameObject.tag == "Weapon")
             {
+                Debug.Log(collision.gameObject.tag);
                 StartCoroutine(nameof(Hit));
                 TransferDamage();
             }

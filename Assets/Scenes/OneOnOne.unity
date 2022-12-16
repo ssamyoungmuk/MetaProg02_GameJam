@@ -575,10 +575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ApplicationID: 30b51f8a-3317-40c1-94af-9fc665b04662
   players:
-  - {fileID: 7230718027778925902, guid: 38c32e0c2c7ff7b43a13e840ebfe9ee4, type: 3}
   - {fileID: 2807139562368136469, guid: 01afce2c54012944b92dc9048c1087bd, type: 3}
-  - {fileID: 2807139562368136469, guid: 8329e0c084eff864a93d3ed1e5bd3be4, type: 3}
-  - {fileID: 2807139562368136469, guid: df5879b82884a254cb1537a5812871b0, type: 3}
 --- !u!4 &1811993418
 Transform:
   m_ObjectHideFlags: 0

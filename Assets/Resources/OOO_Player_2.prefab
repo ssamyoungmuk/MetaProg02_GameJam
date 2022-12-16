@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 1605847280010692492}
   m_Layer: 0
   m_Name: Weapon
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,10 +169,10 @@ BoxCollider:
   m_GameObject: {fileID: 816721194995695489}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 3, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &1605847280010692492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,6 +185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb2e7186fca1224999ced60f5e0fab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  type: 0
 --- !u!1 &1211484140564121138
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +567,7 @@ GameObject:
   - component: {fileID: 8924636482535954451}
   m_Layer: 0
   m_Name: OOO_Player_2
-  m_TagString: Weapon
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -638,6 +640,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 5338909068565378721}
   myData: {fileID: 0}
+  leftAttackCheck: 0
+  rightAttackCheck: 0
 --- !u!114 &7501456324615867232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4818,7 +4822,7 @@ GameObject:
   - component: {fileID: 7703007359923640538}
   m_Layer: 0
   m_Name: 'Weapon '
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4847,10 +4851,10 @@ BoxCollider:
   m_GameObject: {fileID: 7531800188054062897}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 3, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &7703007359923640538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4863,6 +4867,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb2e7186fca1224999ced60f5e0fab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2807139562368136471}
+  type: 1
 --- !u!1 &8415854613206960488
 GameObject:
   m_ObjectHideFlags: 0
