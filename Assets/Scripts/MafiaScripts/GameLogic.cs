@@ -6,6 +6,7 @@ using Photon.Pun;
 using System;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using ExitGames.Client.Photon.StructWrapping;
 
 namespace MafiaGame
 { 
@@ -25,27 +26,15 @@ namespace MafiaGame
         [SerializeField] GameObject jobUI2;
         [SerializeField] TextMeshProUGUI myJobText;
         [SerializeField] TextMeshProUGUI myTeam;
+        [SerializeField] TextMeshProUGUI policeClick;
 
         public GameObject[] voteButton;
         [Header("scripts")]
         public CharacterJob characterJob;
         public PlayerInfo myInfo;
-        [PunRPC]
-        void MyInfo(int viewID)
+        public void MyInfo(GameObject obj)
         {
-            if (photonView.IsMine)
-                myInfo = PunFindObject(viewID).GetComponent<PlayerInfo>();
-        }
-        public GameObject PunFindObject(int viewID3)//뷰아이디를 넘겨받아 포톤상의 오브젝트를 찾는다.
-        {
-            GameObject find = null;
-            PhotonView[] viewObject = FindObjectsOfType<PhotonView>();
-            for (int i = 0; i < viewObject.Length; i++)
-            {
-                if (viewObject[i].ViewID == viewID3) find = viewObject[i].gameObject;
-            }
-            if (find != null) return find;
-            else return null;
+                myInfo = obj.GetComponent<PlayerInfo>();
         }
         [PunRPC]
         void YouDie(int num)
@@ -65,16 +54,20 @@ namespace MafiaGame
                 voteButton[i].SetActive(true);
             GameStartUI.SetActive(true);
             StartCoroutine(GameStart_Delay());
-            myJobText.text = myInfo.jobName.ToString();
-            jobUI2.SetActive(true);
-            voteCount = new int[PhotonNetwork.PlayerList.Length];
         }
 
         IEnumerator GameStart_Delay()
         {
             Fade(GameStartUI, fade.All);
-            yield return new WaitForSeconds(2f);
-            morning=StartCoroutine(Day_Morning());
+            yield return new WaitForSeconds(1f);
+            if (myInfo.jobName == jobList.Doctor) myJobText.text = "의사";
+            else if (myInfo.jobName == jobList.Police) myJobText.text = "경찰";
+            else if (myInfo.jobName == jobList.Mafia) myJobText.text = "마피아";
+            else if (myInfo.jobName == jobList.People) myJobText.text = "시민";
+            jobUI2.SetActive(true);
+            voteCount = new int[PhotonNetwork.PlayerList.Length];
+            yield return new WaitForSeconds(1f);
+            morning =StartCoroutine(Day_Morning());
         }
         Coroutine morning;
         Coroutine debate;
@@ -94,6 +87,8 @@ namespace MafiaGame
         {
                 chat.SetActive(true);
             Fade(chat.gameObject, fade.In);
+            isSkill = false;
+            myInfo.Heal(false);
                 time = 5f;
                 maxVote = 0;
                 maxVotePlayer = -1;
@@ -219,24 +214,46 @@ namespace MafiaGame
             }
             else if (maxVote <= voteCount[count]) voteSame = true;//젤높은투표수와 같아질시 투표수같음 ture해서 플레이어 죽임 방지
         }
+        bool isSkill;
+        void MafiaClick(int num)
+        {
+
+        }
+        void PoliceClick(int num)
+        {
+            if (isSkill == true) return;
+            isSkill = true;
+            policeClick.gameObject.SetActive(true);
+            if (job[num]==jobList.Mafia) policeClick.text = "마피아 입니다.";
+            else policeClick.text = "마피아가 아닙니다.";
+        }
+        void DoctorClick(int num)
+        {
+            gameObject.GetPhotonView().RPC("YouHeal",RpcTarget.All,num);
+        }
+        [PunRPC]
+        void YouHeal(int num)
+        {
+            if(myInfo.player_Num==num)
+            myInfo.Heal(true);
+        }
         public void VoteButton0()
         {
             if (myInfo.isDie) return;
-            if (voteChack) return;
+            if (voteChack&&Night!=true) return;
             if (isVoteOn) gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 0);
-            else if (Night && myInfo.jobName == jobList.Mafia)
+            else if (Night && myInfo.jobName == jobList.Mafia&&isSkill==false)
             {
-
+                MafiaClick(0);
             }
-            else if (Night && myInfo.jobName == jobList.Doctor)
+            else if (Night && myInfo.jobName == jobList.Doctor && isSkill == false)
             {
-
+                DoctorClick(0);
             }
-            else if (Night && myInfo.jobName == jobList.Police)
+            else if (Night && myInfo.jobName == jobList.Police && isSkill == false)
             {
-
+                PoliceClick(0);
             }
-
             voteChack = true;
         }
         [PunRPC]

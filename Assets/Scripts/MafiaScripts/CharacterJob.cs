@@ -30,7 +30,7 @@ namespace MafiaGame
                 {
                     GameObject _player = PhotonNetwork.Instantiate("MafiaInfo", new Vector3(0, 0, 0), Quaternion.identity);
                     _player.GetPhotonView().RPC("PlayerNum", RpcTarget.All, i);
-                    gameObject.GetPhotonView().RPC("MyInfo", RpcTarget.All, _player.gameObject.GetPhotonView().ViewID);
+                    GameLogic.Instance.MyInfo(_player);
                 }
             }
             if(PhotonNetwork.PlayerList.Length == 4 || PhotonNetwork.PlayerList.Length == 5)
@@ -79,7 +79,7 @@ namespace MafiaGame
                     switch (job[i])
                     {
                         case 0:
-                            jb = jobList.People;
+                            jb = jobList.Police;
                             break;
                         case 1:
                             jb = jobList.Doctor;
