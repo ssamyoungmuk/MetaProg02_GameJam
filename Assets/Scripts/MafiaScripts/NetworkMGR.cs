@@ -186,7 +186,7 @@ namespace MafiaGame
             // 마스터일때만 해당 함수 실행 가능
             if (PhotonNetwork.IsMasterClient)
             {
-                if (readyCount == PhotonNetwork.PlayerList.Length && readyCount >=1)
+                if (readyCount == PhotonNetwork.PlayerList.Length && readyCount >3)
                 {
                     Debug.Log("시작");
                     //5명 레디 완료시 2초후 게임 실행 코루틴 
@@ -200,7 +200,7 @@ namespace MafiaGame
         IEnumerator GameStartUI_Delay()
         {
             yield return new WaitForSeconds(2f);
-            if (readyCount == PhotonNetwork.PlayerList.Length && readyCount >=1)
+            if (readyCount == PhotonNetwork.PlayerList.Length && readyCount >3)
             {
                 gameObject.GetPhotonView().RPC("GameStartUI", RpcTarget.All);
             }

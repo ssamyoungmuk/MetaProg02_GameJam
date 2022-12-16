@@ -47,7 +47,6 @@ namespace MafiaGame
         }
         int day = 0;
         int time = 0;
-
         public void GameStart()
         {
             for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
@@ -123,6 +122,7 @@ namespace MafiaGame
             maxVotePlayer = -1;
             debateTime_Text.gameObject.SetActive(true);
             debateTime_Text.text = time.ToString();
+            yield return new WaitForSeconds(0.5f);
             while (time > 0)
             {
                 if (PhotonNetwork.IsMasterClient)
@@ -148,6 +148,7 @@ namespace MafiaGame
                 time = 10;
                 gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
             }
+            yield return new WaitForSeconds(0.5f);
             while (time > 0)
             {
                 if (PhotonNetwork.IsMasterClient)
@@ -168,6 +169,7 @@ namespace MafiaGame
                     time = 20;
                     gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
                 }
+                yield return new WaitForSeconds(0.5f);
                 while (time > 0)
                 {
                     if (PhotonNetwork.IsMasterClient)
@@ -185,6 +187,7 @@ namespace MafiaGame
                     time = 10;
                     gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
                 }
+                yield return new WaitForSeconds(0.5f);
                 while (time > 0)
                 {
                     if (PhotonNetwork.IsMasterClient)
@@ -215,6 +218,7 @@ namespace MafiaGame
                 time = 10;
                 gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
             }
+            yield return new WaitForSeconds(0.5f);
             while (time > 0)
             {
                 if (PhotonNetwork.IsMasterClient)
@@ -290,7 +294,7 @@ namespace MafiaGame
         {
             if (myInfo.jobName == jobList.Mafia)
             {
-                if (killPlayerNum != -1) voteButton[num].GetComponent<Image>().color = Color.white;
+                if (killPlayerNum != -1) voteButton[killPlayerNum].GetComponent<Image>().color = Color.white;
                 voteButton[num].GetComponent<Image>().color = Color.yellow;
             }
             killPlayerNum = num;
