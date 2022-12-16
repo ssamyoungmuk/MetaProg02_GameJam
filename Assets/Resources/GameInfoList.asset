@@ -31,20 +31,11 @@ MonoBehaviour:
   - GameName: Elevator Simulator
     GameImage: {fileID: 21300000, guid: 3f3659388eea40f4e8116066bd499fa7, type: 3}
     GameSceneName: DemoScene
-  - GameName: 
-    GameImage: {fileID: 0}
-    GameSceneName: 
-  - GameName: 
-    GameImage: {fileID: 0}
-    GameSceneName: 
-  - GameName: PicoPark
-    GameImage: {fileID: 0}
-    GameSceneName: PicoPark
   - GameName: Australopithecus
     GameImage: {fileID: 21300000, guid: 0f8154c0cd13e3743b79c752ce1d8aa2, type: 3}
     GameSceneName: Team6_Title
   - GameName: CandyKong
-    GameImage: {fileID: 21300000, guid: 4bbc6926286015b43a7f2b0eca86a5d6, type: 3}
+    GameImage: {fileID: 21300000, guid: 74ce9a2aab2f17e47b13198f2b71db56, type: 3}
     GameSceneName: TeamNumber7
   - GameName: 
     GameImage: {fileID: 0}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
 
 public class Team7_Player : MonoBehaviourPun
 {
@@ -12,7 +13,7 @@ public class Team7_Player : MonoBehaviourPun
     float attackRotate = 0f;
     float mouseSpeed = 60f;
 
-    public int exp;
+    public int exp = 0;
 
     Rigidbody rb = null;
     BoxCollider weapon = null;
@@ -79,15 +80,32 @@ public class Team7_Player : MonoBehaviourPun
 
     public void Team7_Die()
     {
+        Debug.Log("독립 함수 실행");
         photonView.RPC("DieNow", RpcTarget.All);
     }
 
     [PunRPC]
     public void DieNow()
     {
-        Destroy(gameObject);
-        PhotonNetwork.Disconnect();
-        Debug.Log("씬 이동");
-        PhotonNetwork.LoadLevel("LobbyScene");
+        if (photonView.IsMine)
+        {
+            Debug.Log("RPC 실행");
+            PhotonNetwork.Destroy(gameObject);
+            PhotonNetwork.Disconnect();
+            Cursor.lockState = CursorLockMode.None; // 마우스 언락
+
+            Debug.Log("씬 이동");
+            SceneManager.LoadScene("LobbyScene");
+        }
+    }
+
+    public void GetExp(int point)
+    {
+        exp += point;
+        if (exp >= 100)
+        {
+            transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
+            exp = 0;
+        }
     }
 }
