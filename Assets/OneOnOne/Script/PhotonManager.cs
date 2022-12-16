@@ -23,6 +23,9 @@ namespace OOO
 
         private void Awake()
         {
+            Screen.SetResolution(1920, 1080,true);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
             InitSetting();
         }
 
