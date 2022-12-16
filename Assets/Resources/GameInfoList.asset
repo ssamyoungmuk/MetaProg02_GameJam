@@ -34,9 +34,9 @@ MonoBehaviour:
   - GameName: 
     GameImage: {fileID: 0}
     GameSceneName: 
-  - GameName: 
-    GameImage: {fileID: 0}
-    GameSceneName: 
+  - GameName: CandyKong
+    GameImage: {fileID: 21300000, guid: 74ce9a2aab2f17e47b13198f2b71db56, type: 3}
+    GameSceneName: TeamNumber7
   - GameName: PicoPark
     GameImage: {fileID: 0}
     GameSceneName: PicoPark

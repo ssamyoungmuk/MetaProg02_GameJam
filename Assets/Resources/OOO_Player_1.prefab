@@ -180,7 +180,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2805788066109022128}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdb2e7186fca1224999ced60f5e0fab7, type: 3}
+  m_Script: {fileID: 11500000, guid: 49c20b68c5844a14a84560719cffa00d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 7230718027778925897}
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3242694172494537607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdb2e7186fca1224999ced60f5e0fab7, type: 3}
+  m_Script: {fileID: 11500000, guid: 49c20b68c5844a14a84560719cffa00d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 7230718027778925897}
@@ -410,7 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a27f396922f732f4a8bbdb356c5884e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 2912604342798312321}
+  cam: {fileID: 2522777658430785470}
   myData: {fileID: 0}
   leftAttackCheck: 0
   rightAttackCheck: 0
@@ -4410,8 +4410,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2196696358599139090}
-  - component: {fileID: 2912604342798312321}
   - component: {fileID: 5557262838618503059}
+  - component: {fileID: 2522777658430785470}
   m_Layer: 0
   m_Name: CamPivot
   m_TagString: Untagged
@@ -4435,22 +4435,6 @@ Transform:
   m_Father: {fileID: 7230718027778925898}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2912604342798312321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7982296342415294003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33416af42039aa1438cc2bf4d0651c6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetObj: {fileID: 7230718027778925902}
-  rotSensetive: 10
-  mousAxisY: 0
-  mousAxisX: 0
 --- !u!114 &5557262838618503059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4473,6 +4457,22 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &2522777658430785470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7982296342415294003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9555f9354b5f5114fb924bc236f5e8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObj: {fileID: 7230718027778925902}
+  rotSensetive: 10
+  mousAxisY: 0
+  mousAxisX: 0
 --- !u!1 &8812020069376551790
 GameObject:
   m_ObjectHideFlags: 0
