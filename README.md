@@ -95,29 +95,15 @@
 
   <th align="center">
   
-  <h1>
-    <p> 8팀 WHBKYK </p>
-  </h1>
-  
-  <h2>
-    <p> 설명 </p>
-    <a> 각자 원하는 툴 만들기 </a>
-  </h2>
-
-  <table>
-    <thead>
-      <tr>
-        <th align="center"> 이원혁 </td>
-        <th align="center"> 김보강 </td>
-        <th align="center"> 김영갑 </td>
-      </tr>
-      <tbody>
-        <th align="center"> Auto Git Push </th>
-        <th align="center"> Json Reader </th>
-        <th align="center"> FindObjects  </th>
-      </tbody>
-    </thead>
-  </table>
+<h1> 
+<p> 8팀 </p2> 
+</h1>
+<h2> 
+<p> 이원혁, 김보강 </p>
+<p> 김영갑 </p>
+<p> 게임 제목 </p>
+<p> TOOLS </p>
+</h2>
   
   </th>
   </tr>
