@@ -32,6 +32,7 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
         PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime = "fc387611-95cc-42c2-ae93-6e4d5bc85e09";
         PhotonNetwork.ConnectUsingSettings(); // 설정 정보로 마스터 서버 접속 시도
     }
+
     //=============================================================================
     #region Photon_Callback Functions
     private void Start()
