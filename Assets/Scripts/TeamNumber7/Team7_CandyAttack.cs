@@ -13,7 +13,7 @@ public class Team7_CandyAttack : MonoBehaviourPunCallbacks
         {
             //other.GetComponent<Team7_Player>().Team7_Die();
 
-            pv.RPC("Team7_Die", RpcTarget.OthersBuffered);
+            pv.RPC("Team7_Die", RpcTarget.All);
 
             //photonView.RPC("Kill", RpcTarget.All, other.gameObject);
         }
