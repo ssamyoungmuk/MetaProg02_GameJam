@@ -848,6 +848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CandyAttack: {fileID: 3218960524093962667}
+  exp: 0
 --- !u!114 &-2900837439667478467
 MonoBehaviour:
   m_ObjectHideFlags: 0

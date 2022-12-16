@@ -8,7 +8,7 @@ public class Team7_FollowCam : MonoBehaviour
     private Vector3 camPos;
 
     [Header("CamPos")]
-    float camZ = 0.2f;
+    float camZ = 0.5f;
     float camY = 1.45f;
 
     [Header("CamRot")]
