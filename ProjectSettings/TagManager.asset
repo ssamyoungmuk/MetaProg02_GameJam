@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Weapon
+  - Bullet
+  - Ground
+  - Team7_Me
+  - BackDoor
+  - Door
+  - Team7_Other
   layers:
   - Default
   - TransparentFX
