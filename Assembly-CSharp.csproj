@@ -60,30 +60,30 @@
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\SocketWebTcp.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
+    <Compile Include="Assets\Scripts\TeamNumber7\Team7_GameManager.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
+    <Compile Include="Assets\Scripts\MafiaScripts\NetworkMGR.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
     <Compile Include="Assets\Scripts\TeamNumber5\PlayerMove.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\WebSocket.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
+    <Compile Include="Assets\Scripts\TeamNumber7\Team7_JoinRoom.cs" />
+    <Compile Include="Assets\Scripts\MafiaScripts\CharacterJob.cs" />
+    <Compile Include="Assets\Scripts\TeamNumber7\Team7_UIManager.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
+    <Compile Include="Assets\Scripts\TeamNumber7\Team7_FollowCam.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
     <Compile Include="Assets\Scripts\GameFrame.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\FriendItem.cs" />
+    <Compile Include="Assets\Scripts\TeamNumber7\Team7_CandySpowner.cs" />
+    <Compile Include="Assets\Scripts\UIAlertMsg.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatGui.cs" />
     <Compile Include="Assets\Scripts\TeamNumber7\Team7_Player.cs" />
     <Compile Include="Assets\Scripts\LobbyStartLogic.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
     <Compile Include="Assets\Scripts\GameInfoList.cs" />
-    <Compile Include="Assets\Scripts\UIAlertMsg.cs" />
-    <Compile Include="Assets\Scripts\TeamNumber7\Team7_JoinRoom.cs" />
-    <Compile Include="Assets\Scripts\TeamNumber7\Team7_GameManager.cs" />
-    <Compile Include="Assets\Scripts\TeamNumber7\Team7_UIManager.cs" />
-    <Compile Include="Assets\Scripts\MafiaScripts\CharacterJob.cs" />
-    <Compile Include="Assets\Scripts\MafiaScripts\NetworkMGR.cs" />
     <Compile Include="Assets\Scripts\MafiaScripts\PlayerInfo.cs" />
-    <Compile Include="Assets\Scripts\TeamNumber7\Team7_CandySpowner.cs" />
-    <Compile Include="Assets\Scripts\TeamNumber7\Team7_FollowCam.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -789,6 +789,9 @@
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
       <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
     </Reference>
@@ -833,9 +836,6 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
