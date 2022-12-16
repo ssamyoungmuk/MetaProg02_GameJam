@@ -40,6 +40,11 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - ImageOn
+  - KeyStateOff
+  - KeyStateOn
+  - CountPeopleNum
+  - MinusPeopleNum
+  - KeyMarkOn
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
