@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1930853852242222965}
   - component: {fileID: -5717573060362455084}
   - component: {fileID: 7169622639118475747}
+  - component: {fileID: 1478914929276675206}
   m_Layer: 0
   m_Name: Candy_Normal
   m_TagString: Untagged
@@ -138,3 +139,16 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &1478914929276675206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930853852242222966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4527dd2fae27d0649a551f65b8f4c69c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expPoint: 10

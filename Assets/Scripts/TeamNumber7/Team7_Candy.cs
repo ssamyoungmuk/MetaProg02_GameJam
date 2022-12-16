@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Team7_Candy : MonoBehaviour
+public class Team7_Candy : MonoBehaviourPun
 {
     [SerializeField] int expPoint;
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.GetComponent<Team7_Player>() != null)
         {
-            //other.gameObject.GetComponent<Team7_Player>().exp += expPoint;
+            other.gameObject.GetComponent<Team7_Player>().GetExp(expPoint);
+            PhotonNetwork.Destroy(this.gameObject);
         }
     }
 

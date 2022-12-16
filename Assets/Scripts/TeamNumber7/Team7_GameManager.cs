@@ -45,11 +45,16 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
         Debug.Log("마스터 서버에 연결 성공");
         PhotonNetwork.JoinRoom("CandyKongRoom"); // 방 들어오면 입장부터 시도하라
     }
+
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+        Debug.Log(cause);
+    }
     public override void OnJoinedRoom()
     {
         Debug.Log("진입 성공! 게임을 시작하지");
         GameStart();
-        InstCandy(150);
+        InstCandy(50);
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
