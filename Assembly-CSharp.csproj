@@ -86,6 +86,39 @@
     <Compile Include="Assets\Scripts\GameInfoList.cs" />
     <Compile Include="Assets\Scripts\MafiaScripts\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\TeamNumber7\Team7_Candy.cs" />
+    <Compile Include="Assets\Scripts\MafiaScripts\UIChatManager.cs" />
+    <Compile Include="Assets\Team_6\Scripts\GameManager_06.cs" />
+    <Compile Include="Assets\Team4\Scripts\PlayerMove.cs" />
+    <Compile Include="Assets\Team4\Scripts\GameSceneManager.cs" />
+    <Compile Include="Assets\Team4\Scripts\PlayerUI.cs" />
+    <Compile Include="Assets\Team4\Scripts\PlayerLeg.cs" />
+    <Compile Include="Assets\OneOnOne\Script\FollowCamera.cs" />
+    <Compile Include="Assets\Scripts\MafiaScripts\UIChatLine.cs" />
+    <Compile Include="Assets\Team_6\Scripts\Monster_Move_06.cs" />
+    <Compile Include="Assets\Team_6\Scripts\EndNextScene_06.cs" />
+    <Compile Include="Assets\Team4\Scripts\PlayerTestMove.cs" />
+    <Compile Include="Assets\Scripts\TeamNumber7\InputControll.cs" />
+    <Compile Include="Assets\OneOnOne\Script\Weapon.cs" />
+    <Compile Include="Assets\Team4\Scripts\LodingManager.cs" />
+    <Compile Include="Assets\Team_6\Scripts\Player_06.cs" />
+    <Compile Include="Assets\OneOnOne\Script\PhotonManager.cs" />
+    <Compile Include="Assets\Team4\Scripts\FollowCam.cs" />
+    <Compile Include="Assets\Team4\Scripts\GameMgr.cs" />
+    <Compile Include="Assets\Team4\Scripts\UIMgr.cs" />
+    <Compile Include="Assets\Team4\Scripts\DeligateCallBack.cs" />
+    <Compile Include="Assets\Team_6\Scripts\Rock_06.cs" />
+    <Compile Include="Assets\Team4\Scripts\KeyMove.cs" />
+    <Compile Include="Assets\Scripts\TeamNumber7\KHSPlayer.cs" />
+    <Compile Include="Assets\OneOnOne\Script\BasePlayer.cs" />
+    <Compile Include="Assets\Team4\Scripts\SwichToggle.cs" />
+    <Compile Include="Assets\Team4\Scripts\SwichPush.cs" />
+    <Compile Include="Assets\Team_6\Scripts\Monster_06.cs" />
+    <Compile Include="Assets\Scripts\MafiaScripts\Singleton.cs" />
+    <Compile Include="Assets\Team_6\Scripts\NextScene_06.cs" />
+    <Compile Include="Assets\Scripts\TeamNumber7\ObserverControll.cs" />
+    <Compile Include="Assets\Scripts\MafiaScripts\GameLogic.cs" />
+    <Compile Include="Assets\Team4\Scripts\LobbyManager.cs" />
+    <Compile Include="Assets\Team8_Scripts\ReadJson.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Sprites\Shaders\TMPro.cginc" />
@@ -832,6 +865,12 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
