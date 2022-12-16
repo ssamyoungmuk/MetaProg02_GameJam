@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bullet
+  - 1F_Button
+  - Button
   layers:
   - Default
   - TransparentFX
