@@ -7,7 +7,7 @@ using System;
 
 public class GameFrame : MonoBehaviour
 {
-    [SerializeField] Image imgGame;
+    [SerializeField] Image imgGame; // 난 이거 수정
 	[SerializeField] TextMeshProUGUI txtGameName;
 
 	public int GameIndex { get; set; }

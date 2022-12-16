@@ -29,13 +29,15 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
+        PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime = "fc387611-95cc-42c2-ae93-6e4d5bc85e09";
         PhotonNetwork.ConnectUsingSettings(); // 설정 정보로 마스터 서버 접속 시도
     }
+
     //=============================================================================
     #region Photon_Callback Functions
     private void Start()
     {
-        
+
     }
 
     public override void OnConnectedToMaster()
@@ -43,11 +45,16 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
         Debug.Log("마스터 서버에 연결 성공");
         PhotonNetwork.JoinRoom("CandyKongRoom"); // 방 들어오면 입장부터 시도하라
     }
+
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+        Debug.Log(cause);
+    }
     public override void OnJoinedRoom()
     {
         Debug.Log("진입 성공! 게임을 시작하지");
         GameStart();
-        InstCandy(150);
+        InstCandy(50);
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
@@ -117,5 +124,15 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
         }
     }
 
+    public void DestroyCandy(GameObject candy)
+    {
+        photonView.RPC("Remove", RpcTarget.All, candy);
+    }
+
+    [PunRPC]
+    private void Remove(GameObject Candy)
+    {
+        Destroy(Candy);
+    }
 
 }

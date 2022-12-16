@@ -4,8 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Weapon
   - Bullet
+  - Ground
   - Team7_Me
+  - BackDoor
+  - Door
   - Team7_Other
   layers:
   - Default

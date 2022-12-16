@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: 82b1d60c-4981-46d5-8976-1eea729aedfa
+    AppIdRealtime: fc387611-95cc-42c2-ae93-6e4d5bc85e09
     AppIdFusion: 
-    AppIdChat: 
+    AppIdChat: 40fd9f23-57a4-4635-a137-0ae3addea9d4
     AppIdVoice: 
     AppVersion: 
     UseNameServer: 1
@@ -39,12 +39,44 @@ MonoBehaviour:
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
+  - ImageOn
   - ButtonColor
   - ReadyCounT
   - ZeroCounT
   - PlayerAttack
   - Kill
   - Team7_Die
+  - AttackNow
+  - DieNow
+  - GameStartUI
+  - Player_JobSeting
+  - PlayerNum
+  - CountPeopleNum
+  - DisableCall
+  - EnableCall
+  - KeyMarkOn
+  - KeyStateOn
+  - MinusPeopleNum
+  - CreateMafiaInfo
+  - VoteCount
+  - PlayerJobList
+  - VoteEnd
+  - VoteVote
+  - LiveCount
+  - DieCount
+  - VoteVoteEnd
+  - Die
+  - MyInfo
+  - YouDie
+  - DoctorClick
+  - MafiaClick
+  - Heal
+  - YouHeal
+  - MafiaNight
+  - SetTime
+  - GameEnd
+  - SystemMessge
+  - Remove
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

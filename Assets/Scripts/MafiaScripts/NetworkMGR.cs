@@ -12,7 +12,7 @@ using System;
 
 namespace MafiaGame
 {
-    enum fade
+    public enum fade
     {
         In,
         Out,
@@ -30,8 +30,8 @@ namespace MafiaGame
         [Header("playerUI")]
         public TextMeshProUGUI[] playerName;
         public GameObject[] readyButton;
-        public GameObject[] voteButton;
 
+        bool isPlay;
 
         private int readyCount = 0;
         private int myButtonNum = 0;
@@ -45,10 +45,19 @@ namespace MafiaGame
             UnReady,
         }
 
+        bool isNameElseUIFadeout;
         // Start is called before the first frame update
+        private void Awake()
+        {
+            PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime = "1adfdb50-72b8-47e6-af98-608eb7519a4d\n";
+            PhotonNetwork.SendRate = 300;
+            PhotonNetwork.SerializationRate = 150;
+            Application.targetFrameRate = 60;
+
+        }
         void Start()
         {
-            StartCoroutine(Fade_Delay(blackUI,fade.Out));
+            GameLogic.Instance.Fade(blackUI, fade.Out);
             PhotonNetwork.ConnectUsingSettings(); //Photon.Pun ³»ºÎ Å¬·¡½º
             Debug.Log(PhotonNetwork.NetworkClientState + "*********************");
 
@@ -64,12 +73,12 @@ namespace MafiaGame
         {
             Debug.Log("Á¶ÀÎ ½ÇÆÐ");
             //¸Æ½º ÀÎ¿ø°ú ¹æ »óÅÂ Ç¥Çö (½ÃÀÛÀÎÁö ¾Æ´ÑÁö)
-            PhotonNetwork.CreateRoom("MafiaGame", new RoomOptions { MaxPlayers = 5, IsOpen = true });
+            PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 8, IsOpen = true });
         }
 
         public void OnEndEdit(string instr)
         {
-            if (Regex.IsMatch(instr, @"^(?=.*[a-z0-9°¡-ÆR])[a-z0-9°¡-ÆR]{2,16}$") !=true)
+            if (Regex.IsMatch(instr, @"^(?=.*[°¡-ÆR])[°¡-ÆR]{2,16}$") !=true)
             {
                 PhotonNetwork.NickName = instr;
                 return;
@@ -82,41 +91,33 @@ namespace MafiaGame
         public void OnClick_Connected()
         {
             if (isNameElseUIFadeout == true) return;
-            if (Regex.IsMatch(PhotonNetwork.NickName, @"^(?=.*[a-z0-9°¡-ÆR])[a-z0-9°¡-ÆR]{2,16}$") != true)
+            if (Regex.IsMatch(PhotonNetwork.NickName, @"^(?=.*[°¡-ÆR])[°¡-ÆR]{2,16}$") != true)
             {
                 Debug.Log(PhotonNetwork.NickName);
-                StartCoroutine(Fade_Delay(nameElseUI, fade.All));
+                GameLogic.Instance.Fade(nameElseUI, fade.All);
+                StartCoroutine(Delay());
                 return;
              }
             else
             {
-
+                StartCoroutine(Delay());
                 Debug.Log("ÀÔÀå");
                 PhotonNetwork.JoinRandomRoom();
-                nickNamePanel.SetActive(false);
+                GameLogic.Instance.Fade(nickNamePanel, fade.Out);
                 lobbyPanel.SetActive(true);
             }
+        }
+        IEnumerator Delay()
+        {
+            isNameElseUIFadeout = true;
+            yield return new WaitForSeconds(2f);
+            isNameElseUIFadeout = false;
         }
 
 
         public override void OnJoinedRoom()
         {
             Debug.Log("»õ·Î¿î ÇÃ·¹ÀÌ¾î°¡ Âü°¡ÇÏ¼Ì½À´Ï´Ù");
-
-            Player[] nickNameCheck = PhotonNetwork.PlayerList;
-            int checkNum = 0;
-            for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
-            {
-                if (nickNameCheck[i].NickName == PhotonNetwork.NickName)
-                {
-                    checkNum++;
-                    if (checkNum > 1)
-                    {
-                        PhotonNetwork.LeaveRoom();
-                        PhotonNetwork.LoadLevel("TitleScene");
-                    }
-                }
-            }
 
             myReadyState = ReadyState.UnReady;
             SortedPlayer();
@@ -131,6 +132,7 @@ namespace MafiaGame
         //ÇÃ·¹ÀÌ¾î°¡ ³ª°¥¶§
         public override void OnPlayerLeftRoom(Player otherPlayer)
         {
+            if(isPlay) return;
             ClearLobby();
             SortedPlayer();
         }
@@ -150,12 +152,12 @@ namespace MafiaGame
                 playerName[i].text = sortedPlayers[i].NickName;
                 playerName[i].gameObject.SetActive(true);
                 readyButton[i].gameObject.SetActive(true);
-                voteButton[i].gameObject.SetActive(true);
                 //ÀÚ½ÅÀÇ ¹öÆ°¸¸ È°¼ºÈ­ ÇÏ±â 
                 if (sortedPlayers[i].NickName == PhotonNetwork.NickName)
                 {
                     Debug.Log("i : " + i);
                     myButtonNum = i;
+                    playerName[i].color = Color.green;
                     readyButton[myButtonNum].GetComponent<Button>().interactable = true; //³ª¸¸ ´©¸£±â À§ÇØ È°¼ºÈ­
 
                     //³» »óÅÂ°¡ ·¹µð¸é ³ë¶õ»ö -->±×·±µ¥ ÀÌ°Ç ¼­¹ö¿¡¼­ Ç¥Çö ÇØÁà¾ß ÇÏ±â ¶§¹®¿¡ RPCÇÔ¼ö »ç¿ë
@@ -179,13 +181,54 @@ namespace MafiaGame
             else
                 readyButton[buttonNum].GetComponent<Image>().color = Color.grey;
         }
+        Coroutine startC;
+        public void LoadScene()
+        {
+            // ¸¶½ºÅÍÀÏ¶§¸¸ ÇØ´ç ÇÔ¼ö ½ÇÇà °¡´É
+            if (PhotonNetwork.IsMasterClient)
+            {
+                if (readyCount == PhotonNetwork.PlayerList.Length && readyCount >3)
+                {
+                    Debug.Log("½ÃÀÛ");
+                    //5¸í ·¹µð ¿Ï·á½Ã 2ÃÊÈÄ °ÔÀÓ ½ÇÇà ÄÚ·çÆ¾ 
+                    PhotonNetwork.CurrentRoom.IsOpen = false;
+                    if (startC != null) StopCoroutine(startC);
+                    startC = StartCoroutine(GameStartUI_Delay());
+                    
+                }
+            }
+        }
+        IEnumerator GameStartUI_Delay()
+        {
+            yield return new WaitForSeconds(2f);
+            if (readyCount == PhotonNetwork.PlayerList.Length && readyCount >3)
+            {
+                gameObject.GetPhotonView().RPC("GameStartUI", RpcTarget.All);
+            }
+            else
+            {
+                Debug.Log("´©±º°¡ ·¹µð Ãë¼ÒÇÔ");
+                PhotonNetwork.CurrentRoom.IsOpen = true;
+            }
+        }
+        [PunRPC]
+        void GameStartUI()
+        {
+            for(int i=0;i<readyButton.Length;i++)
+            {
+                Destroy(readyButton[i]);
+            }
+            isPlay = true;
+            GameLogic.Instance.characterJob =  gameObject.AddComponent<CharacterJob>();
+                GameLogic.Instance.GameStart();
+        }
         [PunRPC]
         void ReadyCounT()
         {
             if (PhotonNetwork.IsMasterClient)
             {
                 readyCount++;
-                //LoadScene();
+                LoadScene();
                 Debug.Log("·¹µð ¼ýÀÚ : " + readyCount);
             }
         }
@@ -208,43 +251,25 @@ namespace MafiaGame
                 playerName[i].gameObject.SetActive(false);
 
                 readyButton[i].gameObject.SetActive(false);
-                voteButton[i].gameObject.SetActive(false);
                 //soulEff[i].SetActive(false);
                 readyButton[i].GetComponent<Image>().color = Color.gray;
                 readyButton[i].GetComponent<Button>().interactable = false;
             }
         }
         #endregion
-
-
-
-        CanvasGroup canvasGroup;
-        bool isNameElseUIFadeout;
-        IEnumerator Fade_Delay(GameObject fadeIn,fade fd)
+        public void ButtonClick()
         {
-                canvasGroup = fadeIn.GetComponent<CanvasGroup>();
-            if (fd == fade.In|| fd == fade.All)
+            gameObject.GetPhotonView().RPC("ZeroCounT", RpcTarget.MasterClient);
+            if (myReadyState == ReadyState.Ready)
             {
-                canvasGroup.alpha = 0;
-                isNameElseUIFadeout = true;
-                fadeIn.SetActive(true);
-                for (int i = 0; i < 100; i++)
-                {
-                    canvasGroup.alpha += 0.01f;
-                    yield return new WaitForSeconds(0.01f);
-                }
+                myReadyState = ReadyState.UnReady;
+                SortedPlayer();
             }
-            if (fd == fade.Out || fd == fade.All)
+            else
             {
+                myReadyState = ReadyState.Ready;
+                SortedPlayer();
 
-                canvasGroup.alpha = 1;
-                for (int i = 0; i < 100; i++)
-                {
-                    canvasGroup.alpha -= 0.01f;
-                    yield return new WaitForSeconds(0.01f);
-                }
-                isNameElseUIFadeout = false;
-                fadeIn.SetActive(false);
             }
         }
     }

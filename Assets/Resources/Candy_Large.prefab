@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5356692387889669927}
   - component: {fileID: 4924815937795036322}
   - component: {fileID: 3884071813004970785}
+  - component: {fileID: 8210758517012280543}
   m_Layer: 0
   m_Name: Candy_Large
   m_TagString: Untagged
@@ -64,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f3206650dbaa53f46bb465f8efda72f6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -116,7 +117,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 3884071813004970785}
@@ -139,3 +140,16 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &8210758517012280543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2319070374415489490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4527dd2fae27d0649a551f65b8f4c69c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expPoint: 20
