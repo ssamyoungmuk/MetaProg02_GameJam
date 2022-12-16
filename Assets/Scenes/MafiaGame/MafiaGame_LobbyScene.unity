@@ -916,6 +916,7 @@ MonoBehaviour:
   jobUI2: {fileID: 2019245302}
   myJobText: {fileID: 1204406563}
   myTeam: {fileID: 2114594362}
+  policeClick: {fileID: 1759854386}
   voteButton:
   - {fileID: 5913733711253716014}
   - {fileID: 5913733710746554351}
@@ -2154,12 +2155,12 @@ GameObject:
   - component: {fileID: 1759854386}
   - component: {fileID: 1759854385}
   m_Layer: 5
-  m_Name: peopleWin (2)
+  m_Name: SkillClick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1759854384
 RectTransform:
   m_ObjectHideFlags: 0

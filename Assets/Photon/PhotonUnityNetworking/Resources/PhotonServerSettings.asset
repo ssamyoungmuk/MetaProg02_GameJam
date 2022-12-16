@@ -60,6 +60,10 @@ MonoBehaviour:
   - Die
   - MyInfo
   - YouDie
+  - DoctorClick
+  - MafiaClick
+  - Heal
+  - YouHeal
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
