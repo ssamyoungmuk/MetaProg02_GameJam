@@ -98,7 +98,9 @@ namespace MafiaGame
         void SetTime(int tm)
         {
             time = tm;
+            timeSet = true;
         }
+        bool timeSet;
         IEnumerator StartDebate()
         {
             if (killPlayerNum != -1)
@@ -115,14 +117,15 @@ namespace MafiaGame
             myInfo.Heal(false);
             if (PhotonNetwork.IsMasterClient)
             {
-                time = 180;
+                time = 120;
                 gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
             }
             maxVote = 0;
             maxVotePlayer = -1;
             debateTime_Text.gameObject.SetActive(true);
             debateTime_Text.text = time.ToString();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => timeSet);
+            timeSet = false;
             while (time > 0)
             {
                 if (PhotonNetwork.IsMasterClient)
@@ -148,7 +151,8 @@ namespace MafiaGame
                 time = 10;
                 gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
             }
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => timeSet);
+            timeSet = false;
             while (time > 0)
             {
                 if (PhotonNetwork.IsMasterClient)
@@ -169,7 +173,8 @@ namespace MafiaGame
                     time = 20;
                     gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
                 }
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitUntil(() => timeSet);
+                timeSet = false;
                 while (time > 0)
                 {
                     if (PhotonNetwork.IsMasterClient)
@@ -187,7 +192,9 @@ namespace MafiaGame
                     time = 10;
                     gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
                 }
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitUntil(() => timeSet);
+                timeSet = false;
+
                 while (time > 0)
                 {
                     if (PhotonNetwork.IsMasterClient)
@@ -203,8 +210,7 @@ namespace MafiaGame
             }
             //»ç¸ÁÈÄ ¹ãchat.SetActive(true);
             Fade(chat.gameObject, fade.Out);
-
-            yield return new WaitForSeconds(1f);
+            for (int i = 0; i < voteButton.Length; i++) if (voteButton[i].GetComponent<Image>().color == Color.yellow) voteButton[i].GetComponent<Image>().color = Color.white;
 
             Vote_Text.gameObject.SetActive(false);
 
@@ -218,7 +224,8 @@ namespace MafiaGame
                 time = 10;
                 gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
             }
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => timeSet);
+            timeSet = false;
             while (time > 0)
             {
                 if (PhotonNetwork.IsMasterClient)
@@ -325,7 +332,11 @@ namespace MafiaGame
         {
             if (myInfo.isDie) return;
             if (voteChack && Night != true) return;
-            if (isVoteOn) gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 0);
+            if (isVoteOn)
+            {
+                voteButton[0].GetComponent<Image>().color = Color.yellow;
+                gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 0);
+            }
             else if (Night && myInfo.jobName == jobList.Mafia && isSkill == false) MafiaClick(0);
             else if (Night && myInfo.jobName == jobList.Doctor && isSkill == false)
             {
@@ -343,7 +354,11 @@ namespace MafiaGame
         {
             if (myInfo.isDie) return;
             if (voteChack && Night != true) return;
-            if (isVoteOn) gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 1);
+            if (isVoteOn)
+            {
+                voteButton[1].GetComponent<Image>().color = Color.yellow;
+                gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 1);
+            }
             else if (Night && myInfo.jobName == jobList.Mafia && isSkill == false) MafiaClick(1);
             else if (Night && myInfo.jobName == jobList.Doctor && isSkill == false)
             {
@@ -361,7 +376,11 @@ namespace MafiaGame
         {
             if (myInfo.isDie) return;
             if (voteChack && Night != true) return;
-            if (isVoteOn) gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 2);
+            if (isVoteOn)
+            {
+                voteButton[2].GetComponent<Image>().color = Color.yellow;
+                gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 2);
+            }
             else if (Night && myInfo.jobName == jobList.Mafia && isSkill == false) MafiaClick(2);
             else if (Night && myInfo.jobName == jobList.Doctor && isSkill == false)
             {
@@ -379,7 +398,11 @@ namespace MafiaGame
         {
             if (myInfo.isDie) return;
             if (voteChack && Night != true) return;
-            if (isVoteOn) gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 3);
+            if (isVoteOn)
+            {
+                voteButton[3].GetComponent<Image>().color = Color.yellow;
+                gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 3);
+            }
             else if (Night && myInfo.jobName == jobList.Mafia && isSkill == false) MafiaClick(3);
             else if (Night && myInfo.jobName == jobList.Doctor && isSkill == false)
             {
@@ -397,7 +420,11 @@ namespace MafiaGame
         {
             if (myInfo.isDie) return;
             if (voteChack && Night != true) return;
-            if (isVoteOn) gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 4);
+            if (isVoteOn)
+            {
+                voteButton[4].GetComponent<Image>().color = Color.yellow;
+                gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 4);
+            }
             else if (Night && myInfo.jobName == jobList.Mafia && isSkill == false) MafiaClick(4);
             else if (Night && myInfo.jobName == jobList.Doctor && isSkill == false)
             {
@@ -415,7 +442,11 @@ namespace MafiaGame
         {
             if (myInfo.isDie) return;
             if (voteChack && Night != true) return;
-            if (isVoteOn) gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 5);
+            if (isVoteOn)
+            {
+                voteButton[5].GetComponent<Image>().color = Color.yellow;
+                gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 5);
+            }
             else if (Night && myInfo.jobName == jobList.Mafia && isSkill == false) MafiaClick(5);
             else if (Night && myInfo.jobName == jobList.Doctor && isSkill == false)
             {
@@ -433,7 +464,11 @@ namespace MafiaGame
         {
             if (myInfo.isDie) return;
             if (voteChack && Night != true) return;
-            if (isVoteOn) gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 6);
+            if (isVoteOn)
+            {
+                voteButton[6].GetComponent<Image>().color = Color.yellow;
+                gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 6);
+            }
             else if (Night && myInfo.jobName == jobList.Mafia && isSkill == false) MafiaClick(6);
             else if (Night && myInfo.jobName == jobList.Doctor && isSkill == false)
             {
@@ -451,7 +486,11 @@ namespace MafiaGame
         {
             if (myInfo.isDie) return;
             if (voteChack && Night != true) return;
-            if (isVoteOn) gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 7);
+            if (isVoteOn)
+            {
+                voteButton[7].GetComponent<Image>().color = Color.yellow;
+                gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 7);
+            }
             else if (Night && myInfo.jobName == jobList.Mafia && isSkill == false) MafiaClick(7);
             else if (Night && myInfo.jobName == jobList.Doctor && isSkill == false)
             {

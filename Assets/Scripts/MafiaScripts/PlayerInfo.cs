@@ -31,6 +31,8 @@ public class PlayerInfo : MonoBehaviourPun
         else
         {
             isDie = true;
+            if (jobName == jobList.Mafia) GameLogic.Instance.characterJob.mafiaNum--;
+            else GameLogic.Instance.characterJob.peopleNum--;
             if (photonView.IsMine) GameLogic.Instance.uIChatManager.SystemMessge($"{PhotonNetwork.PlayerList[player_Num].NickName}´ÔÀÌ Á×¾ú½À´Ï´Ù.");
             GameLogic.Instance.voteButton[player_Num].GetComponent<Image>().color = Color.red;
             GameLogic.Instance.voteButton[player_Num].GetComponent<Button>().interactable = false;
