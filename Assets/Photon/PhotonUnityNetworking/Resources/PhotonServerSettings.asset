@@ -44,16 +44,13 @@ MonoBehaviour:
   - ReadyCounT
   - ZeroCounT
   - PlayerAttack
-<<<<<<< HEAD
   - Kill
   - Team7_Die
   - AttackNow
   - DieNow
-=======
   - GameStartUI
   - Player_JobSeting
   - PlayerNum
->>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
