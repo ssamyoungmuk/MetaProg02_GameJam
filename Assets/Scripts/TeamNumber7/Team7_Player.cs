@@ -13,7 +13,7 @@ public class Team7_Player : MonoBehaviourPun
     float attackRotate = 0f;
     float mouseSpeed = 60f;
 
-    public int exp;
+    public int exp = 0;
 
     Rigidbody rb = null;
     BoxCollider weapon = null;
@@ -99,13 +99,13 @@ public class Team7_Player : MonoBehaviourPun
         }
     }
 
-
     public void GetExp(int point)
     {
         exp += point;
-        if(exp >= 100)
+        if (exp >= 100)
         {
-            transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
+            transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+            exp = 0;
         }
     }
 }
