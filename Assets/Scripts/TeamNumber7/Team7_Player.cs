@@ -79,12 +79,14 @@ public class Team7_Player : MonoBehaviourPun
 
     public void Team7_Die()
     {
+        Debug.Log("독립 함수 실행");
         photonView.RPC("DieNow", RpcTarget.All);
     }
 
     [PunRPC]
     public void DieNow()
     {
+        Debug.Log("RPC 실행");
         Destroy(gameObject);
         PhotonNetwork.Disconnect();
         Debug.Log("씬 이동");
