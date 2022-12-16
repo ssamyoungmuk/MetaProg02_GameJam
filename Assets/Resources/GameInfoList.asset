@@ -25,18 +25,18 @@ MonoBehaviour:
   - GameName: Halli Galli
     GameImage: {fileID: 21300000, guid: b4b212117662bc247824d79a4f365ddc, type: 3}
     GameSceneName: HalliGalli
-  - GameName: 
-    GameImage: {fileID: 0}
-    GameSceneName: 
+  - GameName: PicoPark
+    GameImage: {fileID: 21300000, guid: 449cf148bfea90e43a19f11366340c11, type: 3}
+    GameSceneName: PicoPark
   - GameName: Elevator Simulator
     GameImage: {fileID: 21300000, guid: 3f3659388eea40f4e8116066bd499fa7, type: 3}
-    GameSceneName: TeamNumber5
+    GameSceneName: DemoScene
   - GameName: 
     GameImage: {fileID: 0}
     GameSceneName: 
-  - GameName: 
-    GameImage: {fileID: 0}
-    GameSceneName: 
+  - GameName: CandyKong
+    GameImage: {fileID: 21300000, guid: 74ce9a2aab2f17e47b13198f2b71db56, type: 3}
+    GameSceneName: TeamNumber7
   - GameName: PicoPark
     GameImage: {fileID: 0}
     GameSceneName: PicoPark
