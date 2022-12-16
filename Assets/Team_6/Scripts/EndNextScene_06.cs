@@ -9,7 +9,7 @@ public class EndNextScene_06 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadSceneAsync("Team6_Title");
+            SceneManager.LoadScene("Team6_Title");
         }
     }
 }

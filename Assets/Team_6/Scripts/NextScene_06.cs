@@ -5,13 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class NextScene_06 : MonoBehaviour
 {
-  
-    // Update is called once per frame
-    void Update()
+    public void OnClick_GameStartButton()
     {
-        if(Input.GetMouseButtonDown(0))
-        {
-            SceneManager.LoadScene("Team_6");
-        }
+        SceneManager.LoadScene("Team_6");
+        Time.timeScale = 1;
     }
 }
