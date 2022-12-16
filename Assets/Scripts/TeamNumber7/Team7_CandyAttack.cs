@@ -19,11 +19,5 @@ public class Team7_CandyAttack : MonoBehaviourPunCallbacks
             //pv.RPC("Team7_Die", RpcTarget.All);
             //photonView.RPC("Kill", RpcTarget.All, other.gameObject);
         }
-
-    }
-
-
-
-
-    
+    }   
 }

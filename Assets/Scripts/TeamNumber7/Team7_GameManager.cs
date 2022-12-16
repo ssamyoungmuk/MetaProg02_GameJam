@@ -37,7 +37,7 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
     #region Photon_Callback Functions
     private void Start()
     {
-        
+
     }
 
     public override void OnConnectedToMaster()
@@ -124,5 +124,15 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
         }
     }
 
+    public void DestroyCandy(GameObject candy)
+    {
+        photonView.RPC("Remove", RpcTarget.All, candy);
+    }
+
+    [PunRPC]
+    private void Remove(GameObject Candy)
+    {
+        PhotonNetwork.Destroy(Candy);
+    }
 
 }

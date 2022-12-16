@@ -702,7 +702,8 @@ Chat
     Refactored: Some "base" enumerations that were provided by the Lite peer. They are now in LoadBalancingPeer.
     Added: support for RoomOptions.Plugins. Which we need now since we support multiple plugins per plugin dll - for testing purposes for instance.
     Fixed: The wrapper classes for the native sockets now do a Sleep(15) when there's nothing to receive. This reduces CPU load considerably.
-    Fixed: Unity library SocketWebTcp class for websocket support. It requires a coroutine on a new GameObject which is now marked as DontDestroyOnLoad(go) and survives scene loading.
+    Fixed: Unity library SocketWebTcp class for websocket support. It requires a coroutine on a new GameObject which is now marked as DontDestroyOnLoad(go) and survives 
+    loading.
     Fixed: The Windows 8 SDKs now include the release assemblies. This makes sure you can submit your app to the Windows Store.
     Added: ConnectionProtocol WebSocket and WebSocketSecure. It's simply a different protocol, compared to UDP and TCP, so it should be separated.
     Internal: DoFraming is now a part of TPeer (was in IPhotonSocket). It's set by the ConnectionProtocol which avoids misconfiguration.
