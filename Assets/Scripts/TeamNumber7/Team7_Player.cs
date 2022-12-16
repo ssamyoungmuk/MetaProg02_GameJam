@@ -80,14 +80,14 @@ public class Team7_Player : MonoBehaviourPun
 
     public void Team7_Die()
     {
-        PhotonNetwork.Destroy(this.gameObject);
-
+        Debug.Log("Die ÇÔ¼ö È£ÃâµÊ");
         photonView.RPC("DieNow", RpcTarget.All);
     }
 
     [PunRPC]
     public void DieNow()
     {
+        Debug.Log("Die ÇÔ¼ö È£Ãâ ¾ÈµÊ");
         Destroy(gameObject);
         PhotonNetwork.Disconnect();
         Debug.Log("¾À ÀÌµ¿");
