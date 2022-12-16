@@ -28,6 +28,8 @@ namespace ElevatorSimulator
         [SerializeField] private TextMeshPro indicator = null;
 
         [SerializeField] private ElevatorButton buttons = null;
+
+        
         [SerializeField] private FloorButton floorButtons = null;
 
         [SerializeField] private ElevatorDoor doors = null;
@@ -49,7 +51,11 @@ namespace ElevatorSimulator
         private Dictionary<float, int> dest_y = new Dictionary<float, int>()
     { { 0f, 0 }, { -16f, 1 }, { -10f, 2 }, { -4f, 3 }, { 2f, 4 }, {8f, 5 }, {14f, 6 } , {20f, 7 } };
 
-        [SerializeField] private float moveSpeed = 1f;
+        public  Dictionary<string, float> Outdest_y = new Dictionary<string, float>()
+    { { "", 0 }, { "1F_System_Left", -16f }, { "2F_System_Left",  -10f }, {"3F_System_Left", -4f}, {"4F_System_Left", 2f}, {"5F_System_Left",8f}, {"6F_System_Left",14f } , {"7F_System_Left",20f} };
+
+
+      [SerializeField] private float moveSpeed = 1f;
         private Coroutine myCoroutine = null;
         private void Start()
         {
@@ -131,6 +137,20 @@ namespace ElevatorSimulator
                 }
             }
         }
+        public void OutSortAndAddDestination(string floor, string UpOrDown)
+        {
+            if (UpOrDown == "ButtonUp")
+            {
+                upDestination.Add(Outdest_y[floor]);
+                upDestination.Sort();
+            }
+            else if (UpOrDown == "ButtonDown")
+            {
+                downDestination.Add(Outdest_y[floor]);
+                downDestination.Sort();
+                downDestination.Reverse();
+            }
+        }
         private IEnumerator MoveElevator()
         {
             while (true)
@@ -142,8 +162,10 @@ namespace ElevatorSimulator
                     {
                         transform.position = new Vector3(transform.position.x, upDestination[0], transform.position.z);
                         StartCoroutine(ElevatorSystem.Instance.OpenDoor(dest_y[upDestination[0]]));
+
+
                         upDestination.RemoveAt(0);
-                        myState = State.stop;
+                        
                         yield return new WaitForSecondsRealtime(3f);
                     }
                     else
@@ -160,7 +182,7 @@ namespace ElevatorSimulator
                         transform.position = new Vector3(transform.position.x, downDestination[0], transform.position.z);
                         StartCoroutine(ElevatorSystem.Instance.OpenDoor(dest_y[downDestination[0]]));
                         downDestination.RemoveAt(0);
-                        myState = State.stop;
+
                         yield return new WaitForSecondsRealtime(3f);
                     }
                     else
