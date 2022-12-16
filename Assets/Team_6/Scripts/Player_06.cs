@@ -11,10 +11,11 @@ public class Player_06 : MonoBehaviour
     [SerializeField] private bool isThrowing = false;
     [SerializeField] private int invert = 1;
     [SerializeField] GameObject rock = null;
+    [SerializeField] GameObject[] rocks = null;
 
     [SerializeField] List<GameObject> hp = null;
     [SerializeField] List<GameObject> UI = null;
-
+    private int curRockIdx = 0;
     // Update is called once per frame
     void Update()
     {
@@ -61,5 +62,16 @@ public class Player_06 : MonoBehaviour
     {
         throwSpeed += 2;
         rock.GetComponent<Rock_06>().MoveSpeed += 0.025f;
+        rock = ChangeRock(++curRockIdx);
+    }
+
+    private GameObject ChangeRock(int index)
+    {
+        for(int i = 0; i < rocks.Length; i++)
+        {
+            rocks[i].SetActive(false);
+        }
+        rocks[index].SetActive(true);
+        return rocks[index];
     }
 }

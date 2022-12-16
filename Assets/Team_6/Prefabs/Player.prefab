@@ -695,10 +695,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerArm: {fileID: 329875714534057940}
   angle: {x: 0, y: 0, z: -180}
-  throwSpeed: 5
+  throwSpeed: 3
   isThrowing: 0
   invert: 1
   rock: {fileID: 0}
+  rocks:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   hp:
   - {fileID: 0}
   - {fileID: 0}

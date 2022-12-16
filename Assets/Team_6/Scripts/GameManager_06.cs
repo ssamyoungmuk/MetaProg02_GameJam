@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class GameManager_06 : MonoBehaviour
 {
-    static GameManager_06 instance = new GameManager_06();
+    static GameManager_06 instance = null;
     public static GameManager_06 Instance { get { return instance; } set { instance = value; } }
 
     public float timer;
