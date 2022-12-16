@@ -11,7 +11,7 @@ public class Team7_Candy : MonoBehaviourPun
         if(other.gameObject.GetComponent<Team7_Player>() != null)
         {
             other.gameObject.GetComponent<Team7_Player>().GetExp(expPoint);
-            PhotonNetwork.Destroy(this.gameObject);
+            //Destroy(gameObject);
         }
     }
 
