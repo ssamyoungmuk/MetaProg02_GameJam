@@ -42,6 +42,12 @@ EditorBuildSettings:
     path: Assets/Team4/Scenes/PicoParkInGame.unity
     guid: 6a4e3d4e1cd750844b46dee20d727959
   - enabled: 1
+    path: Assets/Scenes/Team6_Title.unity
+    guid: ccc6d4fc94a29294bbb1008e604cef1d
+  - enabled: 1
+    path: Assets/Team_6/Scene/Team_6.unity
+    guid: c2ac003024657c742b2f1d14f34e96ff
+  - enabled: 1
     path: Assets/Scenes/LobbyScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

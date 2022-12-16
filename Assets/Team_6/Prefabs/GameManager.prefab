@@ -41,10 +41,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5525297823427879401}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7a48d6bcc2e9284795e9de22fba37ca, type: 3}
+  m_Script: {fileID: 11500000, guid: bb8b61a9637ba284f9246e56425b67bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
   money: 0
+  stage: 1
   myMoney: {fileID: 0}
-  text_Timer: {fileID: 0}
+  myTimer: {fileID: 0}
+  myStage: {fileID: 0}
