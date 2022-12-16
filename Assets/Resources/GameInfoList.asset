@@ -32,7 +32,7 @@ MonoBehaviour:
     GameImage: {fileID: 21300000, guid: 3f3659388eea40f4e8116066bd499fa7, type: 3}
     GameSceneName: DemoScene
   - GameName: Australopithecus
-    GameImage: {fileID: 21300000, guid: 0f8154c0cd13e3743b79c752ce1d8aa2, type: 3}
+    GameImage: {fileID: 21300000, guid: 93c6b14b98716df4cb1606a9aea3b013, type: 3}
     GameSceneName: Team6_Title
   - GameName: CandyKong
     GameImage: {fileID: 21300000, guid: 74ce9a2aab2f17e47b13198f2b71db56, type: 3}
