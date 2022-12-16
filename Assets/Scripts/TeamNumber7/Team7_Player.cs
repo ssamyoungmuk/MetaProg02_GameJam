@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
 
 public class Team7_Player : MonoBehaviourPun
 {
@@ -85,9 +86,15 @@ public class Team7_Player : MonoBehaviourPun
     [PunRPC]
     public void DieNow()
     {
-        Destroy(gameObject);
-        PhotonNetwork.Disconnect();
-        Debug.Log("æ¿ ¿Ãµø");
-        PhotonNetwork.LoadLevel("LobbyScene");
+        if (photonView.IsMine)
+        {
+            PhotonNetwork.Destroy(gameObject);
+            PhotonNetwork.Disconnect();
+            Debug.Log("æ¿ ¿Ãµø");
+            //PhotonNetwork.LoadLevel("LobbyScene");
+
+            Cursor.lockState = CursorLockMode.None; // ∏∂øÏΩ∫ ∂Ù
+            SceneManager.LoadScene("LobbyScene");
+        }
     }
 }

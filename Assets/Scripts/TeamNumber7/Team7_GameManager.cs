@@ -49,7 +49,7 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("진입 성공! 게임을 시작하지");
         GameStart();
-        InstCandy(150);
+        InstCandy(50);
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
