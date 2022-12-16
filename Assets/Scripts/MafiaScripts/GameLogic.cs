@@ -37,7 +37,6 @@ namespace MafiaGame
         {
             myInfo = obj.GetComponent<PlayerInfo>();
         }
-        [PunRPC]
         void YouDie(int num)
         {
             if (myInfo.player_Num == num)
@@ -107,7 +106,7 @@ namespace MafiaGame
             if (killPlayerNum != -1)
             {
 
-                if (PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("YouDie", RpcTarget.AllBufferedViaServer, killPlayerNum);
+                if (PhotonNetwork.IsMasterClient) YouDie(killPlayerNum);
                 if (PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("GameEnd", RpcTarget.AllBufferedViaServer);
             }
             for (int i = 0; i < voteButton.Length; i++) if (voteButton[i].GetComponent<Image>().color == Color.yellow) voteButton[i].GetComponent<Image>().color = Color.white;
@@ -581,7 +580,7 @@ namespace MafiaGame
                 Vote_Text.text = $"{PhotonNetwork.PlayerList[maxVotePlayer].NickName}´ÔÀÌ Á×¾ú½À´Ï´Ù.";
                 Vote_Text.gameObject.SetActive(true);
 
-                gameObject.GetPhotonView().RPC("YouDie", RpcTarget.AllBufferedViaServer, maxVotePlayer);
+                YouDie(maxVotePlayer);
                 Fade(Vote_Text.gameObject, fade.All);
             }
         }
