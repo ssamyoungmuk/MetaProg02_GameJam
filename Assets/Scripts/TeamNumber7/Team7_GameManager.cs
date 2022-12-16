@@ -37,13 +37,18 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
     #region Photon_Callback Functions
     private void Start()
     {
-        
+
     }
 
     public override void OnConnectedToMaster()
     {
         Debug.Log("마스터 서버에 연결 성공");
         PhotonNetwork.JoinRoom("CandyKongRoom"); // 방 들어오면 입장부터 시도하라
+    }
+
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+        Debug.Log(cause);
     }
     public override void OnJoinedRoom()
     {
@@ -119,5 +124,15 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
         }
     }
 
+    public void DestroyCandy(GameObject candy)
+    {
+        photonView.RPC("Remove", RpcTarget.All, candy);
+    }
+
+    [PunRPC]
+    private void Remove(GameObject Candy)
+    {
+        PhotonNetwork.Destroy(Candy);
+    }
 
 }
