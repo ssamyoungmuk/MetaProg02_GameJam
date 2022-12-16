@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: '1adfdb50-72b8-47e6-af98-608eb7519a4d
-
-'
+    AppIdRealtime: 82b1d60c-4981-46d5-8976-1eea729aedfa
     AppIdFusion: 
-    AppIdChat: 
+    AppIdChat: 40fd9f23-57a4-4635-a137-0ae3addea9d4
     AppIdVoice: 
     AppVersion: 
     UseNameServer: 1
@@ -53,6 +51,12 @@ MonoBehaviour:
   - GameStartUI
   - Player_JobSeting
   - PlayerNum
+  - CountPeopleNum
+  - DisableCall
+  - EnableCall
+  - KeyMarkOn
+  - KeyStateOn
+  - MinusPeopleNum
   - CreateMafiaInfo
   - VoteCount
   - PlayerJobList

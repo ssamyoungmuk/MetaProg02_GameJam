@@ -22,6 +22,7 @@ namespace PicoPark
             //접속에 필요한 정보 (게임 버전) 설정 
             PhotonNetwork.GameVersion = this.gameVersion;
             //설정한 정보로 마스터 서버 접속 시도 
+            PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime = "7fe92633-5523-4c25-892a-82fcf5787bb0";
             PhotonNetwork.ConnectUsingSettings();
 
             this.joinButton.interactable = false;
