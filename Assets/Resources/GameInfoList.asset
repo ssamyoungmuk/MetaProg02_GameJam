@@ -22,12 +22,12 @@ MonoBehaviour:
   - GameName: OneOnOne
     GameImage: {fileID: 21300000, guid: 644966388b554d94595e007b69dd6592, type: 3}
     GameSceneName: OneOnOne
-  - GameName: Halli Galli  
+  - GameName: Halli Galli
     GameImage: {fileID: 21300000, guid: 8a5e966481026504baded3027f594b21, type: 3}
     GameSceneName: HalliGalli
-  - GameName: 
+  - GameName: PicoPark
     GameImage: {fileID: 0}
-    GameSceneName: 
+    GameSceneName: PicoPark
   - GameName: 
     GameImage: {fileID: 0}
     GameSceneName: 
