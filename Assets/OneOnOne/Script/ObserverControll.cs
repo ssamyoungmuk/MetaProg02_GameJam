@@ -10,6 +10,9 @@ public class ObserverControll : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
+            Screen.SetResolution(1920, 1080, false);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             PhotonNetwork.Disconnect();
             SceneManager.LoadScene("LobbyScene");
         }
