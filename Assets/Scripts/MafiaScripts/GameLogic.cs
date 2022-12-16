@@ -39,10 +39,7 @@ namespace MafiaGame
         }
         void YouDie(int num)
         {
-            if (myInfo.player_Num == num)
-            {
-                myInfo.gameObject.GetPhotonView().RPC("Die", RpcTarget.All);
-            }
+            myInfo.gameObject.GetPhotonView().RPC("Die", RpcTarget.All);
         }
         int day = 0;
         int time = 0;
@@ -106,8 +103,7 @@ namespace MafiaGame
             if (killPlayerNum != -1)
             {
 
-                if (PhotonNetwork.IsMasterClient) YouDie(killPlayerNum);
-                if (PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("GameEnd", RpcTarget.AllBufferedViaServer);
+                if (PhotonNetwork.IsMasterClient) YouDie(killPlayerNum);                
             }
             for (int i = 0; i < voteButton.Length; i++) if (voteButton[i].GetComponent<Image>().color == Color.yellow) voteButton[i].GetComponent<Image>().color = Color.white;
             killPlayerNum = -1;
@@ -126,6 +122,7 @@ namespace MafiaGame
             timeSet = false;
             yield return new WaitUntil(() => timeSet);
             timeSet = false;
+            if (PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("GameEnd", RpcTarget.AllBufferedViaServer);
             myInfo.Heal(false);
             while (time > 0)
             {
