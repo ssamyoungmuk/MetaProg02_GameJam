@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 11613827}
   m_Layer: 0
   m_Name: ButtonDown
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4346,7 +4346,7 @@ GameObject:
   - component: {fileID: 285205565}
   m_Layer: 0
   m_Name: ButtonDown
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8516,7 +8516,7 @@ GameObject:
   - component: {fileID: 575258297}
   m_Layer: 0
   m_Name: ButtonUp
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9909,7 +9909,7 @@ GameObject:
   - component: {fileID: 646229819}
   m_Layer: 0
   m_Name: ButtonUp
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11867,7 +11867,7 @@ GameObject:
   - component: {fileID: 873699775}
   m_Layer: 0
   m_Name: ButtonUp
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12699,7 +12699,7 @@ GameObject:
   - component: {fileID: 936520621}
   m_Layer: 0
   m_Name: ButtonDown
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15675,7 +15675,7 @@ GameObject:
   - component: {fileID: 1083964739}
   m_Layer: 0
   m_Name: ButtonUp
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22745,7 +22745,7 @@ GameObject:
   - component: {fileID: 1603967726}
   m_Layer: 0
   m_Name: ButtonDown
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31093,7 +31093,7 @@ GameObject:
   - component: {fileID: 2098623169}
   m_Layer: 0
   m_Name: ButtonDown
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31901,7 +31901,7 @@ GameObject:
   - component: {fileID: 2125026067}
   m_Layer: 0
   m_Name: ButtonUp
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
