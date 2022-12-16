@@ -132,7 +132,7 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
     [PunRPC]
     private void Remove(GameObject Candy)
     {
-        PhotonNetwork.Destroy(Candy);
+        Destroy(Candy);
     }
 
 }
