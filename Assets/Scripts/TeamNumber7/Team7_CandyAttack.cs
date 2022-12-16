@@ -9,7 +9,7 @@ public class Team7_CandyAttack : MonoBehaviourPunCallbacks
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Team7_Other"))
+        if (other.CompareTag("Team7_Other") && photonView.IsMine)
         {
             //other.GetComponent<Team7_Player>().Team7_Die();
 
