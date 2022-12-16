@@ -59,19 +59,16 @@ namespace OOO
         {
             base.OnConnectedToMaster();
             InServer = true;
-            Debug.Log("PhotonManager## Server Connected!");
         }
         public override void OnJoinedLobby()
         {
             base.OnJoinedLobby();
             InLobby = true;
-            Debug.Log("PhotonManager## Lobby Joined!");
         }
         public override void OnJoinedRoom()
         {
             base.OnJoinedRoom();
             InRoom = true;
-            Debug.Log("PhotonManager## Room Joined!");
 
             int randIndex = Random.Range(0, players.Count);
 

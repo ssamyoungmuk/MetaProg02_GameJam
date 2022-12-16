@@ -81,8 +81,9 @@ namespace OOO
         {
             if (!photonView.IsMine) return;
 
-            float  getAxisX = Input.GetAxis("Horizontal");
+            float getAxisX = Input.GetAxis("Horizontal");
             float getAxisZ = Input.GetAxis("Vertical");
+
 
             lookForward = new Vector3(cam.transform.forward.x, 0f, cam.transform.forward.z).normalized;
             lookRight = new Vector3(cam.transform.right.x, 0f, cam.transform.right.z).normalized;
@@ -91,8 +92,11 @@ namespace OOO
 
             Vector3 newPos = myData.info.speed * Time.deltaTime * moveDir.normalized;
 
+            if (getAxisX != 0 || getAxisZ != 0)
+            {
+                rb.transform.rotation = Quaternion.LookRotation(moveDir);
+            }
             rb.position += newPos;
-            rb.transform.rotation = Quaternion.LookRotation(moveDir);
         }
 
         public void TransferDamage()
@@ -124,13 +128,11 @@ namespace OOO
             while (true)
             {
                 time += Time.deltaTime;
-                Debug.Log(time);
 
                 yield return null;  
 
                 if (time > 2f)
                 {
-                    Debug.Log("hi");
                     this.transform.rotation = Quaternion.identity;
                     rb.freezeRotation = true;
                     hitFlag = false;
