@@ -1,5 +1,15 @@
+/.vs
 /Logs
 /Library
 /Temp
 /obj
+<<<<<<< HEAD
 *.csproj
+=======
+/UserSettings
+.vsconfig
+*.csproj
+*.sln
+*.obj
+
+>>>>>>> main

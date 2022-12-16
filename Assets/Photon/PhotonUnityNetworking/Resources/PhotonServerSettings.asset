@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: 7fe92633-5523-4c25-892a-82fcf5787bb0
+    AppIdRealtime: 82b1d60c-4981-46d5-8976-1eea729aedfa
     AppIdFusion: 
     AppIdChat: 
     AppIdVoice: 
@@ -40,11 +40,28 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - ImageOn
+<<<<<<< HEAD
   - KeyStateOff
   - KeyStateOn
   - CountPeopleNum
   - MinusPeopleNum
   - KeyMarkOn
+=======
+  - ButtonColor
+  - ReadyCounT
+  - ZeroCounT
+  - PlayerAttack
+<<<<<<< HEAD
+  - Kill
+  - Team7_Die
+  - AttackNow
+  - DieNow
+=======
+  - GameStartUI
+  - Player_JobSeting
+  - PlayerNum
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
+>>>>>>> main
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
