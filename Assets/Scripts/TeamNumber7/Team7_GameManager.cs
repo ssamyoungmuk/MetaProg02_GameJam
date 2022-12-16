@@ -10,6 +10,7 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
 {
     Image deadLog;
     [SerializeField] Team7_UIManager UIManager;
+    GameObject candy = null;
 
     #region Singleton
     private static Team7_GameManager instance;
@@ -32,6 +33,10 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
     }
     //=============================================================================
     #region Photon_Callback Functions
+    private void Start()
+    {
+        
+    }
 
     public override void OnConnectedToMaster()
     {
@@ -42,25 +47,26 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("진입 성공! 게임을 시작하지");
         GameStart();
+        InstCandy(150);
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
         Debug.Log("CandyKongRoom 진입 실패! 고로 방 만든다");
 
-        PhotonNetwork.CreateRoom("CandyKongRoom", new RoomOptions { MaxPlayers = 20 }); ;
+        PhotonNetwork.CreateRoom("CandyKongRoom", new RoomOptions { MaxPlayers = 20 });
     }
     #endregion
     //=========================================================================
 
     private void GameStart()
     {
-        UIManager.transform.GetChild(1).gameObject.SetActive(true); // UI Score 띄우기
-        UIManager.transform.GetChild(0).gameObject.SetActive(false); // 연결중 배너 비활성화
+        //UIManager.transform.GetChild(1).gameObject.SetActive(true); // UI Score 띄우기
+        //UIManager.transform.GetChild(0).gameObject.SetActive(false); // 연결중 배너 비활성화
 
         // 플레이어 랜덤 위치에 생성
         GameObject player = PhotonNetwork.Instantiate("Team7_Player", SetRandomPos(), Quaternion.identity);
-
+        Camera.main.GetComponent<Team7_FollowCam>().SetCam();
     }
 
 
@@ -82,6 +88,27 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
     private Vector3 SetRandomPos() // 게임 매니저 내부 함수 중에 랜덤 위치값을 반환하는 경우 사용
     {
         return new Vector3(Random.Range(0, 20), 1, Random.Range(0, 20));
+    }
+
+    private void InstCandy(int Num)
+    {
+        int RanNum = 0;
+        for (int i = 0; i < Num; i++)
+        {
+            RanNum = Random.Range(1, 3);
+            if (RanNum % 3 == 0)
+            {
+                candy = PhotonNetwork.Instantiate("Candy_Large", SetRandomPos(), Quaternion.identity);
+            }
+            else if (RanNum % 3 == 1)
+            {
+                candy = PhotonNetwork.Instantiate("Candy_Normal", SetRandomPos(), Quaternion.identity);
+            }
+            else
+            {
+                candy = PhotonNetwork.Instantiate("Candy_Small", SetRandomPos(), Quaternion.identity);
+            }
+        }
     }
 
 

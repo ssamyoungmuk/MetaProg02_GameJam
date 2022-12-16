@@ -47,7 +47,6 @@ public class Player_06 : MonoBehaviour
 
     public void Hit()
     {
-        Debug.Log("플레이어 아야했쪙");
         hp[0].SetActive(false);
         hp.RemoveAt(0);
 
@@ -56,5 +55,11 @@ public class Player_06 : MonoBehaviour
             UI[0].SetActive(true);
             Time.timeScale = 0;
         }
+    }
+
+    public void Upgrade()
+    {
+        throwSpeed += 2;
+        rock.GetComponent<Rock_06>().MoveSpeed += 0.025f;
     }
 }

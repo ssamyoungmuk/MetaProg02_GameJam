@@ -4,13 +4,10 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-namespace MafiaGamne
+namespace MafiaGame
 {
     public class CharacterJob : MonoBehaviourPunCallbacks
     {
-        bool police = false;
-        bool doctor = false;
-
         List<GameObject> player = new List<GameObject>();
 
         // ¸¶ÇÇ¾Æ 0, °æÂû 1, ÀÇ»ç 2, ½Ã¹Î 3
@@ -23,10 +20,8 @@ namespace MafiaGamne
             {
                 if (PhotonNetwork.PlayerList[i].NickName == PhotonNetwork.NickName)
                 {
-                    GameObject _player = PhotonNetwork.Instantiate("Player", new Vector3(0, 0, 0), Quaternion.identity);
-                    _player.AddComponent<PlayerInfo>();
+                    GameObject _player = PhotonNetwork.Instantiate("MafiaInfo", new Vector3(0, 0, 0), Quaternion.identity);
                     _player.GetPhotonView().RPC("PlayerNum", RpcTarget.All, i);
-                    player.Add(_player);
                 }
             }
         }
@@ -50,16 +45,16 @@ namespace MafiaGamne
                 }
             }
         }
-
         private void Start()
         {
             int playerNum = PhotonNetwork.PlayerList.Length;
             if (PhotonNetwork.IsMasterClient)
             {
                 JobSeting(playerNum, 0, playerNum);
-                for (int i = 0; i < playerNum; i++)
+                PlayerInfo[] playerList = FindObjectsOfType<PlayerInfo>();
+                for (int i = 0; i < playerList.Length; i++)
                 {
-                    player[i].GetComponent<PlayerInfo>().Player_JobSeting(job[i]);
+                    playerList[i].gameObject.GetPhotonView().RPC("Player_JobSeting",RpcTarget.All,job[i]);
                 }
             }
         }

@@ -5,11 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bullet
+  - Team7_Me
   - 1F_Button
   - Button
   - Stone
   - Weapon
+  - Ground
   - DeadZone
+  - Door
+  - BackDoor
   layers:
   - Default
   - TransparentFX
