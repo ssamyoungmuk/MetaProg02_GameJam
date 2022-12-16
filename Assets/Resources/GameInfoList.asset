@@ -22,7 +22,7 @@ MonoBehaviour:
   - GameName: OneOnOne
     GameImage: {fileID: 21300000, guid: 644966388b554d94595e007b69dd6592, type: 3}
     GameSceneName: OneOnOne
-  - GameName: Halli Galli  
+  - GameName: Halli Galli
     GameImage: {fileID: 21300000, guid: 8a5e966481026504baded3027f594b21, type: 3}
     GameSceneName: HalliGalli
   - GameName: 
@@ -34,9 +34,9 @@ MonoBehaviour:
   - GameName: Elevator Simulator
     GameImage: {fileID: 21300000, guid: 3f3659388eea40f4e8116066bd499fa7, type: 3}
     GameSceneName: TeamNumber5
-  - GameName: 
-    GameImage: {fileID: 0}
-    GameSceneName: 
+  - GameName: CandyKong
+    GameImage: {fileID: 21300000, guid: 74ce9a2aab2f17e47b13198f2b71db56, type: 3}
+    GameSceneName: TeamNumber7
   - GameName: PicoPark
     GameImage: {fileID: 0}
     GameSceneName: PicoPark
