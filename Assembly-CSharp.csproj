@@ -53,7 +53,7 @@
     <UnityVersion>2021.3.7f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
@@ -64,6 +64,7 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
     <Compile Include="Assets\Scripts\MafiaScripts\NetworkMGR.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
+    <Compile Include="Assets\Scripts\TeamNumber7\Team7_CandyAttack.cs" />
     <Compile Include="Assets\Scripts\TeamNumber5\PlayerMove.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\WebSocket.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
@@ -84,7 +85,7 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
     <Compile Include="Assets\Scripts\GameInfoList.cs" />
     <Compile Include="Assets\Scripts\MafiaScripts\PlayerInfo.cs" />
-    <Compile Include="Assets\Scripts\TeamNumber7\Team7_CandyAttack.cs" />
+    <Compile Include="Assets\Scripts\TeamNumber7\Team7_Candy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Sprites\Shaders\TMPro.cginc" />

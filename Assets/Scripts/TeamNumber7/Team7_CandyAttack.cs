@@ -9,7 +9,7 @@ public class Team7_CandyAttack : MonoBehaviourPun
     {
         if (!other.CompareTag("Team7_Me") && other.CompareTag("Team7_Other"))
         {
-            Kill(other.gameObject);
+            photonView.RPC("Kill", RpcTarget.All, other.gameObject);
         }
     }
 
@@ -18,6 +18,8 @@ public class Team7_CandyAttack : MonoBehaviourPun
     {
         target.GetComponent<Team7_Player>().Team7_Die();
     }
+
+
 
     
 }
