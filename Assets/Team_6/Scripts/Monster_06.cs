@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Monster_06 : MonoBehaviour
 {
-    [SerializeField] GameObject[] monsterPrefab;
+    [SerializeField] GameObject[] monsterPrefab = null;
     public List<GameObject> monsterList = new List<GameObject>();
     Monster_Move_06 monsterMove;
     public int index = 0;
