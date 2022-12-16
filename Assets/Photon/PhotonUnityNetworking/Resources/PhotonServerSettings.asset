@@ -53,7 +53,7 @@ MonoBehaviour:
   - GameStartUI
   - Player_JobSeting
   - PlayerNum
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
