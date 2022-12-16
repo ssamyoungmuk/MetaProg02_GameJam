@@ -7,17 +7,14 @@ public class Team7_CandyAttack : MonoBehaviourPun
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Team7_Me") && other.CompareTag("Team7_Other"))
+        if (other.CompareTag("Team7_Other"))
         {
-            photonView.RPC("Kill", RpcTarget.All, other.gameObject);
+            other.GetComponent<Team7_Player>().Team7_Die();
+
+            //photonView.RPC("Kill", RpcTarget.All, other.gameObject);
         }
     }
 
-    [PunRPC]
-    private void Kill(GameObject target)
-    {
-        target.GetComponent<Team7_Player>().Team7_Die();
-    }
 
 
 

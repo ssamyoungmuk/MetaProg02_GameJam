@@ -45,6 +45,8 @@ MonoBehaviour:
   - PlayerAttack
   - Kill
   - Team7_Die
+  - AttackNow
+  - DieNow
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
