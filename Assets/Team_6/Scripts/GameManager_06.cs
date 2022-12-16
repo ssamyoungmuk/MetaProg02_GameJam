@@ -3,13 +3,8 @@ using UnityEngine.UI;
 
 public class GameManager_06 : MonoBehaviour
 {
-<<<<<<< HEAD
-    public float timer; // 주석을 달자~~
-    public Text text_Timer;
-=======
     static GameManager_06 instance = new GameManager_06();
     public static GameManager_06 Instance { get { return instance; } set { instance = value; } }
->>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
 
     public float timer;
     public int money = 0;
