@@ -12,7 +12,7 @@ namespace ElevatorSimulator
 
         private Color origin;
 
-        public bool isSelected = false;
+        private bool isSelected = false;
 
         Elevator ele;
         // Start is called before the first frame update
@@ -33,15 +33,10 @@ namespace ElevatorSimulator
 
                     if (hit.transform.tag == "Button")
                     {
-                        if (isSelected)
-                            return;
                         if (!isSelected)
                         {
                             origin = hit.transform.GetChild(0).GetComponent<TextMeshPro>().color;
                             hit.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.red;
-                            ElevatorSystem.Instance.Elevator.OutSortAndAddDestination(hit.transform.parent.gameObject.name, hit.transform.gameObject.name);
-                            Debug.Log(hit.transform.parent.gameObject.name); // 층수확인
-                            Debug.Log(hit.transform.gameObject.name); // 업다운인지확인
                             isSelected = true;
                         }
                         else

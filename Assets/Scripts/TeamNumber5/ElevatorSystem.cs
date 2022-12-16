@@ -25,7 +25,6 @@ namespace ElevatorSimulator
         }
 
         [SerializeField] private Elevator elevator = null;
-        public Elevator Elevator => elevator;
 
         [SerializeField] private float doorSpeed = 3f;
         public IEnumerator OpenDoor(int floor)
