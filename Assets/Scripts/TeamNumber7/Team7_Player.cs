@@ -26,6 +26,8 @@ public class Team7_Player : MonoBehaviourPun
         CandyAttack.transform.rotation = Quaternion.Euler(0, 180, 0);
         weapon.enabled = false;
         Cursor.lockState = CursorLockMode.Locked; // 마우스 락
+
+        if (!photonView.IsMine) gameObject.tag = "Team7_Other";
     }
 
     void Update()
@@ -66,5 +68,23 @@ public class Team7_Player : MonoBehaviourPun
         CandyAttack.transform.localRotation = Quaternion.Euler(new Vector3(180, rb.rotation.y, 0));
         weapon.enabled = false;
         yield break;
+    }
+
+    [PunRPC]
+    public void Team7_Die()
+    {
+        PhotonNetwork.Destroy(this.gameObject);
+
+        QuitRoom();
+    }
+
+    private void QuitRoom()
+    {
+        Debug.Log("죽었으니 방에서 퇴장");
+        PhotonNetwork.LeaveRoom();
+        Debug.Log("연결도 끊고");
+        PhotonNetwork.Disconnect();
+        Debug.Log("씬 이동");
+        PhotonNetwork.LoadLevel("LobbyScene");
     }
 }

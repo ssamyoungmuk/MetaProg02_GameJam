@@ -52,9 +52,15 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
-        Debug.Log("CandyKongRoom 진입 실패! 고로 방 만든다");
+        Debug.Log("CandyKongRoom 진입 실패! 로비로 진입");
 
+        Debug.Log("방 생성");
         PhotonNetwork.CreateRoom("CandyKongRoom", new RoomOptions { MaxPlayers = 20 });
+
+
+        /*Debug.Log("생성한 방에 입장");
+        PhotonNetwork.JoinRoom("CandyKongRoom"); // 방 들어오면 입장부터 시도하라*/
+
     }
     #endregion
     //=========================================================================
