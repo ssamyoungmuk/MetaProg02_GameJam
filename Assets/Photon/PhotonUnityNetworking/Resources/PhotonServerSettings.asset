@@ -51,6 +51,12 @@ MonoBehaviour:
   - GameStartUI
   - Player_JobSeting
   - PlayerNum
+  - CountPeopleNum
+  - DisableCall
+  - EnableCall
+  - KeyMarkOn
+  - KeyStateOn
+  - MinusPeopleNum
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
