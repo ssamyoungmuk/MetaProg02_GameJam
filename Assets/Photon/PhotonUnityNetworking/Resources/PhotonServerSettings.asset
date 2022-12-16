@@ -15,7 +15,7 @@ MonoBehaviour:
   AppSettings:
     AppIdRealtime: 82b1d60c-4981-46d5-8976-1eea729aedfa
     AppIdFusion: 
-    AppIdChat: 
+    AppIdChat: 40fd9f23-57a4-4635-a137-0ae3addea9d4
     AppIdVoice: 
     AppVersion: 
     UseNameServer: 1
@@ -40,16 +40,6 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - ImageOn
-<<<<<<< HEAD
-<<<<<<< HEAD
-  - KeyStateOff
-  - KeyStateOn
-  - CountPeopleNum
-  - MinusPeopleNum
-  - KeyMarkOn
-=======
-=======
->>>>>>> main
   - ButtonColor
   - ReadyCounT
   - ZeroCounT
@@ -61,11 +51,31 @@ MonoBehaviour:
   - GameStartUI
   - Player_JobSeting
   - PlayerNum
-<<<<<<< HEAD
->>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
->>>>>>> main
-=======
->>>>>>> main
+  - CountPeopleNum
+  - DisableCall
+  - EnableCall
+  - KeyMarkOn
+  - KeyStateOn
+  - MinusPeopleNum
+  - CreateMafiaInfo
+  - VoteCount
+  - PlayerJobList
+  - VoteEnd
+  - VoteVote
+  - LiveCount
+  - DieCount
+  - VoteVoteEnd
+  - Die
+  - MyInfo
+  - YouDie
+  - DoctorClick
+  - MafiaClick
+  - Heal
+  - YouHeal
+  - MafiaNight
+  - SetTime
+  - GameEnd
+  - SystemMessge
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

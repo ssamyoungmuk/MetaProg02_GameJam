@@ -20,20 +20,20 @@ MonoBehaviour:
     GameImage: {fileID: 21300000, guid: 1253fbc190bdf0744848efa6bab684e5, type: 3}
     GameSceneName: MafiaGame_LobbyScene
   - GameName: OneOnOne
-    GameImage: {fileID: 21300000, guid: 644966388b554d94595e007b69dd6592, type: 3}
+    GameImage: {fileID: 21300000, guid: 83918ef5b39c93742976dc1c19a35b84, type: 3}
     GameSceneName: OneOnOne
   - GameName: Halli Galli
-    GameImage: {fileID: 21300000, guid: 8a5e966481026504baded3027f594b21, type: 3}
+    GameImage: {fileID: 21300000, guid: b4b212117662bc247824d79a4f365ddc, type: 3}
     GameSceneName: HalliGalli
-  - GameName: PicoPark
-    GameImage: {fileID: 0}
-    GameSceneName: PicoPark
   - GameName: 
     GameImage: {fileID: 0}
     GameSceneName: 
   - GameName: Elevator Simulator
     GameImage: {fileID: 21300000, guid: 3f3659388eea40f4e8116066bd499fa7, type: 3}
     GameSceneName: TeamNumber5
+  - GameName: 
+    GameImage: {fileID: 0}
+    GameSceneName: 
   - GameName: 
     GameImage: {fileID: 0}
     GameSceneName: 
