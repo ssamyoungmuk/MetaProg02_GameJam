@@ -5,6 +5,7 @@ EditorUserSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 4
   m_ConfigSettings:
+<<<<<<< HEAD
     RecentlyUsedSceneGuid-0:
       value: 010503040607580e0f5a0e7245715c4413164d28297171337e2d4565bbe5663e
       flags: 0
@@ -12,11 +13,36 @@ EditorUserSettings:
       value: 5505040451545f0e580f587747270e441016192b782b7e32782c1e67b1e2356c
       flags: 0
     RecentlyUsedSceneGuid-2:
+<<<<<<< HEAD
       value: 5a5757560101590a5d0c0e24427b5d44434e4c7a7b7a23677f2b4565b7b5353a
+=======
+      value: 5b52570755540c0b5c0a5b2112720a44444f1b7c757825652b284460e1b46261
+      flags: 0
+    RecentlyUsedSceneGuid-3:
+<<<<<<< HEAD
+      value: 5350060301565e025c0a0f21117b0644154e487c787077697b7c1e6be1e2673c
+      flags: 0
+    RecentlyUsedSceneGuid-3:
+      value: 50070c0353005c0d09595c27417a5d44174e1c787e7d7e317e2a1b35b7e2323e
+      flags: 0
+    RecentlyUsedSceneGuid-4:
+      value: 50070c0353005c0d09595c27417a5d44174e1c787e7d7e317e2a1b35b7e2323e
+=======
+      value: 5001575e060d5e0e0f56547b46715c4442154d7c297822617d701966b4e56c69
+      flags: 0
+    RecentlyUsedSceneGuid-4:
+      value: 5a5757560101590a5d0c0e24427b5d44434e4c7a7b7a23677f2b4565b7b5353a
+>>>>>>> remotes/origin/team_6
+      flags: 0
+    RecentlyUsedSceneGuid-5:
+      value: 5352525401050d0c0c0f0d7213205944444f4c287b7c70632e2b4466b5b7633a
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
       flags: 0
     RecentlyUsedSceneGuid-3:
       value: 0709015e51515c0a5e575e7714210e4446164d78747172337a2a4536b1b0366a
       flags: 0
+=======
+>>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
     vcSharedLogLevel:
       value: 0d5e400f0650
       flags: 0

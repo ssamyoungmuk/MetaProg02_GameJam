@@ -5,11 +5,11 @@ using Photon.Pun;
 
 public class PlayerInfo : MonoBehaviour
 {
-    int player_Num = 0;
-    int player_JobNum = 0;
-    string player_JobName;
+    [SerializeField] int player_Num = 0;
+    [SerializeField] int player_JobNum = 0;
+    [SerializeField] string player_JobName;
 
-    bool countChack = false;     // 플레이어의 수에 따라 직업을 결정할때 사용
+    [SerializeField] bool countChack = false;     // 플레이어의 수에 따라 직업을 결정할때 사용
 
     public enum Job
     {
@@ -19,29 +19,32 @@ public class PlayerInfo : MonoBehaviour
         citizen = 3
     }
 
+    [PunRPC]
     void PlayerNum(int num)
     {
         player_Num = num;
     }
 
+    [PunRPC]
     public void Player_JobSeting(int _job)
     {
         int playerCount = PhotonNetwork.PlayerList.Length;
 
         if (playerCount == 4 || playerCount == 5)
         {
-            countChack = false;
             // 경찰 0, 의사 1, 마피아 2
-
+            JobSerch(_job, false);
+            Debug.Log(player_Num + " , " + player_JobName);
         }
         else
         {
-            countChack = true;
-            // 경찰 0, 의사 1, 마피아 2 ~ 3
+            // 경찰 0, 의사 1, 마피아 2 ~ 3 a 4
+            JobSerch(_job, true);
+            Debug.Log(player_Num + " , " + player_JobName);
         }
     }
 
-    public void JobSerch(int _job)
+    public void JobSerch(int _job, bool countChack)
     {
         if (_job <= 3)
         {
@@ -60,8 +63,9 @@ public class PlayerInfo : MonoBehaviour
                     if (countChack) player_JobName = "마피아";
                     else player_JobName = "시민";
                     break;
-            } 
+            }
         }
         else player_JobName = "시민";
     }
+
 }
