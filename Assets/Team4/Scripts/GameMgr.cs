@@ -24,12 +24,27 @@ namespace PicoPark
             }
         }
 
+        [SerializeField] bool gameOver;
+
         [SerializeField] public UIMgr uiMgr;
+        [SerializeField] public GameSceneManager gameSceneManager;
         // Start is called before the first frame update
         void Start()
         {
             uiMgr = FindObjectOfType<UIMgr>();
+            gameSceneManager = FindObjectOfType<GameSceneManager>();
+        }
+        public void EndGame()
+        {
+            StartCoroutine(Co_ToLobby());
+        }
+        IEnumerator Co_ToLobby()
+        {
+            yield return new WaitForSeconds(3);
+            gameOver = true;
+            gameSceneManager.GameToLobby();
         }
 
+        public bool GetOverState { get{ return gameOver; } }
     }
 }

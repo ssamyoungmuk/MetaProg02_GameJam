@@ -26,6 +26,7 @@ namespace PicoPark
         }
         void Update()
         {
+            if (GameMgr.Instance.GetOverState == true) return;
             followPos.x = myPlayer.transform.position.x;
             gameObject.transform.position = followPos;
         }
