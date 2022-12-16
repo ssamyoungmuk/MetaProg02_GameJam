@@ -40,7 +40,7 @@ namespace MafiaGame
         [PunRPC]
         void YouDie(int num)
         {
-            if (PhotonNetwork.PlayerList[num].NickName == PhotonNetwork.NickName)
+            if (myInfo.player_Num == num)
             {
                 myInfo.gameObject.GetPhotonView().RPC("Die", RpcTarget.All);
             }
@@ -107,8 +107,8 @@ namespace MafiaGame
             if (killPlayerNum != -1)
             {
 
-                if (PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("YouDie", RpcTarget.All, killPlayerNum);
-                if (PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("GameEnd", RpcTarget.All);
+                if (PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("YouDie", RpcTarget.AllBufferedViaServer, killPlayerNum);
+                if (PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("GameEnd", RpcTarget.AllBufferedViaServer);
             }
             for (int i = 0; i < voteButton.Length; i++) if (voteButton[i].GetComponent<Image>().color == Color.yellow) voteButton[i].GetComponent<Image>().color = Color.white;
             killPlayerNum = -1;
@@ -201,7 +201,6 @@ namespace MafiaGame
                 timeSet = false;
                 yield return new WaitUntil(() => timeSet);
                 timeSet = false;
-
                 while (time > 0)
                 {
                     if (PhotonNetwork.IsMasterClient)
@@ -215,6 +214,7 @@ namespace MafiaGame
                 if (PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("VoteVoteEnd", RpcTarget.All);
                 voteVote.SetActive(false);
             }
+            yield return new WaitForSeconds(1f);
             //»ç¸ÁÈÄ ¹ã
             chat.SetActive(true);
             Fade(chat.gameObject, fade.Out);
@@ -581,7 +581,7 @@ namespace MafiaGame
                 Vote_Text.text = $"{PhotonNetwork.PlayerList[maxVotePlayer].NickName}´ÔÀÌ Á×¾ú½À´Ï´Ù.";
                 Vote_Text.gameObject.SetActive(true);
 
-                gameObject.GetPhotonView().RPC("YouDie", RpcTarget.All, maxVotePlayer);
+                gameObject.GetPhotonView().RPC("YouDie", RpcTarget.AllBufferedViaServer, maxVotePlayer);
                 Fade(Vote_Text.gameObject, fade.All);
             }
         }
