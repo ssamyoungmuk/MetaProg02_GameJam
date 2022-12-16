@@ -77,19 +77,18 @@ public class Team7_Player : MonoBehaviourPun
         yield break;
     }
 
-    [PunRPC]
+
     public void Team7_Die()
     {
         PhotonNetwork.Destroy(this.gameObject);
 
-        QuitRoom();
+        photonView.RPC("DieNow", RpcTarget.All);
     }
 
-    private void QuitRoom()
+    [PunRPC]
+    public void DieNow()
     {
-        Debug.Log("Á×¾úÀ¸´Ï ¹æ¿¡¼­ ÅðÀå");
-        PhotonNetwork.LeaveRoom();
-        Debug.Log("¿¬°áµµ ²÷°í");
+        Destroy(gameObject);
         PhotonNetwork.Disconnect();
         Debug.Log("¾À ÀÌµ¿");
         PhotonNetwork.LoadLevel("LobbyScene");
