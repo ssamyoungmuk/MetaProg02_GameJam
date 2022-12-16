@@ -8,8 +8,11 @@ public class Team7_Player : MonoBehaviourPun
     [SerializeField]
     GameObject CandyAttack;
 
-    float moveSpeed = 20f;
+    float moveSpeed = 4f;
     float attackRotate = 0f;
+    float mouseSpeed = 60f;
+
+    public int exp;
 
     Rigidbody rb = null;
     BoxCollider weapon = null;
@@ -24,6 +27,9 @@ public class Team7_Player : MonoBehaviourPun
     {
         CandyAttack.transform.rotation = Quaternion.Euler(0, 180, 0);
         weapon.enabled = false;
+        Cursor.lockState = CursorLockMode.Locked; // 마우스 락
+
+        if (!photonView.IsMine) gameObject.tag = "Team7_Other";
     }
 
     void Update()
@@ -34,33 +40,54 @@ public class Team7_Player : MonoBehaviourPun
 
             if (Input.GetMouseButtonDown(0))
             {
-                StartCoroutine(PlayerAttack());
+                photonView.RPC("AttackNow", RpcTarget.All);
             }
         }
-
     }
 
     public void PlayerMove()
     {
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-        rb.MovePosition(transform.position + move * moveSpeed * Time.deltaTime);
+        rb.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0));
+        rb.transform.Translate(move * Time.deltaTime * moveSpeed);
+        //rb.MovePosition(transform.position + move * moveSpeed * Time.deltaTime);
     }
 
     [PunRPC]
+    public void AttackNow()
+    {
+        StartCoroutine(PlayerAttack());
+    }
+
     IEnumerator PlayerAttack()
     {
-        attackRotate = 0f;
-        while (attackRotate > -180)
+        attackRotate = 180f;
+        while (attackRotate < 360)
         {
-            attackRotate -= 10f;
-            Debug.Log(attackRotate);
-            CandyAttack.transform.rotation = Quaternion.Euler(new Vector3(attackRotate, 180, 0));
+            attackRotate += 10f;
+            CandyAttack.transform.localRotation = Quaternion.Euler(new Vector3(attackRotate, rb.rotation.y, 0));
+            //CandyAttack.transform.Rotate(new Vector3(attackRotate,0,0), Space.Self);
+
             weapon.enabled = true;
             yield return new WaitForFixedUpdate();
         }
-        CandyAttack.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+        CandyAttack.transform.localRotation = Quaternion.Euler(new Vector3(180, rb.rotation.y, 0));
         weapon.enabled = false;
         yield break;
+    }
+
+    public void Team7_Die()
+    {
+        photonView.RPC("DieNow", RpcTarget.All);
+    }
+
+    [PunRPC]
+    public void DieNow()
+    {
+        Destroy(gameObject);
+        PhotonNetwork.Disconnect();
+        Debug.Log("씬 이동");
+        PhotonNetwork.LoadLevel("LobbyScene");
     }
 }

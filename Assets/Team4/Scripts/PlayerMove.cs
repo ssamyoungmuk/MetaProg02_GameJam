@@ -19,20 +19,24 @@ namespace PicoPark
         [SerializeField] float moveSpeed = 1.2f;
         [SerializeField] State playerState = State.Ground;
         [SerializeField] KeyMove keyMove;
+        [SerializeField] GameObject keyMark;
 
         Rigidbody rigidbody = null;
         Vector3 jumpVelocity = new Vector3(0, 330, 0);
         private void Awake()
         {
+            keyMove = FindObjectOfType<KeyMove>();
             rigidbody = gameObject.GetComponent<Rigidbody>();
         }
         private void Start()
         {
             jumpVelocity.y = jumpPower;
-            keyMove.del_KeyCheck = () => isGetKey = true;
+            keyMark.SetActive(false);
+            //keyMove.del_KeyCheck = () => isGetKey = true;
         }
         void Update()
         {
+            if (GameMgr.Instance.GetOverState == true) return;
             if (!photonView.IsMine) return;
             if (Input.GetKeyDown(KeyCode.Space) && playerState == State.Ground)
             {
@@ -55,7 +59,7 @@ namespace PicoPark
 
         private void OnTriggerEnter(Collider other)
         {
-            
+
             if (other.tag == "DeadZone")
             {
                 Vector3 newPos = gameObject.transform.position;
@@ -70,29 +74,32 @@ namespace PicoPark
             if (other.tag == "Door" && isGetKey == true && Input.GetKeyDown(KeyCode.UpArrow))
             {
                 isGetKey = false;
-                Debug.Log("Clear");
                 Vector3 newPos = gameObject.transform.position;
                 newPos.x = newPos.x + 12;
                 gameObject.transform.position = newPos;
-                GameMgr.Instance.uiMgr.CountPeopleNum();
+                GameMgr.Instance.uiMgr.gameObject.GetPhotonView().RPC("CountPeopleNum", RpcTarget.All);
             }
             else if (other.tag == "BackDoor" && isGetKey == false && Input.GetKeyDown(KeyCode.UpArrow))
             {
                 isGetKey = true;
-                Debug.Log("Clear");
                 Vector3 newPos = gameObject.transform.position;
                 newPos.x = newPos.x - 12;
                 gameObject.transform.position = newPos;
-                GameMgr.Instance.uiMgr.MinusPeopleNum();
+                GameMgr.Instance.uiMgr.gameObject.GetPhotonView().RPC("MinusPeopleNum", RpcTarget.All);
             }
         }
-
-
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.tag != "Wall")
                 playerState = State.Ground;
         }
+
+        [PunRPC]
+        public void KeyStateOn() => isGetKey = true;
+        [PunRPC]
+        public void KeyMarkOn() => keyMark.SetActive(true);
+
+
     }
 }
 

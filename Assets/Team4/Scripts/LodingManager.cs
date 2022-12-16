@@ -21,15 +21,7 @@ namespace PicoPark
 
         public override void OnJoinedRoom()
         {
-            for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
-            {
-                playerNum++;
-                if (PhotonNetwork.PlayerList[i].NickName == PhotonNetwork.NickName)
-                {
-                    myNum = i;
-                    break;
-                }
-            }
+            myNum = PhotonNetwork.PlayerList.Length-1;
         }
         public void OnClick_ReadyButton()
         {

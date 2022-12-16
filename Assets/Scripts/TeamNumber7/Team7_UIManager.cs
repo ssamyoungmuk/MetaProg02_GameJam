@@ -16,6 +16,4 @@ public class Team7_UIManager : MonoBehaviour
     {
         Team7_GameManager.Inst.Team7_OutScene();
     }
-
-
 }

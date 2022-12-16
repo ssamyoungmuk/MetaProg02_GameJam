@@ -2,52 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-public class ButtonClick : MonoBehaviour
+namespace ElevatorSimulator
 {
-    private RaycastHit hit;
-
-    private TextMeshProUGUI tm;
-
-    private Color origin;
-
-    private bool isSelected = false;
-
-    Elevator ele;
-    // Start is called before the first frame update
-    void Start()
+    public class ButtonClick : MonoBehaviour
     {
-        tm.GetComponent<TextMeshProUGUI>();
-        ele = FindObjectOfType<Elevator>();
-    }
+        private RaycastHit hit;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
+        private TextMeshProUGUI tm;
+
+        private Color origin;
+
+        private bool isSelected = false;
+
+        Elevator ele;
+        // Start is called before the first frame update
+        void Start()
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if(Physics.Raycast(ray, out hit))
+            tm.GetComponent<TextMeshProUGUI>();
+            ele = FindObjectOfType<Elevator>();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetMouseButtonDown(0))
             {
-                
-               if( hit.transform.tag == "Button")
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out hit))
                 {
-                    if (!isSelected)
-                    {
-                    origin = hit.transform.GetChild(0).GetComponent<TextMeshPro>().color;
-                        hit.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.red;
-                        isSelected = true;
-                    }
-                    else
-                    {
 
-                        hit.transform.GetChild(0).GetComponent<TextMeshPro>().color = origin;
-                        Debug.Log(hit.transform.gameObject);
-                        //col = hit.transform.GetComponent<Color>();
-                        //hit.transform.gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
-                        isSelected = false;
-                    }
+                    if (hit.transform.tag == "Button")
+                    {
+                        if (!isSelected)
+                        {
+                            origin = hit.transform.GetChild(0).GetComponent<TextMeshPro>().color;
+                            hit.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.red;
+                            isSelected = true;
+                        }
+                        else
+                        {
 
-                } 
+                            hit.transform.GetChild(0).GetComponent<TextMeshPro>().color = origin;
+                            Debug.Log(hit.transform.gameObject);
+                            //col = hit.transform.GetComponent<Color>();
+                            //hit.transform.gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+                            isSelected = false;
+                        }
+
+                    }
+                }
             }
         }
     }

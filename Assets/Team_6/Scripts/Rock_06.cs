@@ -15,7 +15,9 @@ public class Rock_06 : MonoBehaviour
     WaitForFixedUpdate time = new WaitForFixedUpdate();
     float duration = 0f;
 
-    private void Awake()
+    bool hasTarget = false;
+
+    private void OnEnable()
     {
         monster = FindObjectOfType<Monster_06>();
         transform.position = startPos.position;
@@ -24,6 +26,8 @@ public class Rock_06 : MonoBehaviour
 
     public void Fire()
     {
+        if (hasTarget == true)
+            return;
         StartCoroutine(Move());
     }
 
@@ -31,7 +35,7 @@ public class Rock_06 : MonoBehaviour
     {
         while (true)
         {
-            if ((duration += Time.deltaTime) < 1.0f)
+            if ((duration += Time.deltaTime) < 1.0f || hasTarget == true)
             {
                 continue;
             }
@@ -65,11 +69,12 @@ public class Rock_06 : MonoBehaviour
         {
             if(Vector3.Distance(transform.position, target.position) <= 2f)
             {
+                hasTarget = false;
                 transform.position = startPos.position;
                 target.SendMessage("Hit", SendMessageOptions.DontRequireReceiver);
                 yield break;
             }
-            transform.position = Vector3.Slerp(gameObject.transform.position, target.transform.position + Vector3.left, moveSpeed);
+            transform.position = Vector3.Slerp(gameObject.transform.position, target.transform.position, moveSpeed);
             yield return time;
         }
     }

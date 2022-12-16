@@ -22,30 +22,24 @@ MonoBehaviour:
   - GameName: OneOnOne
     GameImage: {fileID: 21300000, guid: 644966388b554d94595e007b69dd6592, type: 3}
     GameSceneName: OneOnOne
-  - GameName: 
-    GameImage: {fileID: 0}
-    GameSceneName: 
   - GameName: Halli Galli  
     GameImage: {fileID: 21300000, guid: 8a5e966481026504baded3027f594b21, type: 3}
     GameSceneName: HalliGalli
-  - GameName: Elevator Simulator
-    GameImage: {fileID: 21300000, guid: 3f3659388eea40f4e8116066bd499fa7, type: 3}
-    GameSceneName: DemoScene
   - GameName: 
     GameImage: {fileID: 0}
     GameSceneName: 
+  - GameName: 
+    GameImage: {fileID: 0}
+    GameSceneName: 
+  - GameName: Elevator Simulator
+    GameImage: {fileID: 21300000, guid: 3f3659388eea40f4e8116066bd499fa7, type: 3}
+    GameSceneName: TeamNumber5
   - GameName: 
     GameImage: {fileID: 0}
     GameSceneName: 
   - GameName: PicoPark
     GameImage: {fileID: 0}
     GameSceneName: PicoPark
-  - GameName: 
-    GameImage: {fileID: 0}
-    GameSceneName: 
-  - GameName: 
-    GameImage: {fileID: 0}
-    GameSceneName: 
   - GameName: Australopithecus
     GameImage: {fileID: 21300000, guid: 0f8154c0cd13e3743b79c752ce1d8aa2, type: 3}
     GameSceneName: 

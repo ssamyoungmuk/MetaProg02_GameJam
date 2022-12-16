@@ -17,7 +17,7 @@ MonoBehaviour:
 
 '
     AppIdFusion: 
-    AppIdChat: 40fd9f23-57a4-4635-a137-0ae3addea9d4
+    AppIdChat: 
     AppIdVoice: 
     AppVersion: 
     UseNameServer: 1
@@ -46,6 +46,10 @@ MonoBehaviour:
   - ReadyCounT
   - ZeroCounT
   - PlayerAttack
+  - Kill
+  - Team7_Die
+  - AttackNow
+  - DieNow
   - GameStartUI
   - Player_JobSeting
   - PlayerNum

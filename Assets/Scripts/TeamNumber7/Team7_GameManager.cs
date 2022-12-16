@@ -52,9 +52,15 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
-        Debug.Log("CandyKongRoom 진입 실패! 고로 방 만든다");
+        Debug.Log("CandyKongRoom 진입 실패! 로비로 진입");
 
+        Debug.Log("방 생성");
         PhotonNetwork.CreateRoom("CandyKongRoom", new RoomOptions { MaxPlayers = 20 });
+
+
+        /*Debug.Log("생성한 방에 입장");
+        PhotonNetwork.JoinRoom("CandyKongRoom"); // 방 들어오면 입장부터 시도하라*/
+
     }
     #endregion
     //=========================================================================
@@ -87,7 +93,7 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
 
     private Vector3 SetRandomPos() // 게임 매니저 내부 함수 중에 랜덤 위치값을 반환하는 경우 사용
     {
-        return new Vector3(Random.Range(0, 20), 1, Random.Range(0, 20));
+        return new Vector3(Random.Range(-45, 45), 1, Random.Range(-45, 45));
     }
 
     private void InstCandy(int Num)
@@ -95,7 +101,7 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
         int RanNum = 0;
         for (int i = 0; i < Num; i++)
         {
-            RanNum = Random.Range(1, 3);
+            RanNum = Random.Range(1, 4);
             if (RanNum % 3 == 0)
             {
                 candy = PhotonNetwork.Instantiate("Candy_Large", SetRandomPos(), Quaternion.identity);
