@@ -5,13 +5,14 @@ using Photon.Pun;
 
 namespace OOO
 {
-    [RequireComponent(typeof(PlayerData),typeof(Rigidbody),typeof(CapsuleCollider))]
+    [RequireComponent(typeof(PlayerData),typeof(CapsuleCollider))]
     public abstract class BasePlayer : MonoBehaviourPun
     {
         [SerializeField] private FollowCamera cam = null;
         [HideInInspector] public PlayerData myData = null;
 
         private Rigidbody rb = null;
+        private CapsuleCollider myCollider;
 
         Quaternion rightArmOriginPos;
         Quaternion leftArmOriginPos;
@@ -28,9 +29,17 @@ namespace OOO
         {
             hitFlag = false;
             myData = GetComponent<PlayerData>();
-            rb = GetComponent<Rigidbody>();
+            myCollider = GetComponent<CapsuleCollider>();
             myData.info.curHp = myData.info.maxHp;
-            rb.freezeRotation = true;
+
+            if (photonView.IsMine)
+            {
+                myCollider.enabled = true;
+                rb = this.gameObject.AddComponent<Rigidbody>();
+                rb.freezeRotation = true;
+            }
+
+
         }
 
         private void Update()
