@@ -37,13 +37,10 @@ MonoBehaviour:
 >>>>>>> remotes/origin/Team_7_
 =======
 >>>>>>> remotes/origin/team_6
-<<<<<<< HEAD
->>>>>>> main
-=======
 =======
   - {fileID: 12}
 >>>>>>> remotes/origin/team_6
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
   m_Position:
     serializedVersion: 2
     x: 0
@@ -78,7 +75,7 @@ MonoBehaviour:
 =======
     width: 1458
 >>>>>>> remotes/origin/Team_7_
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
     height: 1058
   m_MinSize: {x: 300, y: 300}
   m_MaxSize: {x: 24288, y: 24288}
@@ -98,7 +95,7 @@ MonoBehaviour:
   controlID: 79
 >>>>>>> remotes/origin/Team_7_
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -136,7 +133,7 @@ MonoBehaviour:
     width: 593
     height: 602
 =======
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
     x: 1
     y: 425
     width: 716
@@ -173,7 +170,7 @@ MonoBehaviour:
   m_TargetSize: {x: 656, y: 369}
 >>>>>>> remotes/origin/Team_7_
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -217,7 +214,7 @@ MonoBehaviour:
     m_VBaseRangeMin: -174.5
     m_VBaseRangeMax: 174.5
 >>>>>>> remotes/origin/Team_7_
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -244,7 +241,7 @@ MonoBehaviour:
     m_EnableMouseInput: 0
 >>>>>>> remotes/origin/CJY
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -283,7 +280,7 @@ MonoBehaviour:
     m_Translation: {x: 336, y: 290.5}
 >>>>>>> remotes/origin/CJY
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -335,7 +332,7 @@ MonoBehaviour:
   m_LastWindowPixelSize: {x: 672, y: 602}
 >>>>>>> remotes/origin/CJY
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -383,7 +380,7 @@ MonoBehaviour:
 --- !u!114 &5
 =======
     width: 622
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
     height: 1058
   m_MinSize: {x: 100, y: 300}
   m_MaxSize: {x: 8096, y: 24288}
@@ -392,7 +389,7 @@ MonoBehaviour:
   controlID: 21171
 =======
   controlID: -1
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -446,7 +443,7 @@ MonoBehaviour:
 =======
     width: 622
     height: 345
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 5}
@@ -733,15 +730,12 @@ MonoBehaviour:
     width: 716
     height: 323
 >>>>>>> remotes/origin/Team_7_
-<<<<<<< HEAD
->>>>>>> main
-=======
 =======
     y: 73
     width: 906
     height: 526
 >>>>>>> remotes/origin/team_6
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -770,7 +764,7 @@ MonoBehaviour:
       snapOffsetDelta: {x: -101, y: -26}
 >>>>>>> remotes/origin/CJY
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
       snapCorner: 3
       id: Tool Settings
       index: 0
@@ -810,7 +804,7 @@ MonoBehaviour:
       snapOffsetDelta: {x: 0, y: 0}
 >>>>>>> remotes/origin/CJY
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
       snapCorner: 0
       id: unity-scene-view-toolbar
       index: 0
@@ -839,7 +833,7 @@ MonoBehaviour:
       snapOffsetDelta: {x: 0, y: 0}
 >>>>>>> remotes/origin/CJY
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
       snapCorner: 1
       id: unity-search-toolbar
       index: 1
@@ -862,13 +856,10 @@ MonoBehaviour:
 =======
       snapOffset: {x: 0, y: 25}
 >>>>>>> remotes/origin/team_6
-<<<<<<< HEAD
->>>>>>> main
-=======
 =======
       snapOffset: {x: 0, y: 0}
 >>>>>>> remotes/origin/team_6
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-transform-toolbar
@@ -909,7 +900,7 @@ MonoBehaviour:
       snapOffsetDelta: {x: 0, y: 0}
 >>>>>>> remotes/origin/CJY
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
       snapCorner: 0
       id: Scene View/Light Settings
       index: 0
@@ -949,7 +940,7 @@ MonoBehaviour:
       snapOffsetDelta: {x: 0, y: 0}
 >>>>>>> remotes/origin/CJY
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
       snapCorner: 0
       id: Scene View/Cloth Constraints
       index: 2
@@ -978,7 +969,7 @@ MonoBehaviour:
       snapOffsetDelta: {x: 0, y: 0}
 >>>>>>> remotes/origin/CJY
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
       snapCorner: 0
       id: Scene View/Cloth Collisions
       index: 3
@@ -1007,7 +998,7 @@ MonoBehaviour:
       snapOffsetDelta: {x: 0, y: 0}
 >>>>>>> remotes/origin/CJY
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
       snapCorner: 0
       id: Scene View/Navmesh Display
       index: 4
@@ -1036,7 +1027,7 @@ MonoBehaviour:
       snapOffsetDelta: {x: 0, y: 0}
 >>>>>>> remotes/origin/CJY
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
       snapCorner: 0
       id: Scene View/Agent Display
       index: 5
@@ -1065,7 +1056,7 @@ MonoBehaviour:
       snapOffsetDelta: {x: 0, y: 0}
 >>>>>>> remotes/origin/CJY
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
       snapCorner: 0
       id: Scene View/Obstacle Display
       index: 6
@@ -1094,7 +1085,7 @@ MonoBehaviour:
       snapOffsetDelta: {x: 0, y: 0}
 >>>>>>> remotes/origin/CJY
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
       snapCorner: 0
       id: Scene View/Occlusion Culling
       index: 7
@@ -1123,7 +1114,7 @@ MonoBehaviour:
       snapOffsetDelta: {x: 0, y: 0}
 >>>>>>> remotes/origin/CJY
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
       snapCorner: 0
       id: Scene View/Physics Debugger
       index: 8
@@ -1152,7 +1143,7 @@ MonoBehaviour:
       snapOffsetDelta: {x: 0, y: 0}
 >>>>>>> remotes/origin/CJY
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
       snapCorner: 0
       id: Scene View/Scene Visibility
       index: 9
@@ -1181,7 +1172,7 @@ MonoBehaviour:
       snapOffsetDelta: {x: 0, y: 0}
 >>>>>>> remotes/origin/CJY
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
       snapCorner: 0
       id: Scene View/Particles
       index: 10
@@ -1208,7 +1199,7 @@ MonoBehaviour:
   m_OverrideSceneCullingMask: 0
   m_SceneIsLit: 0
 =======
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
   m_WindowGUID: 32b53198c1ac6d54896e2d6b52b24a2c
 =======
   m_WindowGUID: 38c4340746e3c754fac2e920892f1208
@@ -1229,7 +1220,7 @@ MonoBehaviour:
   m_SceneIsLit: 1
 >>>>>>> remotes/origin/CJY
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
   m_SceneLighting: 1
   m_2DMode: 1
   m_isRotationLocked: 0
@@ -1237,13 +1228,11 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_Position:
 <<<<<<< HEAD
-<<<<<<< HEAD
     m_Target: {x: 9.838841, y: 81.09825, z: -2.2230787}
     speed: 2
     m_Value: {x: 9.838841, y: 81.09825, z: -2.2230787}
 =======
-=======
->>>>>>> main
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -1289,15 +1278,12 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0}
 >>>>>>> remotes/origin/Team_7_
-<<<<<<< HEAD
->>>>>>> main
-=======
 =======
     m_Target: {x: 453, y: 239, z: 0}
     speed: 2
     m_Value: {x: 453, y: 239, z: 0}
 >>>>>>> remotes/origin/team_6
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1327,7 +1313,7 @@ MonoBehaviour:
     showSkybox: 1
 >>>>>>> remotes/origin/CJY
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
     showFlares: 1
     showImageEffects: 1
     showParticleSystems: 1
@@ -1363,7 +1349,6 @@ MonoBehaviour:
     m_gridOpacity: 0.5
   m_Rotation:
 <<<<<<< HEAD
-<<<<<<< HEAD
     m_Target: {x: 0.70669883, y: -0.002119382, z: 0.0021261119, w: 0.70753235}
     speed: 2
     m_Value: {x: 0.7066867, y: -0.0021193456, z: 0.0021260753, w: 0.7075202}
@@ -1372,8 +1357,7 @@ MonoBehaviour:
     speed: 2
     m_Value: 10
 =======
-=======
->>>>>>> main
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -1449,13 +1433,10 @@ MonoBehaviour:
     m_Value: 10
 >>>>>>> remotes/origin/Team_7_
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
-<<<<<<< HEAD
->>>>>>> main
-=======
 =======
     m_Value: 512.1816
 >>>>>>> remotes/origin/team_6
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1484,13 +1465,10 @@ MonoBehaviour:
 =======
     m_SpeedMin: 0.001
 >>>>>>> remotes/origin/team_6
-<<<<<<< HEAD
->>>>>>> main
-=======
 =======
     m_SpeedMin: 0.01
 >>>>>>> remotes/origin/team_6
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
     m_SpeedMax: 2
     m_EasingEnabled: 1
     m_EasingDuration: 0.4
@@ -1517,13 +1495,10 @@ MonoBehaviour:
 =======
   m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
 >>>>>>> remotes/origin/team_6
-<<<<<<< HEAD
->>>>>>> main
-=======
 =======
   m_LastSceneViewRotation: {x: -0.06596068, y: 0.8988419, z: -0.4082203, w: -0.14523889}
 >>>>>>> remotes/origin/team_6
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -1634,12 +1609,9 @@ MonoBehaviour:
   m_LastSelected: 0
 =======
 >>>>>>> remotes/origin/Team_7_
-<<<<<<< HEAD
->>>>>>> main
-=======
 =======
 >>>>>>> remotes/origin/team_6
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1669,7 +1641,7 @@ MonoBehaviour:
     width: 906
     height: 500
 =======
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: GameView
 =======
@@ -1761,7 +1733,7 @@ MonoBehaviour:
     width: 716
     height: 282
 >>>>>>> remotes/origin/Team_7_
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1838,7 +1810,7 @@ MonoBehaviour:
 --- !u!114 &7
 >>>>>>> remotes/origin/team_6
 =======
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1886,7 +1858,7 @@ MonoBehaviour:
 --- !u!114 &8
 >>>>>>> remotes/origin/team_6
 =======
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
   - {fileID: 10}
   - {fileID: 12}
   m_Position:
@@ -1917,7 +1889,7 @@ MonoBehaviour:
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: SceneHierarchyWindow
 =======
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
 =======
@@ -1983,7 +1955,7 @@ MonoBehaviour:
 >>>>>>> remotes/origin/team_6
 =======
     width: 309
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
     height: 470
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
@@ -2046,7 +2018,7 @@ MonoBehaviour:
 >>>>>>> remotes/origin/Team_7_
 =======
 >>>>>>> remotes/origin/team_6
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -2075,7 +2047,7 @@ MonoBehaviour:
       m_LastClickedID: 28230
       m_ExpandedIDs: 8ca6fdffdef6fdffa248feff129dfeffd440ffff92d9ffff98d9ffff0cf4ffff2cfbffffc0630000da630000c4aa0200dab40200
 >>>>>>> remotes/origin/team_6
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -2094,7 +2066,7 @@ MonoBehaviour:
 >>>>>>> remotes/origin/Team_7_
 =======
 >>>>>>> remotes/origin/team_6
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
@@ -2107,7 +2079,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 =======
 >>>>>>> remotes/origin/team_6
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
         m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
@@ -2133,7 +2105,7 @@ MonoBehaviour:
 =======
         m_ClientGUIView: {fileID: 8}
 >>>>>>> remotes/origin/team_6
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -2176,7 +2148,7 @@ MonoBehaviour:
   m_WindowGUID: 91f53cd08b7702a46a1bf0a2902d980a
 --- !u!114 &10
 >>>>>>> remotes/origin/team_6
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2253,7 +2225,7 @@ MonoBehaviour:
 --- !u!114 &9
 >>>>>>> remotes/origin/CJY
 =======
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
     y: 470
     width: 378
     height: 588
@@ -2272,14 +2244,11 @@ MonoBehaviour:
   m_LastSelected: 0
 --- !u!114 &10
 >>>>>>> remotes/origin/team_6
-<<<<<<< HEAD
->>>>>>> main
-=======
 =======
   m_LastSelected: -1
 --- !u!114 &11
 >>>>>>> remotes/origin/team_6
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2328,7 +2297,7 @@ MonoBehaviour:
 >>>>>>> remotes/origin/CJY
 =======
     x: 623
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
     y: 551
     width: 376
     height: 567
@@ -2341,12 +2310,9 @@ MonoBehaviour:
     width: 397
     height: 605
 >>>>>>> remotes/origin/team_6
-<<<<<<< HEAD
->>>>>>> main
-=======
 =======
 >>>>>>> remotes/origin/team_6
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -2379,26 +2345,21 @@ MonoBehaviour:
 =======
     - Assets/Scenes
 >>>>>>> remotes/origin/Team_7_
-<<<<<<< HEAD
->>>>>>> main
-=======
 =======
     - Assets/Team_6/Scripts
 >>>>>>> remotes/origin/team_6
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
 <<<<<<< HEAD
-<<<<<<< HEAD
   - Assets/Resources
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\User\Desktop\GameJam_22.12.15\MetaProg02_GameJam
 =======
-=======
->>>>>>> main
+<<<<<<< HEAD
 <<<<<<< HEAD
   - Assets/OneOnOne/Script
   m_LastFoldersGridSize: 16
@@ -2432,27 +2393,22 @@ MonoBehaviour:
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\whdgn\Desktop\ClassProject\MetaProg02_GameJam
 >>>>>>> remotes/origin/team_6
-<<<<<<< HEAD
->>>>>>> main
-=======
 =======
   - Assets/Team_6/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: "C:\\Users\\User\\Desktop\\\uC0C8 \uD3F4\uB354\\MetaProg02_GameJam"
 >>>>>>> remotes/origin/team_6
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
 <<<<<<< HEAD
-<<<<<<< HEAD
     m_SelectedIDs: d45d0000
     m_LastClickedID: 24020
     m_ExpandedIDs: 00000000985d00009a5d000000ca9a3b
 =======
-=======
->>>>>>> main
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -2492,15 +2448,12 @@ MonoBehaviour:
     m_ExpandedIDs: 000000002e5e00003a5e000000ca9a3b
 >>>>>>> remotes/origin/team_6
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
-<<<<<<< HEAD
->>>>>>> main
-=======
 =======
     m_SelectedIDs: d0620000
     m_LastClickedID: 25296
     m_ExpandedIDs: 000000001a6200005462000000ca9a3b
 >>>>>>> remotes/origin/team_6
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2533,13 +2486,10 @@ MonoBehaviour:
 =======
       m_ClientGUIView: {fileID: 0}
 >>>>>>> remotes/origin/team_6
-<<<<<<< HEAD
->>>>>>> main
-=======
 =======
       m_ClientGUIView: {fileID: 10}
 >>>>>>> remotes/origin/team_6
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -2552,11 +2502,9 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
 <<<<<<< HEAD
-<<<<<<< HEAD
     m_ExpandedIDs: 00000000985d00009a5d000000ca9a3b
 =======
-=======
->>>>>>> main
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -2584,13 +2532,10 @@ MonoBehaviour:
     m_ExpandedIDs: 000000002e5e000000ca9a3b
 >>>>>>> remotes/origin/team_6
 >>>>>>> fa1b13a32e8471b83fa0d0b186d912c22840ddbd
-<<<<<<< HEAD
->>>>>>> main
-=======
 =======
     m_ExpandedIDs: 000000001a62000000ca9a3b
 >>>>>>> remotes/origin/team_6
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2616,14 +2561,12 @@ MonoBehaviour:
       m_ResourceFile: 
   m_ListAreaState:
 <<<<<<< HEAD
-<<<<<<< HEAD
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 
 =======
-=======
->>>>>>> main
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -3169,7 +3112,7 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
     m_ExpandedIDs: 00000000985d00009a5d0000
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -3200,7 +3143,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 =======
 >>>>>>> remotes/origin/Team_7_
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -3347,7 +3290,7 @@ MonoBehaviour:
   m_Enabled: 1
 =======
 >>>>>>> remotes/origin/Team_7_
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
@@ -3402,7 +3345,7 @@ MonoBehaviour:
 =======
     x: 1095
 >>>>>>> remotes/origin/Team_7_
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
     y: 0
     width: 363
     height: 1058
@@ -3461,7 +3404,7 @@ MonoBehaviour:
 =======
     x: 1096
 >>>>>>> remotes/origin/Team_7_
->>>>>>> main
+>>>>>>> a793d530fffb0ddcec0288d0981aaf015c7bc59e
     y: 81
     width: 362
     height: 1037
