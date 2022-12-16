@@ -11,9 +11,10 @@ public class Team7_CandyAttack : MonoBehaviourPunCallbacks
     {
         if (other.CompareTag("Team7_Other") && photonView.IsMine)
         {
-            //other.GetComponent<Team7_Player>().Team7_Die();
+            Debug.Log("충돌 인식. 대상 함수 호출");
+            other.GetComponent<Team7_Player>().Team7_Die();
 
-            pv.RPC("Team7_Die", RpcTarget.OthersBuffered);
+            //pv.RPC("Team7_Die", RpcTarget.All);
 
             //photonView.RPC("Kill", RpcTarget.All, other.gameObject);
         }
