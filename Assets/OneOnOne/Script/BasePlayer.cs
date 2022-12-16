@@ -20,6 +20,7 @@ namespace OOO
         Vector3 lookRight;
         Vector3 moveDir;
 
+        float freezTime = 3f;
         bool hitFlag = false;
         bool dead = false;
         
@@ -93,7 +94,7 @@ namespace OOO
         public void TransferDamage()
         {
             this.gameObject.transform.localScale += new Vector3(0.2f, 0.2f, 0.2f);
-            rb.AddForce(1f,2f,3f,ForceMode.Impulse);
+            rb.AddForce(2f, freezTime, 4f,ForceMode.Impulse);
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -122,8 +123,9 @@ namespace OOO
 
                 yield return null;  
 
-                if (time > 2f)
+                if (time > freezTime)
                 {
+                    freezTime += 1f;
                     this.transform.rotation = Quaternion.identity;
                     rb.freezeRotation = true;
                     hitFlag = false;
