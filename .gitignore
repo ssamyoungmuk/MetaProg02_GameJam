@@ -2,4 +2,6 @@
 /Library
 /Temp
 /obj
+/UserSettings
+*sln
 *csproj
