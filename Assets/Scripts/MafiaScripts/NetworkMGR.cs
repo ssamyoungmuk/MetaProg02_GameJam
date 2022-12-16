@@ -157,6 +157,7 @@ namespace MafiaGame
                 {
                     Debug.Log("i : " + i);
                     myButtonNum = i;
+                    playerName[i].color = Color.green;
                     readyButton[myButtonNum].GetComponent<Button>().interactable = true; //나만 누르기 위해 활성화
 
                     //내 상태가 레디면 노란색 -->그런데 이건 서버에서 표현 해줘야 하기 때문에 RPC함수 사용

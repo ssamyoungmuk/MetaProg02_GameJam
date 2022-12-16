@@ -37,7 +37,7 @@ namespace MafiaGame
         {
             myInfo = obj.GetComponent<PlayerInfo>();
         }
-        PlayerInfo[] playerInfos = FindObjectsOfType<PlayerInfo>();
+        PlayerInfo[] playerInfos;
         void YouDie(int num)
         {
             GameObject obj = null;
@@ -66,6 +66,7 @@ namespace MafiaGame
             jobUI2.SetActive(true);
             List<PlayerInfo> list = new List<PlayerInfo>();
             PlayerInfo[] play = FindObjectsOfType<PlayerInfo>();
+            playerInfos = FindObjectsOfType<PlayerInfo>();
             for (int i = 0; i < play.Length; i++)
             {
                 if (play[i].jobName == jobList.Mafia) list.Add(play[i]);
@@ -115,7 +116,7 @@ namespace MafiaGame
             isSkill = false;
             if (PhotonNetwork.IsMasterClient)
             {
-                time = 10;
+                time = 120;
                 gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
             }
             maxVote = 0;
@@ -230,7 +231,7 @@ namespace MafiaGame
             Fade(DayText.gameObject, fade.All);
             if (PhotonNetwork.IsMasterClient)
             {
-                time = 10;
+                time = 15;
                 gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
             }
             timeSet = false;
@@ -335,8 +336,9 @@ namespace MafiaGame
         [PunRPC]
         void YouHeal(int num)
         {
-            if (myInfo.player_Num == num)
-                myInfo.Heal(true);
+            for (int i = 0; i < playerInfos.Length; i++)
+                if (playerInfos[i].player_Num == num) playerInfos[i].Heal(true);
+
         }
         #region 투표버튼
         public void VoteButton0()
