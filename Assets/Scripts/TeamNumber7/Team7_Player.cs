@@ -12,6 +12,8 @@ public class Team7_Player : MonoBehaviourPun
     float attackRotate = 0f;
     float mouseSpeed = 60f;
 
+    public int exp;
+
     Rigidbody rb = null;
     BoxCollider weapon = null;
 
@@ -38,7 +40,7 @@ public class Team7_Player : MonoBehaviourPun
 
             if (Input.GetMouseButtonDown(0))
             {
-                StartCoroutine(PlayerAttack());
+                photonView.RPC("AttackNow", RpcTarget.All);
             }
         }
     }
@@ -53,6 +55,11 @@ public class Team7_Player : MonoBehaviourPun
     }
 
     [PunRPC]
+    public void AttackNow()
+    {
+        StartCoroutine(PlayerAttack());
+    }
+
     IEnumerator PlayerAttack()
     {
         attackRotate = 180f;
