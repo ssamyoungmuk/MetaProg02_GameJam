@@ -10,6 +10,13 @@ public class EndNextScene_06 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene("Team6_Title");
+            Time.timeScale = 1;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("LobbyScene");
+            Time.timeScale = 1;
         }
     }
 }
