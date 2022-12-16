@@ -47,9 +47,16 @@ namespace MafiaGame
 
         bool isNameElseUIFadeout;
         // Start is called before the first frame update
-        void Start()
+        private void Awake()
         {
             PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime = "1adfdb50-72b8-47e6-af98-608eb7519a4d\n";
+            PhotonNetwork.SendRate = 300;
+            PhotonNetwork.SerializationRate = 150;
+            Application.targetFrameRate = 60;
+
+        }
+        void Start()
+        {
             GameLogic.Instance.Fade(blackUI, fade.Out);
             PhotonNetwork.ConnectUsingSettings(); //Photon.Pun ³»ºÎ Å¬·¡½º
             Debug.Log(PhotonNetwork.NetworkClientState + "*********************");
@@ -66,12 +73,12 @@ namespace MafiaGame
         {
             Debug.Log("Á¶ÀÎ ½ÇÆÐ");
             //¸Æ½º ÀÎ¿ø°ú ¹æ »óÅÂ Ç¥Çö (½ÃÀÛÀÎÁö ¾Æ´ÑÁö)
-            PhotonNetwork.CreateRoom("MafiaGame", new RoomOptions { MaxPlayers = 8, IsOpen = true });
+            PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 8, IsOpen = true });
         }
 
         public void OnEndEdit(string instr)
         {
-            if (Regex.IsMatch(instr, @"^(?=.*[a-z0-9°¡-ÆR])[a-z0-9°¡-ÆR]{2,16}$") !=true)
+            if (Regex.IsMatch(instr, @"^(?=.*[°¡-ÆR])[°¡-ÆR]{2,16}$") !=true)
             {
                 PhotonNetwork.NickName = instr;
                 return;
@@ -84,7 +91,7 @@ namespace MafiaGame
         public void OnClick_Connected()
         {
             if (isNameElseUIFadeout == true) return;
-            if (Regex.IsMatch(PhotonNetwork.NickName, @"^(?=.*[a-z0-9°¡-ÆR])[a-z0-9°¡-ÆR]{2,16}$") != true)
+            if (Regex.IsMatch(PhotonNetwork.NickName, @"^(?=.*[°¡-ÆR])[°¡-ÆR]{2,16}$") != true)
             {
                 Debug.Log(PhotonNetwork.NickName);
                 GameLogic.Instance.Fade(nameElseUI, fade.All);
@@ -93,7 +100,7 @@ namespace MafiaGame
              }
             else
             {
-
+                StartCoroutine(Delay());
                 Debug.Log("ÀÔÀå");
                 PhotonNetwork.JoinRandomRoom();
                 GameLogic.Instance.Fade(nickNamePanel, fade.Out);
@@ -125,7 +132,7 @@ namespace MafiaGame
         //ÇÃ·¹ÀÌ¾î°¡ ³ª°¥¶§
         public override void OnPlayerLeftRoom(Player otherPlayer)
         {
-            if (isPlay) return;
+            if(isPlay) return;
             ClearLobby();
             SortedPlayer();
         }
@@ -150,6 +157,7 @@ namespace MafiaGame
                 {
                     Debug.Log("i : " + i);
                     myButtonNum = i;
+                    playerName[i].color = Color.green;
                     readyButton[myButtonNum].GetComponent<Button>().interactable = true; //³ª¸¸ ´©¸£±â À§ÇØ È°¼ºÈ­
 
                     //³» »óÅÂ°¡ ·¹µð¸é ³ë¶õ»ö -->±×·±µ¥ ÀÌ°Ç ¼­¹ö¿¡¼­ Ç¥Çö ÇØÁà¾ß ÇÏ±â ¶§¹®¿¡ RPCÇÔ¼ö »ç¿ë
@@ -179,7 +187,7 @@ namespace MafiaGame
             // ¸¶½ºÅÍÀÏ¶§¸¸ ÇØ´ç ÇÔ¼ö ½ÇÇà °¡´É
             if (PhotonNetwork.IsMasterClient)
             {
-                if (readyCount == PhotonNetwork.PlayerList.Length && readyCount > 3)
+                if (readyCount == PhotonNetwork.PlayerList.Length && readyCount >3)
                 {
                     Debug.Log("½ÃÀÛ");
                     //5¸í ·¹µð ¿Ï·á½Ã 2ÃÊÈÄ °ÔÀÓ ½ÇÇà ÄÚ·çÆ¾ 
@@ -193,10 +201,9 @@ namespace MafiaGame
         IEnumerator GameStartUI_Delay()
         {
             yield return new WaitForSeconds(2f);
-            if (readyCount == PhotonNetwork.PlayerList.Length && readyCount > 3)
+            if (readyCount == PhotonNetwork.PlayerList.Length && readyCount >3)
             {
                 gameObject.GetPhotonView().RPC("GameStartUI", RpcTarget.All);
-                isPlay = true;
             }
             else
             {
@@ -209,9 +216,10 @@ namespace MafiaGame
         {
             for(int i=0;i<readyButton.Length;i++)
             {
-                readyButton[i].SetActive(false);
+                Destroy(readyButton[i]);
             }
-            gameObject.AddComponent<CharacterJob>();
+            isPlay = true;
+            GameLogic.Instance.characterJob =  gameObject.AddComponent<CharacterJob>();
                 GameLogic.Instance.GameStart();
         }
         [PunRPC]

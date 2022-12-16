@@ -15,7 +15,7 @@ MonoBehaviour:
   AppSettings:
     AppIdRealtime: 82b1d60c-4981-46d5-8976-1eea729aedfa
     AppIdFusion: 
-    AppIdChat: 
+    AppIdChat: 40fd9f23-57a4-4635-a137-0ae3addea9d4
     AppIdVoice: 
     AppVersion: 
     UseNameServer: 1
@@ -57,6 +57,25 @@ MonoBehaviour:
   - KeyMarkOn
   - KeyStateOn
   - MinusPeopleNum
+  - CreateMafiaInfo
+  - VoteCount
+  - PlayerJobList
+  - VoteEnd
+  - VoteVote
+  - LiveCount
+  - DieCount
+  - VoteVoteEnd
+  - Die
+  - MyInfo
+  - YouDie
+  - DoctorClick
+  - MafiaClick
+  - Heal
+  - YouHeal
+  - MafiaNight
+  - SetTime
+  - GameEnd
+  - SystemMessge
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
