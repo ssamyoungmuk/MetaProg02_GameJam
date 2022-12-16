@@ -3170,7 +3170,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5913733709653766535}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 840659807}
+        m_TargetAssemblyTypeName: MafiaGame.GameLogic, Assembly-CSharp
+        m_MethodName: VoteButton6
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &5913733709653766537
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3900,7 +3912,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5913733709811601974}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 840659807}
+        m_TargetAssemblyTypeName: MafiaGame.GameLogic, Assembly-CSharp
+        m_MethodName: VoteButton2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &5913733709811601976
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4429,7 +4453,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5913733709857057566}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 840659807}
+        m_TargetAssemblyTypeName: MafiaGame.GameLogic, Assembly-CSharp
+        m_MethodName: VoteButton5
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &5913733709857057760
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5147,7 +5183,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5913733710065863443}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 840659807}
+        m_TargetAssemblyTypeName: MafiaGame.GameLogic, Assembly-CSharp
+        m_MethodName: VoteButton4
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &5913733710065863445
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5403,7 +5451,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5913733710205269158}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 840659807}
+        m_TargetAssemblyTypeName: MafiaGame.GameLogic, Assembly-CSharp
+        m_MethodName: VoteButton7
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &5913733710205269160
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7434,7 +7494,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5913733710746554348}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 840659807}
+        m_TargetAssemblyTypeName: MafiaGame.GameLogic, Assembly-CSharp
+        m_MethodName: VoteButton1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &5913733710746554350
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9318,7 +9390,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5913733711441710434}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 840659807}
+        m_TargetAssemblyTypeName: MafiaGame.GameLogic, Assembly-CSharp
+        m_MethodName: VoteButton3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &5913733711441710436
 RectTransform:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ using Unity.VisualScripting;
 using ExitGames.Client.Photon.StructWrapping;
 
 namespace MafiaGame
-{ 
+{
     public class GameLogic : Singleton<GameLogic>
     {
         [Header("GameUI")]
@@ -35,18 +35,18 @@ namespace MafiaGame
         public UIChatManager uIChatManager;
         public void MyInfo(GameObject obj)
         {
-                myInfo = obj.GetComponent<PlayerInfo>();
+            myInfo = obj.GetComponent<PlayerInfo>();
         }
         [PunRPC]
         void YouDie(int num)
         {
-            if (PhotonNetwork.PlayerList[num].NickName==PhotonNetwork.NickName)
+            if (PhotonNetwork.PlayerList[num].NickName == PhotonNetwork.NickName)
             {
                 myInfo.gameObject.GetPhotonView().RPC("Die", RpcTarget.All);
             }
         }
         int day = 0;
-        float time = 0;
+        int time = 0;
 
         public void GameStart()
         {
@@ -66,7 +66,7 @@ namespace MafiaGame
             jobUI2.SetActive(true);
             List<PlayerInfo> list = new List<PlayerInfo>();
             PlayerInfo[] play = FindObjectsOfType<PlayerInfo>();
-            for(int i=0;i<play.Length;i++)
+            for (int i = 0; i < play.Length; i++)
             {
                 if (play[i].jobName == jobList.Mafia) list.Add(play[i]);
             }
@@ -75,114 +75,158 @@ namespace MafiaGame
                 if (myInfo.jobName == jobList.Mafia)
                 {
                     myTeam.gameObject.SetActive(true);
-                    if (play[0].player_Num!= myInfo.player_Num) myTeam.text = $"{PhotonNetwork.PlayerList[play[0].player_Num].NickName}";
-                    else if(play[1].player_Num!= myInfo.player_Num) myTeam.text = $"{PhotonNetwork.PlayerList[play[1].player_Num].NickName}";
+                    if (list[0].player_Num != myInfo.player_Num) myTeam.text = $"{PhotonNetwork.PlayerList[list[0].player_Num].NickName}";
+                    else if (list[1].player_Num != myInfo.player_Num) myTeam.text = $"{PhotonNetwork.PlayerList[list[1].player_Num].NickName}";
                 }
             }
             voteCount = new int[PhotonNetwork.PlayerList.Length];
             yield return new WaitForSeconds(1f);
-            morning =StartCoroutine(Day_Morning());
+            morning = StartCoroutine(Day_Morning());
         }
         Coroutine morning;
         Coroutine debate;
         IEnumerator Day_Morning()
-        {            
+        {
             day++;
             Monning = true;
             Night = false;
             DayText.text = day + "Day Morning";
             Fade(DayText.gameObject, fade.All);
             yield return new WaitForSeconds(2f);
-            debate= StartCoroutine(StartDebate());
+            debate = StartCoroutine(StartDebate());
         }
-
+        [PunRPC]
+        void SetTime(int tm)
+        {
+            time = tm;
+        }
         IEnumerator StartDebate()
         {
-            if(killPlayerNum!=-1)
+            if (killPlayerNum != -1)
             {
 
-                if(PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("YouDie", RpcTarget.All, killPlayerNum);
+                if (PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("YouDie", RpcTarget.All, killPlayerNum);
                 GameEnd();
             }
-            for(int i = 0; i<voteButton.Length;i++) if (voteButton[i].GetComponent<Image>().color == Color.yellow) voteButton[i].GetComponent<Image>().color = Color.white;
+            for (int i = 0; i < voteButton.Length; i++) if (voteButton[i].GetComponent<Image>().color == Color.yellow) voteButton[i].GetComponent<Image>().color = Color.white;
             killPlayerNum = -1;
-                chat.SetActive(true);
+            chat.SetActive(true);
             Fade(chat.gameObject, fade.In);
             isSkill = false;
             myInfo.Heal(false);
-                time = 5f;
-                maxVote = 0;
-                maxVotePlayer = -1;
-                debateTime_Text.gameObject.SetActive(true);
+            if (PhotonNetwork.IsMasterClient)
+            {
+                time = 180;
+                gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
+            }
+            maxVote = 0;
+            maxVotePlayer = -1;
+            debateTime_Text.gameObject.SetActive(true);
+            debateTime_Text.text = time.ToString();
+            while (time > 0)
+            {
+                if (PhotonNetwork.IsMasterClient)
+                {
+                    time--;
+                    gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
+                }
+                yield return new WaitForSeconds(1f);
                 debateTime_Text.text = time.ToString();
-                while (time > 0)
+            }
+
+            for (int i = 0; i < voteCount.Length; i++)
+                voteCount[i] = 0;
+            debate_Text.text = "투표 시작";
+
+            Fade(debate_Text.gameObject, fade.All);
+            //투표시작
+            isVoteVoteChack = false;
+            voteChack = false;
+            isVoteOn = true;
+            if (PhotonNetwork.IsMasterClient)
+            {
+                time = 10;
+                gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
+            }
+            while (time > 0)
+            {
+                if (PhotonNetwork.IsMasterClient)
                 {
                     time--;
-                    yield return new WaitForSeconds(1f);
-                    debateTime_Text.text = time.ToString();
+                    gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
                 }
-
-                for (int i = 0; i < voteCount.Length; i++)
-                    voteCount[i] = 0;
-                debate_Text.text = "투표 시작";
-
-                Fade(debate_Text.gameObject, fade.All);
-                //투표시작
-                isVoteVoteChack = false;
-                voteChack = false;
-                isVoteOn = true;
-                time = 5f;
-                while (time > 0)
-                {
-                    time--;
-                    yield return new WaitForSeconds(1f);
-                    debateTime_Text.text = time.ToString();
-                }
-                isVoteOn = false;
-                //반론
-                if (PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("VoteEnd", RpcTarget.All);
+                yield return new WaitForSeconds(1f);
+                debateTime_Text.text = time.ToString();
+            }
+            isVoteOn = false;
+            //반론
+            if (PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("VoteEnd", RpcTarget.All);
             if (Night == false)
             {
-                time = 5f;
+                if (PhotonNetwork.IsMasterClient)
+                {
+                    time = 20;
+                    gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
+                }
                 while (time > 0)
                 {
-                    time--;
+                    if (PhotonNetwork.IsMasterClient)
+                    {
+                        time--;
+                        gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
+                    }
                     yield return new WaitForSeconds(1f);
                     debateTime_Text.text = time.ToString();
                 }
                 //찬반
-                    if (PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("VoteVote", RpcTarget.All);
-                    time = 5f;
-                    while (time > 0)
-                    {
-                        time--;
-                        yield return new WaitForSeconds(1f);
-                        debateTime_Text.text = time.ToString();
-                    }
-                if (PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("VoteVoteEnd", RpcTarget.All);
-                voteVote.SetActive(false);
+                if (PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("VoteVote", RpcTarget.All);
+                if (PhotonNetwork.IsMasterClient)
+                {
+                    time = 10;
+                    gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
                 }
-            //사망후 밤chat.SetActive(true);
-            Fade(chat.gameObject, fade.Out);
-
-            yield return new WaitForSeconds(2f);
-
-                Vote_Text.gameObject.SetActive(false);
-
-            GameEnd();
-                Monning = false;
-                Night = true;
-            DayText.text = day + "Day Night";
-            Fade(DayText.gameObject, fade.All);
-            time = 20f;
                 while (time > 0)
                 {
-                    time--;
+                    if (PhotonNetwork.IsMasterClient)
+                    {
+                        time--;
+                        gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
+                    }
                     yield return new WaitForSeconds(1f);
                     debateTime_Text.text = time.ToString();
                 }
+                if (PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("VoteVoteEnd", RpcTarget.All);
+                voteVote.SetActive(false);
+            }
+            //사망후 밤chat.SetActive(true);
+            Fade(chat.gameObject, fade.Out);
+
+            yield return new WaitForSeconds(1f);
+
+            Vote_Text.gameObject.SetActive(false);
+
+            GameEnd();
+            Monning = false;
+            Night = true;
+            DayText.text = day + "Day Night";
+            Fade(DayText.gameObject, fade.All);
+            if (PhotonNetwork.IsMasterClient)
+            {
+                time = 10;
+                gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
+            }
+            while (time > 0)
+            {
+                if (PhotonNetwork.IsMasterClient)
+                {
+                    time--;
+                    gameObject.GetPhotonView().RPC("SetTime", RpcTarget.AllBufferedViaServer, time);
+                }
+                yield return new WaitForSeconds(1f);
+                debateTime_Text.text = time.ToString();
+            }
             debateTime_Text.gameObject.SetActive(false);
-            morning=StartCoroutine(Day_Morning());
+            morning = StartCoroutine(Day_Morning());
 
 
         }
@@ -210,11 +254,11 @@ namespace MafiaGame
             {
                 isGameEnd = true;
                 mafiaWin.SetActive(true);
-                if(morning!=null) StopCoroutine(morning);
+                if (morning != null) StopCoroutine(morning);
                 if (debate != null) StopCoroutine(debate);
                 chat.SetActive(true);
             }
-            else if(characterJob.mafiaNum==0)
+            else if (characterJob.mafiaNum == 0)
             {
                 isGameEnd = true;
                 peopleWin.SetActive(true);
@@ -236,7 +280,7 @@ namespace MafiaGame
             else if (maxVote <= voteCount[count]) voteSame = true;//젤높은투표수와 같아질시 투표수같음 ture해서 플레이어 죽임 방지
         }
         bool isSkill;
-        int killPlayerNum=-1;
+        int killPlayerNum = -1;
         void MafiaClick(int num)
         {
             gameObject.GetPhotonView().RPC("MafiaNight", RpcTarget.All, num);
@@ -246,7 +290,7 @@ namespace MafiaGame
         {
             if (myInfo.jobName == jobList.Mafia)
             {
-                if(killPlayerNum!=-1) voteButton[num].GetComponent<Image>().color = Color.white;
+                if (killPlayerNum != -1) voteButton[num].GetComponent<Image>().color = Color.white;
                 voteButton[num].GetComponent<Image>().color = Color.yellow;
             }
             killPlayerNum = num;
@@ -256,7 +300,7 @@ namespace MafiaGame
             if (isSkill == true) return;
             isSkill = true;
             skillClick.gameObject.SetActive(true);
-            if (job[num]==jobList.Mafia) skillClick.text = "마피아 입니다.";
+            if (job[num] == jobList.Mafia) skillClick.text = "마피아 입니다.";
             else skillClick.text = "마피아가 아닙니다.";
             Fade(skillClick.gameObject, fade.All);
         }
@@ -264,23 +308,21 @@ namespace MafiaGame
         {
             if (isSkill == true) return;
             isSkill = true;
-            gameObject.GetPhotonView().RPC("YouHeal",RpcTarget.All,num);
+            gameObject.GetPhotonView().RPC("YouHeal", RpcTarget.All, num);
         }
         [PunRPC]
         void YouHeal(int num)
         {
-            if(myInfo.player_Num==num)
-            myInfo.Heal(true);
+            if (myInfo.player_Num == num)
+                myInfo.Heal(true);
         }
+        #region 투표버튼
         public void VoteButton0()
         {
             if (myInfo.isDie) return;
-            if (voteChack&&Night!=true) return;
+            if (voteChack && Night != true) return;
             if (isVoteOn) gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 0);
-            else if (Night && myInfo.jobName == jobList.Mafia&&isSkill==false)
-            {
-                MafiaClick(0);
-            }
+            else if (Night && myInfo.jobName == jobList.Mafia && isSkill == false) MafiaClick(0);
             else if (Night && myInfo.jobName == jobList.Doctor && isSkill == false)
             {
                 voteButton[0].GetComponent<Image>().color = Color.yellow;
@@ -293,10 +335,137 @@ namespace MafiaGame
             }
             voteChack = true;
         }
+        public void VoteButton1()
+        {
+            if (myInfo.isDie) return;
+            if (voteChack && Night != true) return;
+            if (isVoteOn) gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 1);
+            else if (Night && myInfo.jobName == jobList.Mafia && isSkill == false) MafiaClick(1);
+            else if (Night && myInfo.jobName == jobList.Doctor && isSkill == false)
+            {
+                voteButton[1].GetComponent<Image>().color = Color.yellow;
+                DoctorClick(1);
+            }
+            else if (Night && myInfo.jobName == jobList.Police && isSkill == false)
+            {
+                voteButton[1].GetComponent<Image>().color = Color.yellow;
+                PoliceClick(1);
+            }
+            voteChack = true;
+        }
+        public void VoteButton2()
+        {
+            if (myInfo.isDie) return;
+            if (voteChack && Night != true) return;
+            if (isVoteOn) gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 2);
+            else if (Night && myInfo.jobName == jobList.Mafia && isSkill == false) MafiaClick(2);
+            else if (Night && myInfo.jobName == jobList.Doctor && isSkill == false)
+            {
+                voteButton[2].GetComponent<Image>().color = Color.yellow;
+                DoctorClick(2);
+            }
+            else if (Night && myInfo.jobName == jobList.Police && isSkill == false)
+            {
+                voteButton[2].GetComponent<Image>().color = Color.yellow;
+                PoliceClick(2);
+            }
+            voteChack = true;
+        }
+        public void VoteButton3()
+        {
+            if (myInfo.isDie) return;
+            if (voteChack && Night != true) return;
+            if (isVoteOn) gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 3);
+            else if (Night && myInfo.jobName == jobList.Mafia && isSkill == false) MafiaClick(3);
+            else if (Night && myInfo.jobName == jobList.Doctor && isSkill == false)
+            {
+                voteButton[3].GetComponent<Image>().color = Color.yellow;
+                DoctorClick(3);
+            }
+            else if (Night && myInfo.jobName == jobList.Police && isSkill == false)
+            {
+                voteButton[3].GetComponent<Image>().color = Color.yellow;
+                PoliceClick(3);
+            }
+            voteChack = true;
+        }
+        public void VoteButton4()
+        {
+            if (myInfo.isDie) return;
+            if (voteChack && Night != true) return;
+            if (isVoteOn) gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 4);
+            else if (Night && myInfo.jobName == jobList.Mafia && isSkill == false) MafiaClick(4);
+            else if (Night && myInfo.jobName == jobList.Doctor && isSkill == false)
+            {
+                voteButton[4].GetComponent<Image>().color = Color.yellow;
+                DoctorClick(4);
+            }
+            else if (Night && myInfo.jobName == jobList.Police && isSkill == false)
+            {
+                voteButton[4].GetComponent<Image>().color = Color.yellow;
+                PoliceClick(4);
+            }
+            voteChack = true;
+        }
+        public void VoteButton5()
+        {
+            if (myInfo.isDie) return;
+            if (voteChack && Night != true) return;
+            if (isVoteOn) gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 5);
+            else if (Night && myInfo.jobName == jobList.Mafia && isSkill == false) MafiaClick(5);
+            else if (Night && myInfo.jobName == jobList.Doctor && isSkill == false)
+            {
+                voteButton[5].GetComponent<Image>().color = Color.yellow;
+                DoctorClick(5);
+            }
+            else if (Night && myInfo.jobName == jobList.Police && isSkill == false)
+            {
+                voteButton[5].GetComponent<Image>().color = Color.yellow;
+                PoliceClick(5);
+            }
+            voteChack = true;
+        }
+        public void VoteButton6()
+        {
+            if (myInfo.isDie) return;
+            if (voteChack && Night != true) return;
+            if (isVoteOn) gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 6);
+            else if (Night && myInfo.jobName == jobList.Mafia && isSkill == false) MafiaClick(6);
+            else if (Night && myInfo.jobName == jobList.Doctor && isSkill == false)
+            {
+                voteButton[6].GetComponent<Image>().color = Color.yellow;
+                DoctorClick(6);
+            }
+            else if (Night && myInfo.jobName == jobList.Police && isSkill == false)
+            {
+                voteButton[6].GetComponent<Image>().color = Color.yellow;
+                PoliceClick(6);
+            }
+            voteChack = true;
+        }
+        public void VoteButton7()
+        {
+            if (myInfo.isDie) return;
+            if (voteChack && Night != true) return;
+            if (isVoteOn) gameObject.GetPhotonView().RPC("VoteCount", RpcTarget.All, 7);
+            else if (Night && myInfo.jobName == jobList.Mafia && isSkill == false) MafiaClick(7);
+            else if (Night && myInfo.jobName == jobList.Doctor && isSkill == false)
+            {
+                voteButton[7].GetComponent<Image>().color = Color.yellow;
+                DoctorClick(7);
+            }
+            else if (Night && myInfo.jobName == jobList.Police && isSkill == false)
+            {
+                voteButton[7].GetComponent<Image>().color = Color.yellow;
+                PoliceClick(7);
+            }
+            voteChack = true;
+        }
+        #endregion
         [PunRPC]
         void VoteEnd()
         {
-            if(voteSame||maxVotePlayer==-1)
+            if (voteSame || maxVotePlayer == -1)
             {
                 Night = true;
                 Vote_Text.text = "투표 무효";
@@ -344,13 +513,13 @@ namespace MafiaGame
         int voteDie;
         [PunRPC]
         void VoteVoteEnd()
-        { 
-            if(voteDie<=voteLive)
+        {
+            if (voteDie <= voteLive)
             {
                 Vote_Text.text = "투표 무효";
                 Vote_Text.gameObject.SetActive(true);
 
-                Fade(Vote_Text.gameObject, fade.Out);
+                Fade(Vote_Text.gameObject, fade.All);
             }
             else
             {
@@ -358,18 +527,18 @@ namespace MafiaGame
                 Vote_Text.gameObject.SetActive(true);
 
                 gameObject.GetPhotonView().RPC("YouDie", RpcTarget.All, maxVotePlayer);
-                Fade(Vote_Text.gameObject, fade.Out);
+                Fade(Vote_Text.gameObject, fade.All);
             }
         }
-        
+
         public void MyJobClick()
         {
-            if(jobUI.activeSelf) jobUI.SetActive(false);
+            if (jobUI.activeSelf) jobUI.SetActive(false);
             else jobUI.SetActive(true);
         }
 
         ////////////////////////////////////////////////////////////////////
-            CanvasGroup canvasGroup;
+        CanvasGroup canvasGroup;
         public void Fade(GameObject fadeIn, fade fd)
         {
             canvasGroup = fadeIn.GetComponent<CanvasGroup>();
