@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
@@ -10,6 +11,7 @@ using Photon.Realtime;
 namespace HalliGalli
 {
     public delegate void EditMyNumber(byte myNumber);
+    public delegate void CountAlive();
     public class HalliGalliMgr : MonoBehaviourPunCallbacks
     {
         #region 싱글턴
@@ -31,6 +33,7 @@ namespace HalliGalli
         }
 
         #endregion
+
         [Tooltip("if u want setting another app string id put is this line" +
             "may u stay this line null could be app id set default : 4f95d2c7-69cd-48bb-b609-1e239bed8c50")]
         [SerializeField] private string CustomAppId = null;
@@ -78,23 +81,25 @@ namespace HalliGalli
                 //default server app id for halligalli
                 PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime = "4f95d2c7-69cd-48bb-b609-1e239bed8c50";
             }
-
-            startPanel.SetActive(true);
-            joinRoomPanel.SetActive(false);
-            inGamePanel.SetActive(false);
         }
 
         void Start()
         {
-            joinRoomButton.interactable = false;
             PhotonNetwork.ConnectUsingSettings(); // 접속 시도
+
+            startPanel.SetActive(true);
+            joinRoomPanel.SetActive(false);
+            inGamePanel.SetActive(false);
+            joinRoomButton.interactable = false;
+            
             nickName.onValueChanged.AddListener(delegate { SettingjoinRoomButton(); });
             joinRoomButton.onClick.AddListener(OnClick_JoinRoomButton);
             gamestartButton.onClick.AddListener(OnClick_startbutton);
         }
-        public override void OnConnectedToMaster()
+
+        public override void OnDisconnected(DisconnectCause cause)  // Call when the master server is not connected
         {
-            base.OnConnectedToMaster();
+            SceneManager.LoadScene("LobbyScene");
         }
         void SettingjoinRoomButton() //닉네임->joinroombutton 활성화
         {
@@ -107,7 +112,8 @@ namespace HalliGalli
                 joinRoomButton.interactable = false;
             }
         }
-        void OnClick_JoinRoomButton()
+
+        void OnClick_JoinRoomButton() //joinroom요청
         {
             PhotonNetwork.NickName = nickName.text;
 
@@ -119,24 +125,19 @@ namespace HalliGalli
             {
                 PhotonNetwork.JoinRandomRoom();
             }
-        } //joinroom요청
+        }
 
-        // (빈 방이 없으면) 랜덤 룸 참가에 실패한 경우 자동 실행 
-        public override void OnJoinRandomFailed(short returnCode, string message)
+        public override void OnJoinRandomFailed(short returnCode, string message) //랜덤 룸 조인 실패한 경우 방생성
         {
             PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 4 }, null);
         }
 
-        public override void OnDisconnected(DisconnectCause cause)  // Call when the master server is not connected
-        {
-            PhotonNetwork.ConnectUsingSettings();
-        }
         /// <summary>
-        /// back to main scene
+        /// back to lobby scene
         /// </summary>
-        public void OnClick_ExitButton() // 실행 종료
+        public void OnClick_ExitButton()
         {
-            //Application.Quit(); 교수님 씬으로 돌아가게해
+            PhotonNetwork.Disconnect();
         }
 
         #region PlayerMatching
@@ -263,7 +264,6 @@ namespace HalliGalli
                     editMyNumber(MyNumber);
             }
         }
-
     }
 }
 

@@ -10,20 +10,22 @@ namespace HalliGalli
 {
     public class PlayerCard : MonoBehaviourPun
     {
-        GameObject inGamePanel = null;
-        Transform parent = null;
+        public CountAlive countAlive = null;
 
         [SerializeField] TextMeshProUGUI cardNumber = null;
         [SerializeField] TextMeshProUGUI nickName = null;
         [SerializeField] Image[] playerHP = null;
 
-        public bool alive = true;
+        GameObject inGamePanel = null;
+        Button Bell = null;
+
+        public bool alive { get; private set; } = true;
+        public byte MyringCount = 0;
         public byte mycardNumber = 0;
-        public Color cardColor = new Color();
+        public Color cardColor = Color.black;
 
         byte HP = 5;
         Color dieColor = new Color(100, 0, 0, 200);
-
 
         private void Awake()
         {
@@ -33,9 +35,15 @@ namespace HalliGalli
             {
                 photonView.RPC(nameof(RPC_SetParent), RpcTarget.AllBuffered, HalliGalliMgr.Inst.MyNumber);
                 photonView.RPC(nameof(RPC_SetNickName), RpcTarget.AllBuffered, PhotonNetwork.LocalPlayer.NickName);
+                Bell = inGamePanel.transform.GetComponentInChildren<Button>();
+                Bell.onClick.AddListener(delegate { BellJudge(); });
             }
         }
 
+        void BellJudge()
+        {
+            MyringCount = 1;
+        }
         public void SetMyNumber(byte myNumber)
         {
             if (photonView.IsMine)
@@ -45,7 +53,7 @@ namespace HalliGalli
         [PunRPC]
         void RPC_SetParent(byte parentindex)
         {
-            parent = inGamePanel.transform.GetChild(parentindex);
+            Transform parent = inGamePanel.transform.GetChild(parentindex);
             this.transform.SetParent(parent, false);
         }
         [PunRPC]
@@ -74,9 +82,11 @@ namespace HalliGalli
             if (alive == false) return;
             photonView.RPC(nameof(RPC_Flip), RpcTarget.All);
         }
+
         [PunRPC]
         void RPC_Flip()
         {
+            MyringCount = 0;
             cardNumber.text = mycardNumber.ToString();
             cardNumber.color = cardColor;
             cardNumber.gameObject.SetActive(true);
@@ -101,6 +111,7 @@ namespace HalliGalli
             if (alive == false) return;
             photonView.RPC(nameof(RPC_DownHeart), RpcTarget.All);
         }
+
         [PunRPC]
         void RPC_DownHeart()
         {
@@ -109,12 +120,11 @@ namespace HalliGalli
             if (HP == 0)
             {
                 alive = false;
+                mycardNumber = 0;
                 this.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+                if (countAlive != null) countAlive();
             }
         }
-
-
-
     }
 }
 

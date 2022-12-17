@@ -11,79 +11,31 @@ namespace HalliGalli
     public class BellButton : MonoBehaviourPun
     {
         [SerializeField] ShuffleCard shuffleCard = null;
-        PlayerCard[] players = null;
-        Button Bell = null;
-        byte ringCount = 0;
-        int aliveCount;
-        public byte MyringCount = 0;
 
+        Button Bell = null;
+        
         // Start is called before the first frame update
         void Start()
         {
             Bell = GetComponent<Button>();
-            Bell.onClick.AddListener(ringBell);
+            Bell.onClick.AddListener(delegate { RingBell(); });
         }
-        public void cardSetting()
-        {
-            players = this.transform.GetComponentsInChildren<PlayerCard>();
-        }
-        public void BellSetting()
+
+        public void BellActive()
         {
             Bell.interactable = true;
         }
 
-        void ringBell()
+        void RingBell()
         {
-            MyringCount += ringCount; //1¼øÀ§´Â 0
-            Bell.interactable = false;
-            photonView.RPC(nameof(RPC_AnnounceRingCount), RpcTarget.All);
-            if (MyringCount == 0)
-            {
-                for (int i = 0; i < players.Length; i++)
-                {
-                    bool ok = false;
-                    if (players[i].mycardNumber == 5) break;
-
-                    for (int j = i + 1; i < players.Length; i++)
-                    {
-                        if (players[i].cardColor == players[j].cardColor)
-                        {
-                            if (players[i].mycardNumber + players[j].mycardNumber != 5)
-                            {
-                                if (players[i].photonView.IsMine)
-                                {
-                                    players[i].DownHeart();
-                                    ok = true;
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    if (ok) break;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < players.Length; i++)
-                {
-                    if (players[i].photonView.IsMine) players[i].DownHeart();
-                }
-            }
-
-            aliveCount = players.Length;
-            for (int i = 0; i < players.Length; i++)
-            {
-                if (players[i].alive == false) aliveCount--;
-            }
-            if (aliveCount == 1)
-            {
-                shuffleCard.isGaming = false;
-            }
+            photonView.RPC(nameof(RPC_BellDisable), RpcTarget.All);
+            shuffleCard.BellJudge();
         }
+
         [PunRPC]
-        void RPC_AnnounceRingCount()
+        void RPC_BellDisable()
         {
-            ringCount++;
+            Bell.interactable = false;
         }
     }
 }

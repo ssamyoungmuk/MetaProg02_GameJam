@@ -13,7 +13,7 @@ namespace HalliGalli
     {
         [SerializeField] BellButton bell = null;
         [SerializeField] TextMeshProUGUI gameStart = null;
-        [SerializeField] TextMeshProUGUI Timer;
+        [SerializeField] TextMeshProUGUI Timer = null;
 
         PlayerCard[] players = null;
 
@@ -26,10 +26,18 @@ namespace HalliGalli
         byte number; // 숫자는 1 ~ 5
         Color color;
 
-        public bool isGaming { get; set; } = true;
+        float time = 0;
+        bool flip = false;
+        byte aliveCount = 0;
+        WaitForSeconds oneS = null;
+        WaitForSeconds halfS = null;
 
         void Awake()
         {
+            oneS = new WaitForSeconds(1f);
+            halfS = new WaitForSeconds(0.5f);
+            aliveCount = PhotonNetwork.CurrentRoom.PlayerCount;
+
             if (PhotonNetwork.IsMasterClient == false) return;
 
             CardList = new List<byte>();
@@ -143,7 +151,7 @@ namespace HalliGalli
         }
         public override void OnPlayerLeftRoom(Player otherPlayer)
         {
-            bell.cardSetting();
+            aliveCount--;
             if (PhotonNetwork.IsMasterClient)
                 players = this.transform.GetComponentsInChildren<PlayerCard>();
         }
@@ -156,16 +164,16 @@ namespace HalliGalli
         {
             GameObject player = PhotonNetwork.Instantiate("HG_PlayerCard", new Vector3(0, 45, 0), Quaternion.identity);
             HalliGalliMgr.Inst.editMyNumber += player.GetComponent<PlayerCard>().SetMyNumber;
+            player.GetComponent<PlayerCard>().countAlive = CountAlivePlayers;
 
-            yield return new WaitForSeconds(0.2f);
+            yield return halfS;
             gameStart.gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.8f);
+            yield return oneS;
             gameStart.gameObject.SetActive(false);
-            yield return new WaitForSeconds(0.5f);
+            yield return halfS;
 
             if (PhotonNetwork.IsMasterClient) players = this.transform.GetComponentsInChildren<PlayerCard>();
-            bell.cardSetting();
-            while (isGaming)
+            while (aliveCount > 1)
             {
                 for (int i = 0; i < PhotonNetwork.CurrentRoom.PlayerCount; i++)
                 {
@@ -173,28 +181,28 @@ namespace HalliGalli
                     if (PhotonNetwork.IsMasterClient) SetCard(i);
                     yield return StartCoroutine(OneTurn(i));
                 }
-                yield return new WaitForSeconds(1f);
+                yield return oneS;
             }
             HalliGalliMgr.Inst.GameOver();
         }
         IEnumerator OneTurn(int player)
         {
-            bell.BellSetting();
-            float time = 30f;
+            time = 30f;
+            flip = false;
             while (time > 0f)
             {
                 Timer.text = $"{(int)time} Sec";
                 if (player == HalliGalliMgr.Inst.MyNumber - 1 && Input.GetKeyDown(KeyCode.Space))
                 {
-                    Debug.Log("스페이스바 누름");
                     photonView.RPC(nameof(RPC_RequestFlip), RpcTarget.MasterClient, player);
-                    break;
+                    photonView.RPC(nameof(RPC_BellActive), RpcTarget.All);
+                    photonView.RPC(nameof(RPC_TimeReset), RpcTarget.All);
                 }
                 time -= Time.deltaTime;
                 yield return null;
             }
             Timer.text = "0 Sec";
-            if (PhotonNetwork.IsMasterClient) players[player].Flip();
+            if (PhotonNetwork.IsMasterClient && flip == false) players[player].Flip();
         }
         void SetCard(int player)
         {
@@ -202,11 +210,64 @@ namespace HalliGalli
             number = (byte)CardList[Random.Range(0, CardList.Count)];
             players[player].SetCard(number, color);
         }
+        public void BellJudge()
+        {
+            StopCoroutine(nameof(MainGame));
+
+            if (PhotonNetwork.IsMasterClient == false) return;
+
+            byte C1 = 0; byte C2 = 0; byte C3 = 0; byte C4 = 0;
+            for (int i = 0; i < players.Length; i++)
+            {
+                if (players[i].cardColor == newColor1) C1 += players[i].mycardNumber;
+                else if (players[i].cardColor == newColor2) C2 += players[i].mycardNumber;
+                else if (players[i].cardColor == newColor3) C3 += players[i].mycardNumber;
+                else if (players[i].cardColor == newColor4) C4 += players[i].mycardNumber;
+            }
+
+            if(C1 == 5 || C2 == 5 || C3 == 5 || C4 == 5) //해당하면 벨누르는거 ok
+            {
+                for (int i = 0; i < players.Length; i++)
+                {
+                    if (players[i].MyringCount != 1) players[i].DownHeart();
+                }
+            }
+            else //누른 플레이어 HP--
+            {
+                for (int i = 0; i < players.Length; i++)
+                {
+                    if (players[i].MyringCount == 1) players[i].DownHeart();
+                }
+            }
+
+            photonView.RPC(nameof(RPC_Restart), RpcTarget.All);
+        }
+
+        void CountAlivePlayers()
+        {
+            aliveCount--;
+        }
 
         [PunRPC]
         void RPC_RequestFlip(int player)
         {
+            flip = true;
             players[player].Flip();
+        }
+        [PunRPC]
+        void RPC_BellActive()
+        {
+            bell.BellActive();
+        }
+        [PunRPC]
+        void RPC_TimeReset()
+        {
+            time = 0f;
+        }
+        [PunRPC]
+        void RPC_Restart()
+        {
+            StartCoroutine(nameof(MainGame));
         }
     }
 }
