@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: fc387611-95cc-42c2-ae93-6e4d5bc85e09
+    AppIdRealtime: 30b51f8a-3317-40c1-94af-9fc665b04662
     AppIdFusion: 
     AppIdChat: 40fd9f23-57a4-4635-a137-0ae3addea9d4
     AppIdVoice: 
@@ -77,6 +77,16 @@ MonoBehaviour:
   - GameEnd
   - SystemMessge
   - Remove
+  - RPC_AnnounceRingCount
+  - RPC_DownHeart
+  - RPC_Flip
+  - RPC_OnClick_gameStartButton
+  - RPC_RequestFlip
+  - RPC_SetCard
+  - RPC_SetNickName
+  - RPC_SetParent
+  - RPC_SettingNickName
+  - RPC_UnFlip
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
