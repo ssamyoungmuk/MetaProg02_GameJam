@@ -326,7 +326,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -4242,7 +4242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffbe8e217975dc143b60b7bc39d4ad92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pv: {fileID: 0}
+  myPlayer: {fileID: 3218960524709477336}
 --- !u!1 &3218960524709477339
 GameObject:
   m_ObjectHideFlags: 0
@@ -4315,6 +4315,7 @@ MonoBehaviour:
   myExpBar: {fileID: 8304131586524777914}
   myAnim: {fileID: 4540228998643315808}
   myArmor: {fileID: 876347826}
+  isDead: 0
   exp: 0
 --- !u!114 &-2900837439667478467
 MonoBehaviour:

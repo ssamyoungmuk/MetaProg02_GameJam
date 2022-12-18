@@ -19,7 +19,7 @@ public class Team7_Player : MonoBehaviourPun
     [SerializeField]
     GameObject myArmor;
 
-    bool isDead = false;
+    public bool isDead = false;
 
     float moveSpeed = 4f;
     float attackRotate = 0f;
@@ -49,7 +49,7 @@ public class Team7_Player : MonoBehaviourPun
         CandyAttack.transform.rotation = Quaternion.Euler(0, 180, 0);
         weapon.enabled = false;
         Cursor.lockState = CursorLockMode.Locked; // 마우스 락
-        myCam = transform.Find("Main Camera").gameObject;
+        //myCam = transform.Find("Main Camera").gameObject;
 
         if (!photonView.IsMine) gameObject.tag = "Team7_Other";
     }
@@ -129,9 +129,16 @@ public class Team7_Player : MonoBehaviourPun
     public void Team7_Die()
     {
         isDead = true;
+        photonView.RPC("DieAnim", RpcTarget.All);
+    }
+
+    [PunRPC]
+    public void DieAnim()
+    {
         myAnim.SetTrigger("doDie");
         StartCoroutine(CO_DieDelay());
     }
+
 
     IEnumerator CO_DieDelay()
     {
@@ -242,6 +249,11 @@ public class Team7_Player : MonoBehaviourPun
         if(collision.gameObject.CompareTag("Team7_Wall"))
         {
             Team7_Die();
+        }
+
+        else
+        {
+            rb.velocity = Vector3.zero;
         }
     }
 }
