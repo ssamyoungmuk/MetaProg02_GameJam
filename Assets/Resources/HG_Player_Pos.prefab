@@ -183,8 +183,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: NickName
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e96097c4d3d4e1e4890379f766e4ac9c, type: 2}
-  m_sharedMaterial: {fileID: 388345358387483536, guid: e96097c4d3d4e1e4890379f766e4ac9c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
+  m_sharedMaterial: {fileID: 7768749319947474569, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
