@@ -78,6 +78,8 @@ MonoBehaviour:
   - SystemMessge
   - Remove
   - DieAnim
+  - AggroNow
+  - RollNow
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

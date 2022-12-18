@@ -20,6 +20,7 @@ public class Team7_Player : MonoBehaviourPun
     GameObject myArmor;
 
     public bool isDead = false;
+    private bool rollNow = false;
 
     float moveSpeed = 4f;
     float attackRotate = 0f;
@@ -71,7 +72,13 @@ public class Team7_Player : MonoBehaviourPun
                 StartCoroutine(CO_Run());
             }
 
-            if (Input.GetKeyDown(KeyCode.Backspace)) // 게임 나가기
+            else if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                photonView.RPC("AggroNow", RpcTarget.All);
+            }
+
+
+            else if (Input.GetKeyDown(KeyCode.Backspace)) // 게임 나가기
             {
                 Cursor.lockState = CursorLockMode.None;
                 PhotonNetwork.Disconnect();
@@ -82,7 +89,7 @@ public class Team7_Player : MonoBehaviourPun
 
     public void PlayerMove()
     {
-        
+        if (rollNow) return;
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
         rb.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0));
@@ -107,6 +114,12 @@ public class Team7_Player : MonoBehaviourPun
     public void AttackNow()
     {
         StartCoroutine(PlayerAttack());
+    }
+
+    [PunRPC]
+    public void AggroNow()
+    {
+        myAnim.SetTrigger("doAggro");
     }
 
     IEnumerator PlayerAttack()
@@ -219,10 +232,6 @@ public class Team7_Player : MonoBehaviourPun
                 myArmor.transform.GetChild(8).gameObject.SetActive(true);
                 myArmor.transform.GetChild(7).gameObject.SetActive(false);
                 break;
-
-
-
-
 
         }
     }
