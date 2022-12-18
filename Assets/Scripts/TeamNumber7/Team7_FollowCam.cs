@@ -8,11 +8,11 @@ public class Team7_FollowCam : MonoBehaviour
     private Vector3 camPos;
 
     [Header("CamPos")]
-    float camZ = 0.5f;
-    float camY = 1.45f;
+    float camZ = 4f;
+    float camY = 4f;
 
     [Header("CamRot")]
-    [SerializeField] float rotX;
+    float rotX = 20f;
     [SerializeField] float rotY;
     [SerializeField] float rotZ;
 
@@ -23,7 +23,7 @@ public class Team7_FollowCam : MonoBehaviour
         gameObject.transform.SetParent(player.transform);
         gameObject.transform.localPosition = Vector3.zero;
         gameObject.transform.localPosition += -Vector3.forward * camZ + Vector3.up * camY;
-        gameObject.transform.rotation = Quaternion.Euler(Vector3.zero);
+        gameObject.transform.rotation = Quaternion.Euler(rotX, 0, 0);
     }
 
 }

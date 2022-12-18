@@ -4,12 +4,13 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class Team7_GameManager : MonoBehaviourPunCallbacks
 {
     Image deadLog;
-    [SerializeField] Team7_UIManager UIManager;
+    [SerializeField] GameObject dieLog;
     GameObject candy = null;
 
     #region Singleton
@@ -31,6 +32,7 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime = "fc387611-95cc-42c2-ae93-6e4d5bc85e09";
         PhotonNetwork.ConnectUsingSettings(); // 설정 정보로 마스터 서버 접속 시도
+
     }
 
     //=============================================================================
@@ -78,7 +80,7 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
         //UIManager.transform.GetChild(0).gameObject.SetActive(false); // 연결중 배너 비활성화
 
         // 플레이어 랜덤 위치에 생성
-        GameObject player = PhotonNetwork.Instantiate("Team7_Player", SetRandomPos(), Quaternion.identity);
+        GameObject player = PhotonNetwork.Instantiate("Team7_Player", SetRandomPos(0), Quaternion.identity);
         Camera.main.GetComponent<Team7_FollowCam>().SetCam();
     }
 
@@ -90,7 +92,7 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
 
     public void Team7_Restart()
     {
-        PhotonNetwork.Instantiate("Team7_Player", SetRandomPos(), Quaternion.identity);
+        PhotonNetwork.Instantiate("Team7_Player", SetRandomPos(0), Quaternion.identity);
     }
 
     public void Team7_OutScene()
@@ -98,9 +100,9 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LoadLevel("LobbyScene");
     }
 
-    private Vector3 SetRandomPos() // 게임 매니저 내부 함수 중에 랜덤 위치값을 반환하는 경우 사용
+    private Vector3 SetRandomPos(int num) // 게임 매니저 내부 함수 중에 랜덤 위치값을 반환하는 경우 사용
     {
-        return new Vector3(Random.Range(-45, 45), 1, Random.Range(-45, 45));
+        return new Vector3(Random.Range(-45, 45), num, Random.Range(-45, 45));
     }
 
     private void InstCandy(int Num)
@@ -111,15 +113,18 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
             RanNum = Random.Range(1, 4);
             if (RanNum % 3 == 0)
             {
-                candy = PhotonNetwork.Instantiate("Candy_Large", SetRandomPos(), Quaternion.identity);
+                candy = PhotonNetwork.Instantiate("Candy_Large", SetRandomPos(1), Quaternion.identity);
+                candy.transform.SetParent(transform);
             }
             else if (RanNum % 3 == 1)
             {
-                candy = PhotonNetwork.Instantiate("Candy_Normal", SetRandomPos(), Quaternion.identity);
+                candy = PhotonNetwork.Instantiate("Candy_Normal", SetRandomPos(1), Quaternion.identity);
+                candy.transform.SetParent(transform);
             }
             else
             {
-                candy = PhotonNetwork.Instantiate("Candy_Small", SetRandomPos(), Quaternion.identity);
+                candy = PhotonNetwork.Instantiate("Candy_Small", SetRandomPos(1), Quaternion.identity);
+                candy.transform.SetParent(transform);
             }
         }
     }
@@ -133,6 +138,33 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
     private void Remove(GameObject Candy)
     {
         Destroy(Candy);
+    }
+
+    public void DieLog()
+    {
+        dieLog.gameObject.SetActive(true);
+        StartCoroutine(CO_NowWhat());
+        //Debug.Log(dieLog.gameObject);
+    }
+
+    IEnumerator CO_NowWhat()
+    {
+        while(true)
+        {
+            if(Input.GetKey(KeyCode.R))
+            {
+                GameStart();
+            }
+
+            else if (Input.GetKey(KeyCode.Q))
+            {
+                PhotonNetwork.Disconnect();
+                Cursor.lockState = CursorLockMode.None; // 마우스 언락
+                SceneManager.LoadScene("LobbyScene");
+            }
+
+            yield return null;
+        }
     }
 
 }

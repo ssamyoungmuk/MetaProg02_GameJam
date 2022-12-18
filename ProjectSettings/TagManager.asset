@@ -11,6 +11,7 @@ TagManager:
   - BackDoor
   - Door
   - Team7_Other
+  - Team7_Wall
   layers:
   - Default
   - TransparentFX
