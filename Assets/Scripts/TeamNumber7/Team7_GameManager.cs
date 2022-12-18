@@ -5,13 +5,18 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 
 public class Team7_GameManager : MonoBehaviourPunCallbacks
 {
     Image deadLog;
-    [SerializeField] GameObject dieLog;
+    [SerializeField] TextMeshProUGUI nameInput;
+    [SerializeField] GameObject Panel;
     GameObject candy = null;
+
+    private string saveName = null;
+    private string inputName = null;
 
     #region Singleton
     private static Team7_GameManager instance;
@@ -30,17 +35,37 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
+        InputName();
+
         PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime = "fc387611-95cc-42c2-ae93-6e4d5bc85e09";
         PhotonNetwork.ConnectUsingSettings(); // 설정 정보로 마스터 서버 접속 시도
 
     }
 
+    private void InputName()
+    {
+        while(true)
+        {
+            if(Input.GetKeyDown(KeyCode.KeypadEnter))
+            {
+                if(nameInput.text == null)
+                {
+                    Debug.Log("아이디를 입력하세요");
+                }
+
+                else
+                {
+                    nameInput.text = inputName;
+                    inputName = saveName;
+                    break;
+                }
+            }
+        }
+    }
+
+
     //=============================================================================
     #region Photon_Callback Functions
-    private void Start()
-    {
-
-    }
 
     public override void OnConnectedToMaster()
     {
@@ -140,31 +165,6 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
         Destroy(Candy);
     }
 
-    public void DieLog()
-    {
-        dieLog.gameObject.SetActive(true);
-        StartCoroutine(CO_NowWhat());
-        //Debug.Log(dieLog.gameObject);
-    }
 
-    IEnumerator CO_NowWhat()
-    {
-        while(true)
-        {
-            if(Input.GetKey(KeyCode.R))
-            {
-                GameStart();
-            }
-
-            else if (Input.GetKey(KeyCode.Q))
-            {
-                PhotonNetwork.Disconnect();
-                Cursor.lockState = CursorLockMode.None; // 마우스 언락
-                SceneManager.LoadScene("LobbyScene");
-            }
-
-            yield return null;
-        }
-    }
 
 }

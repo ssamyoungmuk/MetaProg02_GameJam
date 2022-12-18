@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class Team7_Player : MonoBehaviourPun
 {
@@ -18,6 +19,9 @@ public class Team7_Player : MonoBehaviourPun
 
     [SerializeField]
     GameObject myArmor;
+
+    [SerializeField]
+    TextMeshPro myName;
 
     public bool isDead = false;
     private bool rollNow = false;
