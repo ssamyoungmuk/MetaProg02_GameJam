@@ -27,7 +27,7 @@ public class PlayerInfo : MonoBehaviourPun
         {
             if (photonView.IsMine)
             {
-                string st = $"{PhotonNetwork.PlayerList[player_Num].NickName}님이 의사의 도음으로 살았습니다.";
+                string st = $"{GameLogic.Instance.photonNick[player_Num]}님이 의사의 도움으로 살았습니다.";
                 GameLogic.Instance.uIChatManager.gameObject.GetPhotonView().RPC("SystemMessge", RpcTarget.All, st);
             }
 
@@ -39,7 +39,7 @@ public class PlayerInfo : MonoBehaviourPun
             else GameLogic.Instance.characterJob.peopleNum--;
             if (photonView.IsMine)
             {
-            string st = $"{PhotonNetwork.PlayerList[player_Num].NickName}님이 죽었습니다.";
+            string st = $"{GameLogic.Instance.photonNick[player_Num]}님이 죽었습니다.";
                 GameLogic.Instance.uIChatManager.gameObject.GetPhotonView().RPC("SystemMessge", RpcTarget.All, st);
             }
             GameLogic.Instance.voteButton[player_Num].GetComponent<Image>().color = Color.red;

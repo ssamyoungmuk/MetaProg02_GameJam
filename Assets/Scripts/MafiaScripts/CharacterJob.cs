@@ -106,7 +106,6 @@ namespace MafiaGame
                     }
 
                     playerList[i].gameObject.GetPhotonView().RPC("Player_JobSeting", RpcTarget.All, jb);
-                    gameObject.GetPhotonView().RPC("PlayerJobList", RpcTarget.All, jb);
                 }
             }
         }
