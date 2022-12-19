@@ -20,8 +20,6 @@ public class Team7_Player : MonoBehaviourPun
     [SerializeField]
     GameObject myArmor;
 
-    [SerializeField]
-    public TextMeshPro myName;
 
     public bool isDead = false;
     private bool rollNow = false;
