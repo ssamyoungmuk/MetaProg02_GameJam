@@ -4278,6 +4278,7 @@ GameObject:
   - component: {fileID: -2900837439667478467}
   - component: {fileID: -5546748180561772477}
   - component: {fileID: 6228125505490044661}
+  - component: {fileID: 1429918804945572683}
   m_Layer: 0
   m_Name: Team7_Player
   m_TagString: Team7_Me
@@ -4359,6 +4360,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: -5546748180561772477}
+  - {fileID: 1429918804945572683}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -4391,6 +4393,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 5, z: 0.5}
   m_Center: {x: 0, y: 2.5, z: 0}
+--- !u!114 &1429918804945572683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3218960524709477339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
 --- !u!1 &3218960524712472707
 GameObject:
   m_ObjectHideFlags: 0
