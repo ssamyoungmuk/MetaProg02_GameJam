@@ -33,15 +33,26 @@ namespace MafiaGame
         public CharacterJob characterJob;
         public PlayerInfo myInfo;
         public UIChatManager uIChatManager;
+        public GameObject PunFindObject(int viewID3)//뷰아이디를 넘겨받아 포톤상의 오브젝트를 찾는다.
+        {
+            GameObject find = null;
+            PhotonView[] viewObject = FindObjectsOfType<PhotonView>();
+            for (int i = 0; i < viewObject.Length; i++)
+            {
+                if (viewObject[i].ViewID == viewID3) find = viewObject[i].gameObject;
+            }
+            if (find != null) return find;
+            else return null;
+        }
         public void MyInfo(GameObject obj)
         {
             myInfo = obj.GetComponent<PlayerInfo>();
         }
-        PlayerInfo[] playerInfos;
+        List<PlayerInfo> playerInfos = new List<PlayerInfo>();
         void YouDie(int num)
         {
             GameObject obj = null;
-            for (int i = 0; i < playerInfos.Length; i++)
+            for (int i = 0; i < playerInfos.Count; i++)
                 if (playerInfos[i].player_Num == num) obj = playerInfos[i].gameObject;
             obj.gameObject.GetPhotonView().RPC("Die", RpcTarget.All);
 
@@ -66,7 +77,6 @@ namespace MafiaGame
             jobUI2.SetActive(true);
             List<PlayerInfo> list = new List<PlayerInfo>();
             PlayerInfo[] play = FindObjectsOfType<PlayerInfo>();
-            playerInfos = FindObjectsOfType<PlayerInfo>();
             for(int i=0;i<PhotonNetwork.PlayerList.Length;i++) photonNick.Add(PhotonNetwork.PlayerList[i].NickName);
             for (int i = 0; i < play.Length; i++)
             {
@@ -267,9 +277,10 @@ namespace MafiaGame
         List<jobList> job = new List<jobList>(0);
         public List<string> photonNick = new List<string>();
         [PunRPC]
-        void PlayerJobList(jobList a)
+        void PlayerJobList(jobList a,int b)
         {
             job.Add(a);
+            playerInfos.Add(PunFindObject(b).GetComponent<PlayerInfo>());
         }
         bool isGameEnd;
         [PunRPC]
@@ -342,7 +353,7 @@ namespace MafiaGame
         [PunRPC]
         void YouHeal(int num)
         {
-            for (int i = 0; i < playerInfos.Length; i++)
+            for (int i = 0; i < playerInfos.Count; i++)
                 if (playerInfos[i].player_Num == num) playerInfos[i].Heal(true);
 
         }
