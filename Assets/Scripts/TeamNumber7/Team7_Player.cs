@@ -127,6 +127,7 @@ public class Team7_Player : MonoBehaviourPun
 
     IEnumerator PlayerAttack()
     {
+        if (isDead) return;
         attackRotate = 180f;
         while (attackRotate < 360)
         {
@@ -197,7 +198,7 @@ public class Team7_Player : MonoBehaviourPun
     {
         level++;
         photonView.RPC("CheckEvolve", RpcTarget.All);
-        transform.localScale += new Vector3(0.2f, 0.2f, 0.2f);
+        transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
         CandyAttack.gameObject.transform.localScale += new Vector3(0, 0, 0.02f);
     }
 
