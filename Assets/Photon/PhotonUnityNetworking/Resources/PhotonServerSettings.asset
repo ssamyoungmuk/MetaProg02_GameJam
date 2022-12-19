@@ -80,6 +80,8 @@ MonoBehaviour:
   - DieAnim
   - AggroNow
   - RollNow
+  - CheckEvolve
+  - LevelUp
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

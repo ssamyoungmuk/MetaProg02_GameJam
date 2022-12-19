@@ -35,8 +35,7 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        InputName();
-
+        //InputName();
         PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime = "fc387611-95cc-42c2-ae93-6e4d5bc85e09";
         PhotonNetwork.ConnectUsingSettings(); // 설정 정보로 마스터 서버 접속 시도
 
@@ -44,23 +43,32 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
 
     private void InputName()
     {
-        while(true)
-        {
-            if(Input.GetKeyDown(KeyCode.KeypadEnter))
-            {
-                if(nameInput.text == null)
-                {
-                    Debug.Log("아이디를 입력하세요");
-                }
+        StartCoroutine(InputNameTime());
+    }
 
-                else
-                {
-                    nameInput.text = inputName;
-                    inputName = saveName;
-                    break;
-                }
+    IEnumerator InputNameTime()
+    {
+        Debug.Log("코루틴 입장");
+        if (Input.GetKey(KeyCode.KeypadEnter))
+        {
+            if (nameInput.text == null)
+            {
+                Debug.Log("아이디를 입력하세요");
+            }
+
+            else
+            {
+                inputName = nameInput.text;
+                saveName = inputName;
+                Debug.Log("입력 완료");
+
+                GameStart();
+                InstCandy(50);
             }
         }
+        yield return new WaitForSeconds(0.1f);
+        //yield return new WaitUntil(() => nameInput.text != null && Input.GetKey(KeyCode.KeypadEnter));
+        
     }
 
 
@@ -105,8 +113,10 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
         //UIManager.transform.GetChild(0).gameObject.SetActive(false); // 연결중 배너 비활성화
 
         // 플레이어 랜덤 위치에 생성
+        Panel.SetActive(false);
         GameObject player = PhotonNetwork.Instantiate("Team7_Player", SetRandomPos(0), Quaternion.identity);
         Camera.main.GetComponent<Team7_FollowCam>().SetCam();
+        player.GetComponent<Team7_Player>().myName.text = inputName;
     }
 
 

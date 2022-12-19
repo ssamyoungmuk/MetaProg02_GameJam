@@ -21,7 +21,7 @@ public class Team7_Player : MonoBehaviourPun
     GameObject myArmor;
 
     [SerializeField]
-    TextMeshPro myName;
+    public TextMeshPro myName;
 
     public bool isDead = false;
     private bool rollNow = false;
@@ -45,11 +45,12 @@ public class Team7_Player : MonoBehaviourPun
     {
         rb = GetComponent<Rigidbody>();
         weapon = CandyAttack.gameObject.GetComponent<BoxCollider>();
+        photonView.RPC("CheckEvolve", RpcTarget.All);
     }
 
     void Start()
     {
-
+        photonView.RPC("CheckEvolve", RpcTarget.All);
         myUI = FindObjectOfType<Team7_UIManager>();
         CandyAttack.transform.rotation = Quaternion.Euler(0, 180, 0);
         weapon.enabled = false;
@@ -186,56 +187,77 @@ public class Team7_Player : MonoBehaviourPun
         if (exp >= 100)
         {
             exp = exp - 100;
-            LevelUp();
+
+            photonView.RPC("LevelUp",RpcTarget.All);
             
         }
         myExpBar.value = exp;
     }
 
+    [PunRPC]
     public void LevelUp()
     {
         level++;
-        checkEvolve();
+        photonView.RPC("CheckEvolve", RpcTarget.All);
         transform.localScale += new Vector3(0.2f, 0.2f, 0.2f);
         CandyAttack.gameObject.transform.localScale += new Vector3(0, 0, 0.02f);
     }
 
-    private void checkEvolve()
+    [PunRPC]
+    private void CheckEvolve()
     {
+        Debug.Log("ÁøÈ­!");
         switch(level)
         {
+            case 1:
+            case 2:
+                myArmor.transform.GetChild(0).gameObject.SetActive(true);
+                break;
             case 3:
+            case 4:
                 myArmor.transform.GetChild(1).gameObject.SetActive(true);
                 myArmor.transform.GetChild(0).gameObject.SetActive(false);
                 break;
             case 5:
+            case 6:
                 myArmor.transform.GetChild(2).gameObject.SetActive(true);
                 myArmor.transform.GetChild(1).gameObject.SetActive(false);
                 break;
             case 7:
+            case 8:
                 myArmor.transform.GetChild(3).gameObject.SetActive(true);
                 myArmor.transform.GetChild(2).gameObject.SetActive(false);
                 break;
             case 9:
+            case 10:
                 myArmor.transform.GetChild(4).gameObject.SetActive(true);
                 myArmor.transform.GetChild(3).gameObject.SetActive(false);
                 break;
             case 11:
+            case 12:
                 myArmor.transform.GetChild(5).gameObject.SetActive(true);
                 myArmor.transform.GetChild(4).gameObject.SetActive(false);
                 break;
             case 13:
+            case 14:
                 myArmor.transform.GetChild(6).gameObject.SetActive(true);
                 myArmor.transform.GetChild(5).gameObject.SetActive(false);
                 break;
-            case 14:
+            case 15:
+            case 16:
                 myArmor.transform.GetChild(7).gameObject.SetActive(true);
                 myArmor.transform.GetChild(6).gameObject.SetActive(false);
                 break;
-            case 16:
+            case 17:
+            case 18:
                 myArmor.transform.GetChild(8).gameObject.SetActive(true);
                 myArmor.transform.GetChild(7).gameObject.SetActive(false);
                 break;
+                default:
+                myArmor.transform.GetChild(8).gameObject.SetActive(true);
+                myArmor.transform.GetChild(7).gameObject.SetActive(false);
+                break;
+
 
         }
     }
