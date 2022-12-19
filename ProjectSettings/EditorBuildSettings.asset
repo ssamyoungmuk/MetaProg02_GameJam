@@ -5,40 +5,43 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LobbyScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DemoScene.unity
     guid: 3e39ceea67d5e7f4e9f161b6e080ffbd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/OneOnOne.unity
     guid: 5207a52559584da4ab233fe936b52672
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TeamNumber5.unity
     guid: 640b4a655a457d14faaa4c8b5ec43ba4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TeamNumber7.unity
     guid: d8584d513925db140a52894c7c8e30b2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MafiaGame/MafiaGame_LobbyScene.unity
     guid: f2d0480d0ab9b004f8bbbc07fa3c0003
-  - enabled: 1
+  - enabled: 0
     path: Assets/Team4/Scenes/PicoPark.unity
     guid: 8d6d3e28a0becd243a81eda977e86542
-  - enabled: 1
+  - enabled: 0
     path: Assets/Team4/Scenes/Loding.unity
     guid: 4dc90477294609e49a81ab37bb2255e7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Team4/Scenes/PicoParkInGame.unity
     guid: 6a4e3d4e1cd750844b46dee20d727959
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Team6_Title.unity
     guid: ccc6d4fc94a29294bbb1008e604cef1d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Team_6/Scene/Team_6.unity
     guid: c2ac003024657c742b2f1d14f34e96ff
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LobbyScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/HalliGalli.unity
+    guid: 6c7eead9ecdb75f4095390373db1c725
   m_configObjects: {}

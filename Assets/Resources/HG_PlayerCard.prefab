@@ -127,7 +127,7 @@ MonoBehaviour:
   - {fileID: 8951257826570225490}
   - {fileID: 8951257827448203693}
   - {fileID: 8951257827502923083}
-  alive: 1
+  MyringCount: 0
   mycardNumber: 0
   cardColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &8951257826354802788
