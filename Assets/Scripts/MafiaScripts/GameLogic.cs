@@ -48,11 +48,11 @@ namespace MafiaGame
         {
             myInfo = obj.GetComponent<PlayerInfo>();
         }
-        List<PlayerInfo> playerInfos = new List<PlayerInfo>();
+        PlayerInfo[] playerInfos;
         void YouDie(int num)
         {
             GameObject obj = null;
-            for (int i = 0; i < playerInfos.Count; i++)
+            for (int i = 0; i < playerInfos.Length; i++)
                 if (playerInfos[i].player_Num == num) obj = playerInfos[i].gameObject;
             obj.gameObject.GetPhotonView().RPC("Die", RpcTarget.All);
 
@@ -76,11 +76,11 @@ namespace MafiaGame
             else if (myInfo.jobName == jobList.People) myJobText.text = "시민";
             jobUI2.SetActive(true);
             List<PlayerInfo> list = new List<PlayerInfo>();
-            PlayerInfo[] play = FindObjectsOfType<PlayerInfo>();
+            playerInfos = FindObjectsOfType<PlayerInfo>();
             for(int i=0;i<PhotonNetwork.PlayerList.Length;i++) photonNick.Add(PhotonNetwork.PlayerList[i].NickName);
-            for (int i = 0; i < play.Length; i++)
+            for (int i = 0; i < playerInfos.Length; i++)
             {
-                if (play[i].jobName == jobList.Mafia) list.Add(play[i]);
+                if (playerInfos[i].jobName == jobList.Mafia) list.Add(playerInfos[i]);
             }
             if (characterJob.mafiaNum > 1)
             {
@@ -274,14 +274,7 @@ namespace MafiaGame
         int maxVote;//젤높은투표수
         int maxVotePlayer;//젤높은플레이어번호
 
-        List<jobList> job = new List<jobList>(0);
         public List<string> photonNick = new List<string>();
-        [PunRPC]
-        void PlayerJobList(jobList a,int b)
-        {
-            job.Add(a);
-            playerInfos.Add(PunFindObject(b).GetComponent<PlayerInfo>());
-        }
         bool isGameEnd;
         [PunRPC]
         void GameEnd()
@@ -334,13 +327,12 @@ namespace MafiaGame
         void PoliceClick(int num)
         {
             if (isSkill == true) return;
+            bool istrue = false;
             isSkill = true;
             skillClick.gameObject.SetActive(true);
-            Debug.Log(job[num]);
-            Debug.Log(num);
-            for(int i = 0; i<job.Count;i++)
-            Debug.Log(job[i]);
-            if (job[num] == jobList.Mafia) skillClick.text = "마피아 입니다.";
+            for (int i = 0; i < playerInfos.Length; i++)
+                if (playerInfos[i].player_Num == num && playerInfos[i].jobName == jobList.Mafia) istrue = true;
+            if (istrue) skillClick.text = "마피아 입니다.";
             else skillClick.text = "마피아가 아닙니다.";
             Fade(skillClick.gameObject, fade.All);
         }
@@ -353,7 +345,7 @@ namespace MafiaGame
         [PunRPC]
         void YouHeal(int num)
         {
-            for (int i = 0; i < playerInfos.Count; i++)
+            for (int i = 0; i < playerInfos.Length; i++)
                 if (playerInfos[i].player_Num == num) playerInfos[i].Heal(true);
 
         }

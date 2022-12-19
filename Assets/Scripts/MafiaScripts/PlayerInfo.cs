@@ -27,7 +27,7 @@ public class PlayerInfo : MonoBehaviourPun
         {
             if (photonView.IsMine)
             {
-                string st = $"{GameLogic.Instance.photonNick[player_Num]}님이 의사의 도음으로 살았습니다.";
+                string st = $"{GameLogic.Instance.photonNick[player_Num]}님이 의사의 도움으로 살았습니다.";
                 GameLogic.Instance.uIChatManager.gameObject.GetPhotonView().RPC("SystemMessge", RpcTarget.All, st);
             }
 
