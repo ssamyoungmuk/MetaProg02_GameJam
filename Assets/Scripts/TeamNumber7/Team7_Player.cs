@@ -39,7 +39,6 @@ public class Team7_Player : MonoBehaviourPun
     BoxCollider weapon = null;
 
     GameObject myCam;
-    Team7_UIManager myUI;
 
     private void Awake()
     {
@@ -51,7 +50,6 @@ public class Team7_Player : MonoBehaviourPun
     void Start()
     {
         photonView.RPC("CheckEvolve", RpcTarget.All);
-        myUI = FindObjectOfType<Team7_UIManager>();
         CandyAttack.transform.rotation = Quaternion.Euler(0, 180, 0);
         weapon.enabled = false;
         Cursor.lockState = CursorLockMode.Locked; // 마우스 락
@@ -80,6 +78,16 @@ public class Team7_Player : MonoBehaviourPun
             else if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 photonView.RPC("AggroNow", RpcTarget.All);
+            }
+
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                photonView.RPC("AggroNow2", RpcTarget.All);
+            }
+
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                photonView.RPC("AggroNow3", RpcTarget.All);
             }
 
 
@@ -125,6 +133,18 @@ public class Team7_Player : MonoBehaviourPun
     public void AggroNow()
     {
         myAnim.SetTrigger("doAggro");
+    }
+
+    [PunRPC]
+    public void AggroNow2()
+    {
+        myAnim.SetTrigger("doAggro2");
+    }
+
+    [PunRPC]
+    public void AggroNow3()
+    {
+        myAnim.SetTrigger("doAggro3");
     }
 
     IEnumerator PlayerAttack()
@@ -199,8 +219,8 @@ public class Team7_Player : MonoBehaviourPun
     {
         level++;
         photonView.RPC("CheckEvolve", RpcTarget.All);
-        transform.localScale += new Vector3(0.2f, 0.2f, 0.2f);
-        CandyAttack.gameObject.transform.localScale += new Vector3(0, 0, 0.02f);
+        transform.localScale += new Vector3(0.15f, 0.15f, 0.15f);
+        CandyAttack.gameObject.transform.localScale += new Vector3(0, 0, 0.01f);
     }
 
     [PunRPC]

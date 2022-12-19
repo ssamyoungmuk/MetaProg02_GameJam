@@ -116,7 +116,7 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
         Panel.SetActive(false);
         GameObject player = PhotonNetwork.Instantiate("Team7_Player", SetRandomPos(0), Quaternion.identity);
         Camera.main.GetComponent<Team7_FollowCam>().SetCam();
-        player.GetComponent<Team7_Player>().myName.text = inputName;
+        //player.GetComponent<Team7_Player>().myName.text = inputName;
     }
 
 

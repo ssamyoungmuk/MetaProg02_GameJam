@@ -82,6 +82,8 @@ MonoBehaviour:
   - RollNow
   - CheckEvolve
   - LevelUp
+  - AggroNow2
+  - AggroNow3
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
