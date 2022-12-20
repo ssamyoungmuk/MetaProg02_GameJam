@@ -126,6 +126,7 @@ public class Team7_Player : MonoBehaviourPun
     [PunRPC]
     public void AttackNow()
     {
+        if (isDead) return;
         StartCoroutine(PlayerAttack());
     }
 
