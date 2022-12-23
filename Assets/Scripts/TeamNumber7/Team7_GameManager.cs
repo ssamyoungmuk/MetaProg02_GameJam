@@ -63,7 +63,7 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
                 Debug.Log("입력 완료");
 
                 GameStart();
-                InstCandy(50);
+                InstCandy(30);
             }
         }
         yield return new WaitForSeconds(0.1f);
@@ -117,6 +117,18 @@ public class Team7_GameManager : MonoBehaviourPunCallbacks
         GameObject player = PhotonNetwork.Instantiate("Team7_Player", SetRandomPos(0), Quaternion.identity);
         Camera.main.GetComponent<Team7_FollowCam>().SetCam();
         //player.GetComponent<Team7_Player>().myName.text = inputName;
+
+
+        StartCoroutine(CO_InstCandy());
+    }
+
+    IEnumerator CO_InstCandy()
+    {
+        while(true)
+        {
+            yield return new WaitForSecondsRealtime(3f);
+            InstCandy(10);
+        }
     }
 
 
