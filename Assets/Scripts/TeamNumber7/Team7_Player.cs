@@ -220,7 +220,7 @@ public class Team7_Player : MonoBehaviourPun
     {
         level++;
         photonView.RPC("CheckEvolve", RpcTarget.All);
-        transform.localScale += new Vector3(0.15f, 0.15f, 0.15f);
+        transform.localScale += new Vector3(0.2f, 0.2f, 0.2f);
         CandyAttack.gameObject.transform.localScale += new Vector3(0, 0, 0.01f);
     }
 
