@@ -1,17 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+using Photon.Pun;
+using Photon.Realtime;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro;
-
-using Photon.Pun;
-using Photon.Realtime;
 
 namespace HalliGalli
 {
     public delegate void EditMyNumber(byte myNumber);
-    public delegate void CountAlive();
+
     public class HalliGalliMgr : MonoBehaviourPunCallbacks
     {
         #region 싱글턴
@@ -59,7 +56,7 @@ namespace HalliGalli
         private void Awake()
         {
             // Set Screen Size 16 : 9 fullscreen false
-            Screen.SetResolution(1920, 1080, true);
+            Screen.SetResolution(640, 360, false);
             // Improves the performance of the Photon network
             // Defines how many times per second PhotonNetwork should send packages
             PhotonNetwork.SendRate = 60;
@@ -154,8 +151,7 @@ namespace HalliGalli
             if (PhotonNetwork.IsMasterClient) gamestartButton.interactable = true;
             else gamestartButton.interactable = false;
 
-            GameObject player = PhotonNetwork.Instantiate("HG_Player_Pos", Vector3.zero, Quaternion.identity);
-            editMyNumber += player.GetComponent<PlayerNickName>().SetMyNumber;
+            PhotonNetwork.Instantiate("HG_Player_Pos", Vector3.zero, Quaternion.identity);
 
             #region 눈물의 과정 못지워요
             //playerInfo = PhotonNetwork.Instantiate("Player_Pos", Vector3.zero, Quaternion.identity);
@@ -253,7 +249,7 @@ namespace HalliGalli
         }
         public override void OnMasterClientSwitched(Player newMasterClient)
         {
-            if (PhotonNetwork.IsMasterClient) gamestartButton.interactable = true;
+            if (PhotonNetwork.IsMasterClient && joinRoomPanel.activeInHierarchy) gamestartButton.interactable = true;
         }
         public override void OnPlayerLeftRoom(Player otherPlayer)
         {

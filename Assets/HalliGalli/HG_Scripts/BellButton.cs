@@ -1,23 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-
-using Photon.Pun;
 
 namespace HalliGalli
 {
     public class BellButton : MonoBehaviourPun
     {
-        [SerializeField] ShuffleCard shuffleCard = null;
-
-        Button Bell = null;
+        [SerializeField] Button Bell = null;
         
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
-            Bell = GetComponent<Button>();
             Bell.onClick.AddListener(delegate { RingBell(); });
         }
 
@@ -29,7 +22,6 @@ namespace HalliGalli
         void RingBell()
         {
             photonView.RPC(nameof(RPC_BellDisable), RpcTarget.All);
-            shuffleCard.BellJudge();
         }
 
         [PunRPC]

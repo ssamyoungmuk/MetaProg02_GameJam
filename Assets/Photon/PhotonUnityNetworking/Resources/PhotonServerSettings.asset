@@ -91,6 +91,9 @@ MonoBehaviour:
   - RPC_BellDisable
   - RPC_Restart
   - RPC_TimeReset
+  - RPC_RingBell
+  - RPC_Init
+  - RPC_GameOver
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

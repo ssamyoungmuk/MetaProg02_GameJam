@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-
 using Photon.Pun;
+using TMPro;
+using UnityEngine;
 
 namespace HalliGalli
 {
@@ -16,18 +12,18 @@ namespace HalliGalli
 
         private void Awake()
         {
-            joinroomPanel = GameObject.FindGameObjectWithTag("joinroomPanel");
+            joinroomPanel = GameObject.Find("JoinRoomPanel");
             if (photonView.IsMine)
             {
                 photonView.RPC(nameof(RPC_SetParent), RpcTarget.AllBuffered, HalliGalliMgr.Inst.MyNumber);
                 photonView.RPC(nameof(RPC_SettingNickName), RpcTarget.AllBuffered, PhotonNetwork.LocalPlayer.NickName);
+                HalliGalliMgr.Inst.editMyNumber = SetMyNumber;
             }
         }
 
         public void SetMyNumber(byte myNumber)
         {
-            if (photonView.IsMine)
-                photonView.RPC(nameof(RPC_SetParent), RpcTarget.AllBuffered, myNumber);
+            photonView.RPC(nameof(RPC_SetParent), RpcTarget.AllBuffered, myNumber);
         }
 
         [PunRPC]

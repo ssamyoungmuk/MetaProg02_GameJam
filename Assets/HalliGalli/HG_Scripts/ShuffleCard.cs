@@ -16,145 +16,70 @@ namespace HalliGalli
         [SerializeField] TextMeshProUGUI Timer = null;
 
         PlayerCard[] players = null;
+        public byte AliveCount { get; set; } = 0;
 
         List<byte> CardList = null;
         List<Color> ColorList = null;
-        Color newColor1; // 색상은 4종류
-        Color newColor2; // 색상은 4종류
-        Color newColor3; // 색상은 4종류
-        Color newColor4; // 색상은 4종류
-        byte number; // 숫자는 1 ~ 5
-        Color color;
+        Color newColor1 = Color.red;
+        Color newColor2 = Color.yellow;
+        Color newColor3 = Color.green;
+        Color newColor4 = Color.blue;
 
         float time = 0;
         bool flip = false;
-        byte aliveCount = 0;
-        WaitForSeconds oneS = null;
-        WaitForSeconds halfS = null;
+        bool ring = false;
+
+        WaitForSeconds oneS = new WaitForSeconds(1f);
+        WaitForSeconds halfS = new WaitForSeconds(0.5f);
+        WaitUntil RingBell = null;
 
         void Awake()
         {
-            oneS = new WaitForSeconds(1f);
-            halfS = new WaitForSeconds(0.5f);
-            aliveCount = PhotonNetwork.CurrentRoom.PlayerCount;
+            AliveCount = PhotonNetwork.CurrentRoom.PlayerCount;
+            RingBell = new WaitUntil(() => ring == false);
 
             if (PhotonNetwork.IsMasterClient == false) return;
 
             CardList = new List<byte>();
             ColorList = new List<Color>();
 
-            ColorUtility.TryParseHtmlString("#E97A7B", out newColor1);
-            ColorUtility.TryParseHtmlString("#85EFFE", out newColor2);
-            ColorUtility.TryParseHtmlString("#C5F782", out newColor3);
-            ColorUtility.TryParseHtmlString("#B195DS", out newColor4);
+            // 리스트에 카드 14장 받기
+            for (byte i = 1; i < 6; i++)
+            {
+                switch (i)
+                {
+                    case 1:
+                        for (byte j = 0; j < 5; j++)
+                        {
+                            CardList.Add(i);
+                        }
+                        break;
+                    case 2:
+                    case 3:
+                        for (byte j = 0; j < 3; j++)
+                        {
+                            CardList.Add(i);
+                        }
+                        break;
+                    case 4:
+                        for (byte j = 0; j < 2; j++)
+                        {
+                            CardList.Add(i);
+                        }
+                        break;
+                    case 5:
+                        CardList.Add(i);
+                        break;
+                }
+            }
 
             // 리스트에 색상 4가지 받기
             ColorList.Add(newColor1);
             ColorList.Add(newColor2);
             ColorList.Add(newColor3);
             ColorList.Add(newColor4);
-
-            // 리스트에 카드 14장 받기
-            for (byte i = 1; i < 6; i++)
-            {
-                if (i == 1)
-                {
-                    for (byte j = 0; j < 5; j++)
-                    {
-                        CardList.Add(i);
-                    }
-                }
-                else if (i == 2)
-                {
-                    for (byte j = 0; j < 3; j++)
-                    {
-                        CardList.Add(i);
-                    }
-                }
-                else if (i == 3)
-                {
-                    for (byte j = 0; j < 3; j++)
-                    {
-                        CardList.Add(i);
-                    }
-                }
-                else if (i == 4)
-                {
-                    for (byte j = 0; j < 2; j++)
-                    {
-                        CardList.Add(i);
-                    }
-                }
-                else if (i == 5)
-                {
-                    CardList.Add(i);
-                }
-            }
         }
-        public override void OnMasterClientSwitched(Player newMasterClient)
-        {
-            if (PhotonNetwork.IsMasterClient)
-            {
-                CardList = new List<byte>();
-                ColorList = new List<Color>();
 
-                ColorUtility.TryParseHtmlString("#E97A7B", out newColor1);
-                ColorUtility.TryParseHtmlString("#85EFFE", out newColor2);
-                ColorUtility.TryParseHtmlString("#C5F782", out newColor3);
-                ColorUtility.TryParseHtmlString("#B195DS", out newColor4);
-
-                // 리스트에 색상 4가지 받기
-                ColorList.Add(newColor1);
-                ColorList.Add(newColor2);
-                ColorList.Add(newColor3);
-                ColorList.Add(newColor4);
-
-                // 리스트에 카드 14장 받기
-                for (byte i = 1; i < 6; i++)
-                {
-                    if (i == 1)
-                    {
-                        for (byte j = 0; j < 5; j++)
-                        {
-                            CardList.Add(i);
-                        }
-                    }
-                    else if (i == 2)
-                    {
-                        for (byte j = 0; j < 3; j++)
-                        {
-                            CardList.Add(i);
-                        }
-                    }
-                    else if (i == 3)
-                    {
-                        for (byte j = 0; j < 3; j++)
-                        {
-                            CardList.Add(i);
-                        }
-                    }
-                    else if (i == 4)
-                    {
-                        for (byte j = 0; j < 2; j++)
-                        {
-                            CardList.Add(i);
-                        }
-                    }
-                    else if (i == 5)
-                    {
-                        CardList.Add(i);
-                    }
-                }
-
-                players = this.transform.GetComponentsInChildren<PlayerCard>();
-            }
-        }
-        public override void OnPlayerLeftRoom(Player otherPlayer)
-        {
-            aliveCount--;
-            if (PhotonNetwork.IsMasterClient)
-                players = this.transform.GetComponentsInChildren<PlayerCard>();
-        }
         public void GameStart()
         {
             StartCoroutine(nameof(MainGame));
@@ -162,9 +87,7 @@ namespace HalliGalli
 
         IEnumerator MainGame()
         {
-            GameObject player = PhotonNetwork.Instantiate("HG_PlayerCard", new Vector3(0, 45, 0), Quaternion.identity);
-            HalliGalliMgr.Inst.editMyNumber += player.GetComponent<PlayerCard>().SetMyNumber;
-            player.GetComponent<PlayerCard>().countAlive = CountAlivePlayers;
+            PhotonNetwork.Instantiate("HG_PlayerCard", new Vector3(0, 45, 0), Quaternion.identity);
 
             yield return halfS;
             gameStart.gameObject.SetActive(true);
@@ -173,22 +96,44 @@ namespace HalliGalli
             yield return halfS;
 
             if (PhotonNetwork.IsMasterClient) players = this.transform.GetComponentsInChildren<PlayerCard>();
-            while (aliveCount > 1)
+            while (AliveCount > 1)
             {
                 for (int i = 0; i < PhotonNetwork.CurrentRoom.PlayerCount; i++)
                 {
-                    if (PhotonNetwork.IsMasterClient) players[i].UnFlip();
                     if (PhotonNetwork.IsMasterClient) SetCard(i);
                     yield return StartCoroutine(OneTurn(i));
+                    
+                    yield return RingBell;
+                    
                 }
-                yield return oneS;
+                yield return null;
+            }
+
+            if (PhotonNetwork.IsMasterClient)
+            {
+                for (int i = 0; i < PhotonNetwork.CurrentRoom.PlayerCount; i++)
+                {
+                    players[i].GameOver();
+                }
             }
             HalliGalliMgr.Inst.GameOver();
         }
+
+        void SetCard(int player)
+        {
+            players[player].UnFlip();
+            for (int i = 0; i < PhotonNetwork.CurrentRoom.PlayerCount; i++)
+            {
+                players[i].Init();
+            }
+            players[player].SetCard(CardList[Random.Range(0, CardList.Count)], ColorList[Random.Range(0, ColorList.Count)]);
+        }
+
         IEnumerator OneTurn(int player)
         {
             time = 30f;
             flip = false;
+
             while (time > 0f)
             {
                 Timer.text = $"{(int)time} Sec";
@@ -201,20 +146,22 @@ namespace HalliGalli
                 time -= Time.deltaTime;
                 yield return null;
             }
+
             Timer.text = "0 Sec";
             if (PhotonNetwork.IsMasterClient && flip == false) players[player].Flip();
+
+            yield return oneS;
+            Timer.text = "Time";
+            yield return oneS;
         }
-        void SetCard(int player)
-        {
-            color = ColorList[Random.Range(0, 3)];
-            number = (byte)CardList[Random.Range(0, CardList.Count)];
-            players[player].SetCard(number, color);
-        }
+        
+
         public void BellJudge()
         {
-            StopCoroutine(nameof(MainGame));
-
             if (PhotonNetwork.IsMasterClient == false) return;
+
+            photonView.RPC(nameof(RPC_RingBell), RpcTarget.All, true);
+
 
             byte C1 = 0; byte C2 = 0; byte C3 = 0; byte C4 = 0;
             for (int i = 0; i < players.Length; i++)
@@ -240,34 +187,96 @@ namespace HalliGalli
                 }
             }
 
-            photonView.RPC(nameof(RPC_Restart), RpcTarget.All);
+            photonView.RPC(nameof(RPC_RingBell), RpcTarget.All, false);
         }
 
-        void CountAlivePlayers()
+        public void GameOver(bool win)
         {
-            aliveCount--;
+            if (win) gameStart.text = "Win";
+            else gameStart.text = "Lose";
+
+            gameStart.gameObject.SetActive(true);
         }
 
+        #region Flip
         [PunRPC]
         void RPC_RequestFlip(int player)
         {
             flip = true;
             players[player].Flip();
         }
+
         [PunRPC]
         void RPC_BellActive()
         {
             bell.BellActive();
         }
+
         [PunRPC]
         void RPC_TimeReset()
         {
-            time = 0f;
+            time = 0;
         }
+        #endregion
+
         [PunRPC]
-        void RPC_Restart()
+        void RPC_RingBell(bool ringBell)
         {
-            StartCoroutine(nameof(MainGame));
+            ring = ringBell;
+        }
+
+        public override void OnMasterClientSwitched(Player newMasterClient)
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                CardList = new List<byte>();
+                ColorList = new List<Color>();
+
+                // 리스트에 카드 14장 받기
+                for (byte i = 1; i < 6; i++)
+                {
+                    switch (i)
+                    {
+                        case 1:
+                            for (byte j = 0; j < 5; j++)
+                            {
+                                CardList.Add(i);
+                            }
+                            break;
+                        case 2:
+                        case 3:
+                            for (byte j = 0; j < 3; j++)
+                            {
+                                CardList.Add(i);
+                            }
+                            break;
+                        case 4:
+                            for (byte j = 0; j < 2; j++)
+                            {
+                                CardList.Add(i);
+                            }
+                            break;
+                        case 5:
+                            CardList.Add(i);
+                            break;
+                    }
+                }
+
+                // 리스트에 색상 4가지 받기
+                ColorList.Add(newColor1);
+                ColorList.Add(newColor2);
+                ColorList.Add(newColor3);
+                ColorList.Add(newColor4);
+
+                players = this.transform.GetComponentsInChildren<PlayerCard>();
+            }
+        }
+
+        public override void OnPlayerLeftRoom(Player otherPlayer)
+        {
+            AliveCount--;
+            if (PhotonNetwork.IsMasterClient)
+                players = this.transform.GetComponentsInChildren<PlayerCard>();
         }
     }
 }
